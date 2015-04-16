@@ -18,14 +18,14 @@ ActiveRecord::Schema.define(version: 20150416191338) do
 
   create_table "offers", force: :cascade do |t|
     t.integer  "timeslot_id"
-    t.integer  "user_id"
+    t.integer  "student_id"
     t.boolean  "status",      default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "reputations", force: :cascade do |t|
-    t.integer  "teacher_id"
+    t.integer  "user_id"
     t.integer  "judge_id"
     t.integer  "rating"
     t.datetime "created_at"
@@ -33,9 +33,10 @@ ActiveRecord::Schema.define(version: 20150416191338) do
   end
 
   add_index "reputations", ["judge_id"], name: "index_reputations_on_judge_id", using: :btree
-  add_index "reputations", ["teacher_id"], name: "index_reputations_on_teacher_id", using: :btree
+  add_index "reputations", ["user_id"], name: "index_reputations_on_user_id", using: :btree
 
   create_table "talents", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "title",       null: false
     t.string   "type",        null: false
     t.string   "sample"
@@ -46,6 +47,9 @@ ActiveRecord::Schema.define(version: 20150416191338) do
   end
 
   create_table "timeslots", force: :cascade do |t|
+    t.datetime "time"
+    t.integer  "user_id"
+    t.integer  "offer_id"
   end
 
   create_table "users", force: :cascade do |t|
