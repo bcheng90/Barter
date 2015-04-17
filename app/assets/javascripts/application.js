@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require angular.js
+//= require angular-resource.js
+//= require router.es5.js
 //= require_tree .
