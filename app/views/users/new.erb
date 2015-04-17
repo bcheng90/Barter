@@ -1,0 +1,13 @@
+<div class="container">
+  <h2 class="center">Signup:</h2>
+  <%= form_for :user, url: '/users' do |f| %>
+    Username: <%= f.text_field :username %>
+    Password: <%= f.password_field :password %>
+    Password Confirmation: <%= f.password_field :password_confirmation %>
+    email: <%= f.text_field :email %>
+    Location: <%= f.text_field :location %>
+    Interest: <%= f.text_field :interests %>
+    <%= f.submit "Signup" %>
+
+  <% end %>
+</div>
