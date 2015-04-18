@@ -10,7 +10,7 @@ angular.module('barter').controller('WelcomeController', ["TalentService", 'User
 }]);
 
 angular.module('barter')
-.controller('UsersController', ['$routeParams', 'UserService', function($routeParams, UserService){
+.controller('UsersController', ['$routeParams', 'UserService', function($routeParams, UserService, TalentService){
     UserService.get({id: $routeParams.id}, function(data){
       this.user = data;
     }.bind(this));

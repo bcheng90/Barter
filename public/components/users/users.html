@@ -4,10 +4,18 @@
   <div id="user-aboutme">
     <h4 class="center bold underline">{{users.user.username}}</h4>
     <ul>
-      <p>{{users.user.email}}</p>
-      <p>{{users.user.interests}}</p>
-      <p>{{users.user.location}}</p>
-      <p>{{users.user.about}}</p>
+      <p><span class="bold">Email:</span> {{users.user.email}}</p>
+      <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
+      <p><span class="bold">Location:</span> {{users.user.location}}</p>
+      <p><span class="bold">About Me:</span> {{users.user.about}}</p>
     </ul>
+  </div>
+  <div id="user-talents">
+    <ul ng-repeat="talent in users.user.talents">
+      <li>{{talent.title}}</li>
+    </ul>
+  </div>
+  <div id= "user-timeslots">
+
   </div>
 </div>
