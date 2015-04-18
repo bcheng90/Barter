@@ -2,6 +2,12 @@ angular.module('barter').controller('WelcomeController', ['UserService', functio
 
 }]);
 
+angular.module('barter').controller('UsersController', ['UserService', function(UserService){
+    UserService.query(function(data){
+      this.users = data;
+    }.bind(this));
+}]);
+
 angular.module('barter').controller('TimeslotsController', ['UserService', function(UserService){
    // here you'd put code to e.g.
    // load the timeslots from a service, handle form subsmissions etc
