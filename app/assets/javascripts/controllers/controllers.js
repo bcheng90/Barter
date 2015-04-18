@@ -1,12 +1,17 @@
-angular.module('barter').controller('WelcomeController', ["TalentService", 'UserService',
-  function(TalentService, UserService){
-  this.tals = [];
-  this.selectedCategory = 'Music';
-   TalentService.query(function(data) {
-    this.tals = data;
-    console.log("response", data);
-   }.bind(this));
+angular.module('barter')
+  .controller('WelcomeController', ['$routeParams', "TalentService", 'UserService', function($routeParams, TalentService, UserService){
+    this.tals = [];
+    this.author = {};
+    this.selectedCategory = 'Music';
 
+     TalentService.query(function(data) {
+      this.tals = data;
+      console.log("response", data);
+     }.bind(this));
+
+     UserService.get({id: $routeParams.id}, function(data) {
+       this.author = data;
+     }.bind(this));
 }]);
 
 angular.module('barter')

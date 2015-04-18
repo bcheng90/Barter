@@ -17,7 +17,7 @@
     <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active">
       <h3>{{welcome.selectedCategory}} Talents</h3>
       <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
-        {{talent.title}}
+        <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
       </div>
     </div>
   </div>
