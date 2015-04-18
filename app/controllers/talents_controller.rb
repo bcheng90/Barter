@@ -2,7 +2,7 @@ class TalentsController < ApplicationController
 
   def index
     @talents = Talent.all
-    render json: @talents
+    render json: @talents, include: :user
   end
 
   def show
