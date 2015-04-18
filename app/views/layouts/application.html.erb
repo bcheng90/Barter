@@ -18,50 +18,48 @@
 <body  ng-app="barter">
 
   <div class="container">
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
-            <div class="logged-in">
-              <a class="navbar-brand" ng-href="#/users/<%=current_user.id%>"><%= current_user.username.capitalize %></a>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <div class="logged-in">
+            <a class="navbar-brand" ng-href="#/users/<%=current_user.id%>"><%= current_user.username.capitalize %></a>
 
-              <a class="navbar-brand" style="display: inline;" href="/logout" method="destroy"></i>Logout</a>
-            </div>
+            <a class="navbar-brand" style="display: inline;" href="/logout" method="destroy"></i>Logout</a>
+          </div>
 
-          <% else %>
-            <ul class="nav nav-tabs">
-              <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                  Login <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <%= form_for :session, url: login_path do |f| %>
-                    <li><%= f.label :username %><br><%= f.text_field :username %></li>
-                    <li><%= f.label :password %><br><%= f.password_field :password %></li>
-                    <li><%= f.submit "Login" %></li>
-                  <% end %>
-                </ul>
-              </li>
+        <% else %>
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="dropdown">
+              <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                Login <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <%= form_for :session, url: login_path do |f| %>
+                  <li><%= f.label :username %><br><%= f.text_field :username %></li>
+                  <li><%= f.label :password %><br><%= f.password_field :password %></li>
+                  <li><%= f.submit "Login" %></li>
+                <% end %>
+              </ul>
+            </li>
 
-              <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
-                  Signup <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                  <%= form_for :user, url: users_path do |f| %>
-                    <li><%= f.label :email %><br><%= f.text_field :email %></li>
-                    <li><%= f.label :username %><br><%= f.text_field :username %></li>
-                    <li><%= f.label :password %><br><%= f.password_field :password %></li>
-                    <li><%= f.label :password %><br><%= f.password_field :password_confirmation %></li>
-                    <li><%= f.submit %></li>
-                  <% end %>
-                </ul>
-              </li>
-            </ul>
-          <% end %>
-
+            <li role="presentation" class="dropdown">
+              <a class="dropdown-toggle navbar-brand" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                Signup <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <%= form_for :user, url: users_path do |f| %>
+                  <li><%= f.label :email %><br><%= f.text_field :email %></li>
+                  <li><%= f.label :username %><br><%= f.text_field :username %></li>
+                  <li><%= f.label :password %><br><%= f.password_field :password %></li>
+                  <li><%= f.label :password %><br><%= f.password_field :password_confirmation %></li>
+                  <li><%= f.submit %></li>
+                <% end %>
+              </ul>
+            </li>
           </ul>
-        </div>
+        <% end %>
+
+        </ul>
       </div>
     </div>
     <div style="margin-top: 55px;">
