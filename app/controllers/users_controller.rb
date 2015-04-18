@@ -2,8 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @talents = @user.talents
-    render json: @user, @talents
+    render json: @user, include: [:talents, :timeslots]
   end
 
   def edit

@@ -1,5 +1,3 @@
-<p><b>This is the "user" component.</b></p>
-
 <div id="user-container">
   <div id="user-aboutme">
     <h4 class="center bold underline">{{users.user.username}}</h4>
@@ -11,9 +9,12 @@
     </ul>
   </div>
   <div id="user-talents">
-
+    <!-- TODO: Add partial template of user talents for future horizontal scroll -->
+    <ul ng-repeat="talent in users.user.talents">
+      <li>{{talent.title}}</li>
+    </ul>
   </div>
   <div id= "user-timeslots">
-
+<!-- TODO: Add partial template of timeslots here -->
   </div>
 </div>

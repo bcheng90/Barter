@@ -18,4 +18,23 @@ li {
   height: 300px;
   width: 500px;
   border: 1px solid black;
+  float: left;
+}
+
+#user-talents {
+ height: 300px;
+ width: 500px;
+ border: 1px solid black;
+ float: right;
+}
+
+#user-timeslots {
+  height: 400px;
+  width: 1000px;
+  border: 1px solid black;
+  clear:both;
+}
+
+#user-container {
+
 }
