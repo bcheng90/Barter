@@ -2,10 +2,11 @@ angular.module('barter').controller('WelcomeController', ['UserService', functio
 
 }]);
 
-angular.module('barter').controller('UsersController', ['UserService', function(UserService){
-    UserService.query(function(data){
-      this.users = data;
+angular.module('barter').controller('UsersController', ['$routeParams', 'UserService', function($routeParams, UserService){
+    UserService.get({id: $routeParams.id}, function(data){
+      this.user = data;
     }.bind(this));
+
 }]);
 
 angular.module('barter').controller('TimeslotsController', ['UserService', function(UserService){

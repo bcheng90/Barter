@@ -7,6 +7,6 @@ function AppController ($router) {
     {path: '/', component: 'welcome' },
     {path: '/timeslots', component: 'timeslots' },
     {path: "/talents", component: "talents"},
-    {path: '/users', component: 'users' }
+    {path: '/users/:id', component: 'users' }
   ]);
 }

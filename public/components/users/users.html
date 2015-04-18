@@ -1,12 +1,12 @@
 <p><b>This is the "user" component.</b></p>
 
 <div id="user-container">
-  <div class="users-aboutme">
-    <ul ng-repeat="user in users.users">
-      <li>{{user.username}}</li>
-      <li>{{user.email}}</li>
-      <li>{{user.interests}}</li>
-      <li>{{user.location}}</li>
+  <div class="user-aboutme">
+    <ul>
+      <li>{{users.user.username}}</li>
+      <li>{{users.user.email}}</li>
+      <li>{{users.user.interests}}</li>
+      <li>{{users.user.location}}</li>
     </ul>
   </div>
 </div>
