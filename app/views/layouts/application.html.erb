@@ -1,12 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="barter">
 <head>
-  <title>MyGreatApp</title>
+  <title>Barter</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+
+    <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <div class="container">
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Barter</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <div class="dropdown">
+              <a href="#" class="dropdown-toggle navbar-brand" data-toggle="dropdown">
+                <%= current_user.username.capitalize %> <i class="caret"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"></i> Dashboard</a></li>
+                <li class="divider divider-overide"></li>
+                <li><a href="#"></i> New Question</a></li>
+                <li class="divider divider-overide"></li>
+                <li><a href="#"></i> Account</a></li>
+                <li class="divider divider-overide"></li>
+                <li><a href="#" method="destroy"></i> Sign-out</a></li>
+              </ul>
+            </div>
+
+          <% else %>
+            <ul class="nav nav-tabs">
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                  Login <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <%= form_for :session, url: login_path do |f| %>
+                  <li><%= f.label :email %><br><%= f.text_field :email %></li>
+                  <li><%= f.label :password %><br><%= f.password_field :password %></li>
+                  <li><%= f.submit "Login" %></li>
+                  <% end %>
+                </ul>
+              </li>
+
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                  Signup <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  <%= form_for :user, url: users_path do |f| %>
+                  <li><%= f.label :email %><br><%= f.text_field :email %></li>
+                  <li><%= f.label :username %><br><%= f.text_field :username %></li>
+                  <li><%= f.label :password %><br><%= f.password_field :password %></li>
+                  <li><%= f.label :password %><br><%= f.password_field :password_confirmation %></li>
+                  <li><%= f.submit %></li>
+                  <% end %>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+     <div style="margin-top: 55px;">
 
 <%= yield %>
 
