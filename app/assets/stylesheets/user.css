@@ -1,0 +1,21 @@
+.center {
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+li {
+  list-style-type: none;
+}
+
+#user-aboutme {
+  height: 300px;
+  width: 500px;
+  border: 1px solid black;
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="barter">
+<html>
 <head>
   <title>Barter</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -15,7 +15,7 @@
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body  ng-app="barter">
 
   <div class="container">
     <div class="navbar navbar-default navbar-fixed-top">
@@ -23,7 +23,7 @@
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <div class="logged-in">
-              <a class="navbar-brand" href="#"><%= current_user.username.capitalize %></a>
+              <a class="navbar-brand" ng-href="#/users/<%=current_user.id%>"><%= current_user.username.capitalize %></a>
 
               <a class="navbar-brand" style="display: inline;" href="/logout" method="destroy"></i>Logout</a>
             </div>
@@ -64,7 +64,9 @@
         </div>
       </div>
     </div>
-     <div style="margin-top: 55px;">
+    <div style="margin-top: 55px;">
+    </div>
+  </div>
 
 <%= yield %>
 
