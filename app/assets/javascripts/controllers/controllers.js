@@ -15,9 +15,10 @@ angular.module('barter').controller('TimeslotsController', ['UserService', funct
 }]);
 
 angular.module("barter").controller("TalentsController", ["UserService", function(UserService){
-  this.tals = ["1,2,3,",4,5]
-   UserService.get({id: 3}, function(jsonResponse) {
+   UserService.get(talents, function(jsonResponse) {
     this.user = jsonResponse;
     console.log("response", jsonResponse);
    }.bind(this));
+
+
 }]);

@@ -6,7 +6,7 @@ password = ["123"]
 
 3.times do |i|
   user = User.create(username: usernames[i], email: emails[i], location: locations[i], interests: interests[i], password: "123")
-  2.times do |i|#
+  2.times do |i|
     user.timeslots << Timeslot.create(time: "2013-02-02 #{rand(1..24)}:00:00" , user_id: user.id)
   end
 end
