@@ -1,4 +1,11 @@
-angular.module('barter').controller('WelcomeController', ['UserService', function(UserService){
+angular.module('barter').controller('WelcomeController', ["TalentService", 'UserService',
+  function(TalentService, UserService){
+  this.tals = [];
+  this.selectedCategory = 'Music';
+   TalentService.query(function(data) {
+    this.tals = data;
+    console.log("response", data);
+   }.bind(this));
 
 }]);
 
@@ -19,13 +26,4 @@ angular.module('barter').controller('TimeslotsController', ['UserService', funct
      this.user = jsonResponse;
      console.log('response', jsonResponse);
    }.bind(this));
-}]);
-
-angular.module("barter").controller("TalentsController", ["UserService", function(UserService){
-   UserService.get(talents, function(jsonResponse) {
-    this.user = jsonResponse;
-    console.log("response", jsonResponse);
-   }.bind(this));
-
-
 }]);
