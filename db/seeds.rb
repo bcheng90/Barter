@@ -3,9 +3,10 @@ emails = ["notika@gmail.com", "ben@gmail.com", "ryan@gmail.com"]
 locations = ["NYC, 28 MC Cabe str", "234 Wall str, Long Island", "160 Essex str NYC"]
 interests = ["Guitar playing", "dance", "coding", "cooking", "biking", "eating"]
 password = ["123"]
+about = ["I like short walks on the beach, long bikes on the road, and drinking anything but pina coladas in the rain.", "I code, I eat, I conquer. But I also play piano, dance, and I want to learn endlessly.", "I can't think. I need food. I'm expert in everything though. Hit me up."]
 
 3.times do |i|
-  user = User.create(username: usernames[i], email: emails[i], location: locations[i], interests: interests[i], password: "123")
+  user = User.create(username: usernames[i], email: emails[i], location: locations[i], interests: interests[i], password: "123", about: about[i])
   2.times do |i|
     user.timeslots << Timeslot.create(time: "2013-02-02 #{rand(1..24)}:00:00" , user_id: user.id)
   end

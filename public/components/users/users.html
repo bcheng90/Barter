@@ -1,12 +1,13 @@
 <p><b>This is the "user" component.</b></p>
 
 <div id="user-container">
-  <div class="user-aboutme">
+  <div id="user-aboutme">
+    <h4 class="center bold underline">{{users.user.username}}</h4>
     <ul>
-      <li>{{users.user.username}}</li>
-      <li>{{users.user.email}}</li>
-      <li>{{users.user.interests}}</li>
-      <li>{{users.user.location}}</li>
+      <p>{{users.user.email}}</p>
+      <p>{{users.user.interests}}</p>
+      <p>{{users.user.location}}</p>
+      <p>{{users.user.about}}</p>
     </ul>
   </div>
 </div>
