@@ -6,34 +6,21 @@
 <br>
 <div class="container talent-box">
   <ul class="nav nav-pills nav-justified">
-    <li class="active"><a data-toggle="pill" href="#music">Music</a></li>
-    <li><a data-toggle="pill" href="#dancing">Dance</a></li>
-    <li><a data-toggle="pill" href="#sports">Sports</a></li>
-    <li><a data-toggle="pill" href="#cooking">Cooking</a></li>
-    <li><a data-toggle="pill" href="#other">Other</a></li>
+    <li class="active"><a ng-click="welcome.selectedCategory = 'Music'" data-toggle="pill" >Music</a></li>
+    <li><a ng-click="welcome.selectedCategory = 'Dance'" data-toggle="pill" >Dance</a></li>
+    <li><a ng-click="welcome.selectedCategory = 'Sport'" data-toggle="pill" >Sports</a></li>
+    <li><a ng-click="welcome.selectedCategory = 'Food'" data-toggle="pill" >Cooking</a></li>
+    <li><a ng-click="welcome.selectedCategory = 'Other'" data-toggle="pill" >Other</a></li>
   </ul>
 
   <div class="tab-content">
-    <div id="music" class="tab-pane fade in active">
-      <h3>Musical Talents</h3>
-      <p>Some content.</p>
-    </div>
-    <div id="dancing" class="tab-pane fade">
-      <h3>Dancing Talents</h3>
-      <p>Some content in menu 1.</p>
-    </div>
-    <div id="sports" class="tab-pane fade">
-      <h3>Athletic Talents</h3>
-      <p>Some content in menu 2.</p>
-    </div>
-    <div id="cooking" class="tab-pane fade">
-      <h3>Culinary Talents</h3>
-      <p>Some content in menu 2.</p>
-    </div>
-    <div id="other" class="tab-pane fade">
-      <h3>Anonyamous Talents</h3>
-      <p>Some content in menu 2.</p>
+    <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active">
+      <h3>{{welcome.selectedCategory}} Talents</h3>
+      <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
+        {{talent.title}}
+      </div>
     </div>
   </div>
 
 </div>
+
