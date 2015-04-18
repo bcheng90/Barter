@@ -8,11 +8,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     render json: @user, method: :score, include: [:talents, :timeslots]
+    render json: @user, include: [:timeslots, :talents]
   end
 
   def edit
     @user = User.find_by(id: params[:id])
-    render json: @user
+    render json: @user, include: :timeslots
   end
 
   def create
