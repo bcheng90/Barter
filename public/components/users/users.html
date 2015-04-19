@@ -15,9 +15,49 @@
     </ul>
   </div>
 <!-- TODO: Add partial template of timeslots here -->
-  <div id= "user-timeslots" ng-repeat="timeslot in users.user.timeslots">
-    {{timeslot.time | date:"MM/dd 'at' h"}}
-
-
+  <div id= "user-timeslots" >
+    <div>
+      <h2>Monday</h2>
+      <div id="mo"  ng-repeat="timeslot in users.user.timeslots | filter:{weekday:1}">
+        {{timeslot.time | date: "MM/dd 'at' h:mma" }}
+      </div>
+    </div>
+    <div>
+      <h2>Tuesday</h2>
+      <div id="tue" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:2}">
+        {{timeslot.time  | date: "MM/dd 'at' h:mma"  }}
+      </div>
+    </div>
+    <div>
+      <h2>Wednesday</h2>
+      <div id="wed" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:3}">
+        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+      </div>
+    </div>
+    <div>
+      <h2>Thursday</h2>
+      <div id="thurs" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:4}">
+        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+      </div>
+    </div>
+    <div>
+      <h2>Friday</h2>
+      <div id="fri" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:5}">
+        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+      </div>
+    </div>
+    <div>
+      <h2>Saturday</h2>
+      <div id="sat" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:6}">
+        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+      </div>
+    </div>
+    <div>
+      <h2>Sunday</h2>
+      <div id="sun" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:7}">
+        {{timeslot.time | date: "MM/dd 'at' h:mma"}}
+      </div>
+   </div>
+    {{timeslot.time | date:"MM/dd 'at' h:mma"}}
   </div>
 </div>
