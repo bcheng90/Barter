@@ -33,6 +33,7 @@ angular.module('barter')
 
 
 
+
 }]);
 
 angular.module('barter')
@@ -46,6 +47,11 @@ angular.module('barter')
     console.log(user);
     UserService.update(user);
   };
+
+  this.toggleTalentShown = function(talent) {
+    talent.isShown = ! talent.isShown;
+  }
+
 
 }]);
 

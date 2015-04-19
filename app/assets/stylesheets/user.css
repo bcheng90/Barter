@@ -26,18 +26,21 @@ li {
  width: 500px;
  border: 1px solid black;
  float: right;
+ overflow: scroll;
+
 }
 
 #user-timeslots {
   margin: 40px;
   width: 1000px;
   border: 1px solid black;
-  clear:both;
+  clear: both;
 }
 
 
 #user-edit {
 }
+
 form input {
   display: block;
   width: 400px;
