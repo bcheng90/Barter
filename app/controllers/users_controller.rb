@@ -1,8 +1,13 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+    render json: @users, method: :score, include: [:talents, :reputations]
+  end
+
   def show
     @user = User.find_by(id: params[:id])
-    render json: @user, include: [:talents, :timeslots]
+    render json: @user, method: :score, include: [:talents, :timeslots]
   end
 
   def edit

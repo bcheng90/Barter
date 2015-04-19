@@ -1,17 +1,36 @@
 angular.module('barter')
-  .controller('WelcomeController', ['$routeParams', "TalentService", 'UserService', function($routeParams, TalentService, UserService){
+  .controller('WelcomeController', ['$routeParams', "UserService", "TalentService", function($routeParams, UserService, TalentService ){
     this.tals = [];
-    this.author = {};
+    this.persons = [];
     this.selectedCategory = 'Music';
+
+     UserService.query(function(data) {
+      this.persons = data;
+      console.log("response", data);
+     }.bind(this));
 
      TalentService.query(function(data) {
       this.tals = data;
       console.log("response", data);
      }.bind(this));
 
-     UserService.get({id: $routeParams.id}, function(data) {
-       this.author = data;
-     }.bind(this));
+     this.filterFunction = function(array, key){
+       for(var i = 0; i < array.length; i++){
+         if (array[i].type === key){
+           return true
+         }
+       };
+      return false;
+     };
+
+     // var rep = function(persons) {
+     //  for(var i = 0; i < persons.length; i++){
+     //    persons[i].reputation =
+     //  }
+     // };
+
+
+
 }]);
 
 angular.module('barter')

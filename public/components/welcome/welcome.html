@@ -14,13 +14,23 @@
   </ul>
 
   <div class="tab-content">
-    <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active">
+    <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
       <h3>{{welcome.selectedCategory}} Talents</h3>
       <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
         <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
         By {{talent.user.username}}
       </div>
     </div>
+
+    <div ng-class="hot-users">
+      <div class="hot-users">
+        <h3>Top Teachers:</h3>
+        <div ng-repeat="person in welcome.persons | filter: filterFunction(person.talents, welcome.selectedCategory) | orderBy:'score'">
+          User: {{person.username}} {{person.score}} {{person.talents}}
+        </div>
+      </div>
+    <div>
+
   </div>
 
 </div>
