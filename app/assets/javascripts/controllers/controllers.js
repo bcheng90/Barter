@@ -45,6 +45,8 @@ angular.module('barter')
     UserService.update(user);
   };
 
+  this.
+
 }]);
 
 
