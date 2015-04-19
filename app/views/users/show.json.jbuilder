@@ -23,9 +23,14 @@ json.timeslots @user.timeslots do |ts|
   json.mcrsec ts.mcrsec
   json.hour ts.time.to_s.split(" ")[1].split(":").first+ ":00 pm"
   json.offers ts.offers do |of|
+    json.id of.id
     json.status of.status
     json.timeslot_id of.timeslot_id
-    json.student_id of.student_id
+    json.student of.student
+    json.student_talents of.student.talents do |talent|
+      json.title talent.title
+      json.type talent.type
+    end
   end
 end
 json.location @user.location

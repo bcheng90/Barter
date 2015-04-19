@@ -37,7 +37,7 @@ angular.module('barter')
 }]);
 
 angular.module('barter')
-.controller('UsersController', ['$routeParams', 'UserService', function($routeParams, UserService, TalentService){
+.controller('UsersController', ['$http', '$routeParams', 'UserService', function($http, $routeParams, UserService, TalentService){
     UserService.get({id: $routeParams.id}, function(data){
       this.user = data;
     }.bind(this));
