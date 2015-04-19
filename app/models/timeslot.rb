@@ -9,4 +9,8 @@ class Timeslot < ActiveRecord::Base
   def mcrsec
     time.to_i*1000
   end
+
+  def hours
+    time.to_s.split(" ")[1].split(":").first + ":00"
+  end
 end

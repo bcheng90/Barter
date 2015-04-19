@@ -28,8 +28,14 @@ Talent.create([{title: "Dancing", type: "Art & Music", experience: "Novice", use
 Talent.create([{title: "Gaming", type: "Sport", experience: "Expert", user_id: 3}, {title: "Coding", type: "Computer", experience: "Expert", user_id: 3}])
 
 # User 1 Offers
-Offer.create([{timeslot_id: rand(3..6), student_id: rand(2..3), status: [true, false].sample}])
+4.times do
+   Offer.create([{timeslot_id: rand(1..5), student_id: rand(2..3), status: [true, false].sample}])
+ end
 # User 2 Offers
-Offer.create([{timeslot_id:[1,2,5,6].sample, student_id:[1,3].sample, status: [true, false].sample}])
+4.times do
+  Offer.create([{timeslot_id: rand(6..10), student_id: [1,3].sample, status: [true, false].sample}])
+end
 # User 3 Offers
-Offer.create([{timeslot_id:rand(1..4), student_id: rand(1..2), status: [true, false].sample}])
+4.times do
+  Offer.create([{timeslot_id: rand(10..15 ), student_id: rand(1..2), status: [true, false].sample}])
+end
