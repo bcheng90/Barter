@@ -3,13 +3,24 @@
   <h3>  Where talents are currency</h3>
 </div>
 <br>
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group input-group-lg">
-      <input type="text" class="form-control" >
-        <span class="input-group-btn">
-          <button class="btn btn-default" type="button">Go!</button>
-        </span>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group input-group-lg">
+        <input ng-model="searchText" type="text" class="form-control" name="search" >
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="search-list">
+    <div class="row">
+      <div ng-hide="search.$pristine" class="col-lg-8 search-result" ng-repeat="talent in welcome.tals | filter:searchText">
+        <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
+        By {{talent.user.username}}
+      </div>
     </div>
   </div>
 </div>
