@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.update!(user_params)
-    redirect_to user_path(@user.id)
+    render json: @user
   end
 
   def destroy
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation, :email, :location, :interests)
+    params.permit(:username, :password, :password_confirmation, :email, :location, :interests)
   end
 
 end
