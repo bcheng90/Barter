@@ -14,8 +14,8 @@ angular.module('barter')
       console.log("response", data);
      }.bind(this));
 
-     // this.filterFunction = function(array, key){
-     //   for(var i = 0; i < array.length; i++){
+     // this.filterFunction = function(this.persons, key){
+     //   for(var i = 0; i < this.persons.length; i++){
      //     if (array[i].type === key){
      //       return true
      //     }
