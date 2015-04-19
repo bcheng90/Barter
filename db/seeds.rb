@@ -7,8 +7,8 @@ about = ["I like short walks on the beach, long bikes on the road, and drinking 
 
 3.times do |i|
   user = User.create(username: usernames[i], email: emails[i], location: locations[i], interests: interests[i], password: "123", about: about[i])
-  2.times do |i|
-    user.timeslots << Timeslot.create(time: "2013-02-02 #{rand(1..24)}:00:00" , user_id: user.id)
+  5.times do |i|
+    user.timeslots << Timeslot.create(time: DateTime.new(2014,4,rand(13..19),[1,2,3,4,5,6,7,8,9,10,11].sample), user_id: user.id)
   end
 end
 natalia = User.first
@@ -28,8 +28,14 @@ Talent.create([{title: "Dancing", type: "Art & Music", experience: "Novice", use
 Talent.create([{title: "Gaming", type: "Sport", experience: "Expert", user_id: 3}, {title: "Coding", type: "Computer", experience: "Expert", user_id: 3}])
 
 # User 1 Offers
-Offer.create([{timeslot_id: rand(3..6), student_id: rand(2..3), status: [true, false].sample}])
+4.times do
+   Offer.create([{timeslot_id: rand(1..5), student_id: rand(2..3), status: [true, false].sample}])
+ end
 # User 2 Offers
-Offer.create([{timeslot_id:[1,2,5,6].sample, student_id:[1,3].sample, status: [true, false].sample}])
+4.times do
+  Offer.create([{timeslot_id: rand(6..10), student_id: [1,3].sample, status: [true, false].sample}])
+end
 # User 3 Offers
-Offer.create([{timeslot_id:rand(1..4), student_id: rand(1..2), status: [true, false].sample}])
+4.times do
+  Offer.create([{timeslot_id: rand(10..15 ), student_id: rand(1..2), status: [true, false].sample}])
+end

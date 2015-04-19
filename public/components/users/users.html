@@ -69,49 +69,104 @@
 
   </div>
 <!-- TODO: Add partial template of timeslots here -->
-  <div id= "user-timeslots" >
+  <div id="user-timeslots" >
     <div>
       <h2>Monday</h2>
-      <div id="mo"  ng-repeat="timeslot in users.user.timeslots | filter:{weekday:1}">
-        {{timeslot.time | date: "MM/dd 'at' h:mma" }}
+      <div id="mo" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:1}">
+        {{timeslot.hours}}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 1" ng-click="tab = 1">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 1">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+          <button class="btn btn-default" ng-click="tab = 0">close</button>
+        </div>
       </div>
     </div>
     <div>
       <h2>Tuesday</h2>
       <div id="tue" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:2}">
-        {{timeslot.time  | date: "MM/dd 'at' h:mma"  }}
+        {{timeslot.hours}}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 2" ng-click="tab = 2">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 2">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><button <a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+          <button class="btn btn-default" ng-click="tab = 0">close</button>
+        </div>
       </div>
     </div>
     <div>
       <h2>Wednesday</h2>
       <div id="wed" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:3}">
-        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+        {{timeslot.hours}}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 3" ng-click="tab = 3">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 3">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+          <button class="btn btn-default" ng-click="tab = 0">close</button>
+        </div>
       </div>
     </div>
     <div>
       <h2>Thursday</h2>
       <div id="thurs" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:4}">
-        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+        {{timeslot.hours}}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 4" ng-click="tab = 4">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 4">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+            <button class="btn btn-default" ng-click="tab = 0">close</button>
+        </div>
       </div>
     </div>
     <div>
       <h2>Friday</h2>
       <div id="fri" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:5}">
-        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+        {{timeslot.hours}}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 5" ng-click="tab = 5">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 5">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+          <button class="btn btn-default" ng-click="tab = 0">close</button>
+        </div>
       </div>
     </div>
     <div>
       <h2>Saturday</h2>
       <div id="sat" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:6}">
-        {{timeslot.time | date: "MM/dd 'at' h:mma"  }}
+        {{timeslot.hours}}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 6" ng-click="tab = 6">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 6">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+          <button class="btn btn-default" ng-click="tab = 0">close</button>
+        </div>
       </div>
     </div>
     <div>
       <h2>Sunday</h2>
       <div id="sun" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:7}">
-        {{timeslot.time | date: "MM/dd 'at' h:mma"}}
+        {{timeslot.hours }}
+        <p>timeslot id: {{timeslot.id}}</p>
+        <h3 ng-show="timeslot.offers.length">{{timeslot.offers.length}} offer(s)</h3>
+        <div id="timeslot-offers">
+          <ul ng-repeat="offer in timeslot.offers">
+            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+          </ul>
+        </div>
       </div>
    </div>
-    {{timeslot.time | date:"MM/dd 'at' h:mma"}}
+
   </div>
 </div>
