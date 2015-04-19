@@ -26,7 +26,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary">Save changes</button>
+            <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -35,35 +35,42 @@
   <div id="user-talents">
     <!-- TODO: Add partial template of user talents for future horizontal scroll -->
     <ul ng-repeat="talent in users.user.talents">
-      <li>{{talent.title}}
-        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#talentEdit">
-          Edit Talent
-        </button>
-        <div id="talentEdit" class="modal fade">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">{{talent.title}}</h4>
-              </div>
+      <li>
+        <a ng-click="showTalent = ! showTalent">{{talent.title}}</a>
+        <div class="user-talent-details" ng-class="{ 'hidden': ! showTalent }">
+          <p>Category: {{talent.type}}</p>
+          <p>Experience: {{talent.experience}}</p>
+          <p>Description: {{talent.description}}</p>
+          <p>Sample: {{talent.sample}}</p>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#talentEdit">
+            Edit Talent
+          </button>
+          <div id="talentEdit" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">{{talent.title}}</h4>
+                </div>
 
-              <div class="modal-body">
-                <!-- TODO: Save method in angular -->b
-                <form>
-                  Title: <input type="text" name="title" ng-model="talent.title">
-                  Type: <input type="text" name="type" ng-model="talent.type">
-                  Sample: <input type="text" name="sample" ng-model="talent.sample">
-                  Experience: <input type="text" name="experience" ng-model="talent.experience">
-                  Description: <input type="text" name="description" ng-model="talent.description">
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary">Save changes</button>
-              </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+                <div class="modal-body">
+                  <!-- TODO: Save method in angular -->
+                  <form>
+                    Title: <input type="text" name="title" ng-model="talent.title">
+                    Type: <input type="text" name="type" ng-model="talent.type">
+                    Sample: <input type="text" name="sample" ng-model="talent.sample">
+                    Experience: <input type="text" name="experience" ng-model="talent.experience">
+                    Description: <input type="text" name="description" ng-model="talent.description">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary">Save changes</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+        </div>
       </li>
     </ul>
 
