@@ -7,8 +7,8 @@ about = ["I like short walks on the beach, long bikes on the road, and drinking 
 
 3.times do |i|
   user = User.create(username: usernames[i], email: emails[i], location: locations[i], interests: interests[i], password: "123", about: about[i])
-  2.times do |i|
-    user.timeslots << Timeslot.create(time: "2013-02-02 #{rand(1..24)}:00:00" , user_id: user.id)
+  5.times do |i|
+    user.timeslots << Timeslot.create(time: DateTime.new(2014,4,rand(13..19),[1,2,3,4,5,6,7,8,9,10,11].sample), user_id: user.id)
   end
 end
 natalia = User.first

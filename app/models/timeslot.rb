@@ -5,4 +5,8 @@ class Timeslot < ActiveRecord::Base
   def weekday
     time.wday
   end
+
+  def mcrsec
+    time.to_i*1000
+  end
 end
