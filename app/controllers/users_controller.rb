@@ -25,7 +25,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.update!(user_params)
-    render json: @user
+    # render json: @user
+    render :show
   end
 
   def destroy
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:username, :password, :password_confirmation, :email, :location, :interests)
+    params.permit(:username, :password, :password_confirmation, :email, :location, :interests, :about)
   end
 
 

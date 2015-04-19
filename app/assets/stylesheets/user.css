@@ -26,6 +26,8 @@ li {
  width: 500px;
  border: 1px solid black;
  float: right;
+ overflow: scroll;
+
 }
 
 #user-timeslots {
@@ -38,11 +40,15 @@ li {
 
 #user-edit {
 }
+
 form input {
   display: block;
   width: 400px;
 }
+<<<<<<< Updated upstream
 
 #user-container {
 
 }
+=======
+>>>>>>> Stashed changes
