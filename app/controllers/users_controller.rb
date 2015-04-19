@@ -7,12 +7,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    render json: @user, method: :score, include: [:talents, :timeslots]
+    # render json: @user, include: [:talents, :timeslots]
+
   end
 
   def edit
     @user = User.find_by(id: params[:id])
-    render json: @user
+    render json: @user, include: :timeslots
   end
 
   def create
@@ -36,5 +37,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :password, :password_confirmation, :email, :location, :interests)
   end
+
 
 end
