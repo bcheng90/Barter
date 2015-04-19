@@ -26,10 +26,8 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<<<<<<< Updated upstream
             <!-- TODO: Close modal upon submission if valid -->
-=======
->>>>>>> Stashed changes
+
             <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
@@ -38,10 +36,10 @@
   </div>
   <div id="user-talents">
     <!-- TODO: Add partial template of user talents for future horizontal scroll -->
-    <ul ng-repeat="talent in users.user.talents">
-      <li>
-        <a ng-click="showTalent = ! showTalent">{{talent.title}}</a>
-        <div class="user-talent-details" ng-class="{ 'hidden': ! showTalent }">
+    <ul>
+      <li ng-repeat="talent in users.user.talents">
+        <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
+        <div ng-class="talent.isShown ? 'visible' : 'hidden'">
           <p>Category: {{talent.type}}</p>
           <p>Experience: {{talent.experience}}</p>
           <p>Description: {{talent.description}}</p>
