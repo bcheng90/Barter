@@ -14,22 +14,20 @@ angular.module('barter')
       console.log("response", data);
      }.bind(this));
 
-     // this.filterFunction = function(this.persons, key){
-     //   for(var i = 0; i < this.persons.length; i++){
-     //     if (array[i].type === key){
-     //       return true
-     //     }
-     //   };
-     //  return false;
-     // };
+     this.filterFunction = function(array, key){
+       for(var i = 0; i < array.length; i++){
+         if (array[i].type === key){
+           return true
+         }
+       };
+      return false;
+     };
 
-     this.myVar = false;
-     this.toggle = function() {
-        this.myVar = true;
-     };
-     this.clear = function() {
-        this.myVar = false;
-     };
+     // var rep = function(persons) {
+     //  for(var i = 0; i < persons.length; i++){
+     //    persons[i].reputation =
+     //  }
+     // };
 
 
 
@@ -52,6 +50,34 @@ angular.module('barter')
     talent.isShown = ! talent.isShown;
   }
 
+  this.loadTalentsForUser = function(user) {
+    console.log('Hello');
+    $http.get('/talents/for_user/' + user.id).
+     success(function(data, status, headers, config) {
+      this.talents = data;
+      console.log(this.talents);
+  });
+  }
+
+  this.acceptOffer = function(offer) {
+    offer.status = true;
+    $http.put('/offers/' + offer.id, offer)
+    .success(function(data, status){
+      console.log(data);
+      console.log(status);
+    });
+  };
+
+  this.declineOffer = function(offer) {
+    $http.delete('/offers/' + offer.id, offer)
+    .success(function(response){
+      console.log(response);
+      console.log("I am deleting the offer");
+    }).error(function(response){
+      console.log(response);
+      console.log("we failed");
+    });
+  };
 
 }]);
 

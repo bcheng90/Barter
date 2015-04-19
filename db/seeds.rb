@@ -31,12 +31,14 @@ Talent.create([{title: "Gaming", type: "Sport", experience: "Expert", user_id: 3
 4.times do
    Offer.create([{timeslot_id: rand(1..5), student_id: rand(2..3), status: false}])
  end
- Offer.create([{timeslot_id: rand(1..5), student_id: rand(2..3), status: [false].sample}])
+ Offer.create([{timeslot_id: rand(1..5), student_id: rand(2..3), status: true}])
 # User 2 Offers
 4.times do
-  Offer.create([{timeslot_id: rand(6..10), student_id: [1,3].sample, status: [false].sample}])
+  Offer.create([{timeslot_id: rand(6..10), student_id: [1,3].sample, status: false}])
 end
+Offer.create([{timeslot_id: rand(6..10), student_id: rand(2..3), status: true}])
 # User 3 Offers
 4.times do
-  Offer.create([{timeslot_id: rand(10..15 ), student_id: rand(1..2), status: [false].sample}])
+  Offer.create([{timeslot_id: rand(10..15 ), student_id: rand(1..2), status: false}])
 end
+Offer.create([{timeslot_id: rand(10..15), student_id: rand(2..3), status: true}])

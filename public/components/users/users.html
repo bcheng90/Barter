@@ -70,8 +70,8 @@
                  <div ng-repeat="talent in offer.student_talents">
                    <p>{{talent.title}}</p>
                  </div>
-                 <button class="btn btn-default" ng-click="">accept</button>
-                 <button class="btn btn-default" ng-click="">decline</button>
+                 <button ng-click="users.acceptOffer(offer)" class="btn btn-default">accept</button>
+                 <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
                  <button class="btn btn-default" ng-click="tab=1">close</button>
                </div>
              </li>
@@ -96,8 +96,8 @@
                  <div ng-repeat="talent in offer.student_talents">
                    <p>{{talent.title}}</p>
                  </div>
-                 <button class="btn btn-default" ng-click="">accept</button>
-                 <button class="btn btn-default" ng-click="">decline</button>
+                 <button ng-click="users.acceptOffer(offer)" class="btn btn-default">accept</button>
+                 <button ng-click= "users.declineOffer(offer);tab = 0"class="btn btn-default">decline</button>
                  <button class="btn btn-default" ng-click="tab=2">close</button>
                </div>
             </li>
@@ -122,8 +122,8 @@
                    <div ng-repeat="talent in offer.student_talents">
                      <p>{{talent.title}}</p>
                    </div>
-                   <button class="btn btn-default" ng-click="">accept</button>
-                   <button class="btn btn-default" ng-click="">decline</button>
+                   <button ng-click="users.acceptOffer(offer)" class="btn btn-default">accept</button>
+                   <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
                    <button class="btn btn-default" ng-click="tab=3">close</button>
                  </div>
             </li>
@@ -148,8 +148,8 @@
                    <div ng-repeat="talent in offer.student_talents">
                      <p>{{talent.title}}</p>
                    </div>
-                   <button class="btn btn-default" ng-click="">accept</button>
-                   <button class="btn btn-default" ng-click="">decline</button>
+                   <button ng-click="users.acceptOffer(offer)" class="btn btn-default">accept</button>
+                   <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
                    <button class="btn btn-default" ng-click="tab=4">close</button>
                  </div>
             </li>
@@ -174,8 +174,8 @@
                <div ng-repeat="talent in offer.student_talents">
                  <p>{{talent.title}}</p>
                </div>
-               <button class="btn btn-default" ng-click="">accept</button>
-               <button class="btn btn-default" ng-click="">decline</button>
+               <button ng-click="users.acceptOffer(offer)" class="btn btn-default">accept</button>
+               <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
                <button class="btn btn-default" ng-click="tab=5">close</button>
              </div>
             </li>
@@ -200,8 +200,8 @@
                <div ng-repeat="talent in offer.student_talents">
                  <p>{{talent.title}}</p>
                </div>
-               <button class="btn btn-default" ng-click="">accept</button>
-               <button class="btn btn-default" ng-click="">decline</button>
+               <button  ng-click="users.acceptOffer(offer)"  class="btn btn-default">accept</button>
+               <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default" >decline</button>
                <button class="btn btn-default" ng-click="tab=6">close</button>
              </div>
             </li>
@@ -226,8 +226,8 @@
                <div ng-repeat="talent in offer.student_talents">
                  <p>{{talent.title}}</p>
                </div>
-               <button class="btn btn-default" ng-click="">accept</button>
-               <button class="btn btn-default" ng-click="">decline</button>
+               <button ng-click="users.acceptOffer(offer)" class="btn btn-default" ng-click="">accept</button>
+               <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
                <button class="btn btn-default" ng-click="tab=7">close</button>
              </div></li>
           </ul>

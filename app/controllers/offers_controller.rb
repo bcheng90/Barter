@@ -17,17 +17,16 @@ class OffersController < ApplicationController
 
   def update
     @offer = Offer.find_by(id: params[:id])
-    @offer.update!(offer_params)
+    @offer.status = params[:status]
+    @offer.save
     render json: @offer
   end
 
   def destroy
+    @offer = Offer.find(params[:id])
     Offer.find_by(id: params[:id]).destroy
-    redirect_to root_path
+    render json: @offer
   end
 
-  private
-  def offer_params
-    params.require(:offer).merge(user_id: current_user.id)
-  end
+
 end
