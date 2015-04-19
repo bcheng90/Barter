@@ -33,7 +33,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.require(:talent).permit(:title, :type, :sample, :experience, :description).merge(user_id: current_user.id)
+    params.require(:talent).permit(:title, :type, :sample, :experience, :description, :image).merge(user_id: current_user.id)
   end
 
 end
