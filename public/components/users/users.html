@@ -34,6 +34,7 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   </div>
+
   <div id="user-talents">
     <!-- TODO: Add partial template of user talents for future horizontal scroll -->
     <ul>
@@ -51,6 +52,41 @@
       </li>
     </ul>
   </div>
+
+  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent">
+    Add a talent
+  </button>
+  <div id="userNewTalent" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">New Talent</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              Title: <input type="text" name="title">
+              Sample: <input type="text" name="sample">
+              Description: <input type="text" name="description">
+              Type:<br>
+              <select name="type">
+                <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
+              </select><br>
+              Experience: <br>
+              <select name="experience">
+                <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
+              </select><br>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- TODO: Close modal upon submission if valid -->
+
+            <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
 <!-- TODO: Add partial template of timeslots here -->
   <div id="user-timeslots" >

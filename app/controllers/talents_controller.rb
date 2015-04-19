@@ -16,7 +16,7 @@ class TalentsController < ApplicationController
   end
 
   def create
-    @talent = talent.create!(talent_params)
+    @talent = Talent.create!(talent_params)
     redirect_to talent_path(@talent.id)
   end
 
@@ -33,7 +33,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.require(:talent).permit(:title, :type, :sample, :experience, :description, :image).merge(user_id: current_user.id)
+    params.permit(:title, :type, :sample, :experience, :description, :image).merge(user_id: current_user.id)
   end
 
 end
