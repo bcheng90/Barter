@@ -6,3 +6,16 @@
 .talent-box {
   border: solid black 1px;
 }
+
+.hot-users {
+  float: right;
+  border: solid black 1px;
+  width: 25%;
+  margin-bottom: 20px;
+}
+
+.talents-list{
+  float: left;
+  width: 70%;
+  border: solid black 1px;
+}
