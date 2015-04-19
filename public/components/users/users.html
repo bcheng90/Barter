@@ -26,7 +26,10 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<<<<<<< Updated upstream
             <!-- TODO: Close modal upon submission if valid -->
+=======
+>>>>>>> Stashed changes
             <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
@@ -35,7 +38,20 @@
   </div>
   <div id="user-talents">
     <!-- TODO: Add partial template of user talents for future horizontal scroll -->
-
+    <ul ng-repeat="talent in users.user.talents">
+      <li>
+        <a ng-click="showTalent = ! showTalent">{{talent.title}}</a>
+        <div class="user-talent-details" ng-class="{ 'hidden': ! showTalent }">
+          <p>Category: {{talent.type}}</p>
+          <p>Experience: {{talent.experience}}</p>
+          <p>Description: {{talent.description}}</p>
+          <p>Sample: {{talent.sample}}</p>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#talentEdit">
+            Edit Talent
+          </button>
+        </div>
+      </li>
+    </ul>
   </div>
 
 <!-- TODO: Add partial template of timeslots here -->
