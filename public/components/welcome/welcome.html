@@ -1,7 +1,31 @@
 <div class="container about-welcome">
   <h1>Welcome to Barter</h1>
   <h3>  Where talents are currency</h3>
-
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="input-group input-group-lg">
+        <input ng-model="searchText" type="text" class="form-control" name="search" >
+          <span class="input-group-btn">
+            <button ng-click="welcome.toggle()" class="btn btn-default" type="button">Go!</button>
+          </span>
+          <span class="input-group-btn">
+            <button ng-click="welcome.clear()" class="btn btn-default" type="button">Hide</button>
+          </span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="search-list" ng-show="welcome.myVar">
+    <div class="row">
+      <div class="col-lg-8 search-result" ng-repeat="talent in welcome.tals | filter:{title: searchText}">
+        <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
+        By {{talent.user.username}}
+      </div>
+    </div>
+  </div>
 </div>
 <br>
 <div class="container talent-box">
@@ -25,8 +49,8 @@
     <div ng-class="hot-users">
       <div class="hot-users">
         <h3>Top Teachers:</h3>
-        <div ng-repeat="person in welcome.persons | filter: filterFunction(person.talents, welcome.selectedCategory) | orderBy:'score'">
-          User: {{person.username}} {{person.score}} {{person.talents}}
+        <div ng-repeat="person in welcome.persons | filter: filterFunction(person.talents, welcome.selectedCategory) | orderBy:'person.score'">
+          {{person.username}} Rating: {{person.score}}
         </div>
       </div>
     <div>

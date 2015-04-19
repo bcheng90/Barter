@@ -1,6 +1,7 @@
 json.username @user.username
 json.email @user.email
 json.interests @user.interests
+json.score @user.score
 json.talents @user.talents do |talent|
    json.title talent.title
    json.type talent.type

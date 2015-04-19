@@ -14,20 +14,22 @@ angular.module('barter')
       console.log("response", data);
      }.bind(this));
 
-     this.filterFunction = function(array, key){
-       for(var i = 0; i < array.length; i++){
-         if (array[i].type === key){
-           return true
-         }
-       };
-      return false;
-     };
-
-     // var rep = function(persons) {
-     //  for(var i = 0; i < persons.length; i++){
-     //    persons[i].reputation =
-     //  }
+     // this.filterFunction = function(array, key){
+     //   for(var i = 0; i < array.length; i++){
+     //     if (array[i].type === key){
+     //       return true
+     //     }
+     //   };
+     //  return false;
      // };
+
+     this.myVar = false;
+     this.toggle = function() {
+        this.myVar = true;
+     };
+     this.clear = function() {
+        this.myVar = false;
+     };
 
 
 
