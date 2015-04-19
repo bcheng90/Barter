@@ -38,6 +38,13 @@ angular.module('barter')
     UserService.get({id: $routeParams.id}, function(data){
       this.user = data;
     }.bind(this));
+
+
+  this.saveUser = function(user) {
+    console.log(user);
+    UserService.update(user);
+  };
+
 }]);
 
 

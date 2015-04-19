@@ -35,6 +35,9 @@ li {
   clear:both;
 }
 
-#user-container {
-
+#user-edit {
+}
+form input {
+  display: block;
+  width: 400px;
 }
