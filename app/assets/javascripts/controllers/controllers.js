@@ -45,6 +45,7 @@ angular.module('barter')
 .controller('UsersController', ['$routeParams', 'UserService', "TalentService", function($routeParams, UserService, TalentService){
   this.categories = ["Art & Music", "Food", "Sport", "Computer"];
   this.experiences = ["novice", "intermediate", "expert"];
+  this.ratings = [1, 2, 3, 4, 5];
 
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
