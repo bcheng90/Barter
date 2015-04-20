@@ -8,13 +8,17 @@ angular.module('barter').config(function($httpProvider) {
     $('meta[name=csrf-token]').attr('content');
 });
 
-angular.module('barter').controller('AppController', ['$router', AppController]);
+angular.module('barter').controller('AppController', ['$router', '$http', AppController]);
 
-function AppController ($router) {
+function AppController ($router, $http) {
   $router.config([
     {path: '/', component: 'welcome' },
     {path: '/timeslots', component: 'timeslots' },
     {path: "/talents", component: "talents"},
     {path: '/users/:id', component: 'users' }
   ]);
+
+  $http.get('/current_user').success(function(data) {
+    this.current_user = data;
+  }.bind(this));
 }

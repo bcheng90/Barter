@@ -39,10 +39,9 @@ angular.module('barter')
 
 
 }]);
-
 angular.module('barter')
+.controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
-.controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", function($http, $routeParams, UserService, TalentService){
   this.categories = ["Art & Music", "Food", "Sport", "Computer"];
   this.experiences = ["novice", "intermediate", "expert"];
   this.ratings = [1, 2, 3, 4, 5];
@@ -53,6 +52,7 @@ angular.module('barter')
        this.user.reputation = {user_id: this.user.id};
      }.bind(this));
    }
+
    this.loadUserGraph();
 
   this.saveUser = function(user) {
@@ -86,34 +86,84 @@ angular.module('barter')
   };
 
   this.acceptOffer = function(offer) {
+    var that = this;
     offer.status = true;
     $http.put('/offers/' + offer.id, offer)
     .success(function(data, status){
+      that.loadUserGraph();
       console.log(data);
       console.log(status);
     });
   };
 
   this.declineOffer = function(offer) {
+    var that = this;
     $http.delete('/offers/' + offer.id, offer)
     .success(function(response){
-      console.log(response);
-      console.log("I am deleting the offer");
-      console.log(response)
+      that.loadUserGraph();
+      // removeOffer(offer, that.user);
+      // console.log(response);
+      // console.log("I am deleting the offer");
+      // console.log(response)
     }).error(function(response){
       console.log(response);
       console.log("we failed");
     });
   };
 
+  function insertOffer(newOffer, user) {
+    var slots = user.timeslots;
+    slots.forEach(function(slot) {
+      if (slot.id === newOffer.timeslot_id) {
+        slot.offers.push(newOffer);
+      }
+    })
+  }
+
+  function removeOffer(offer, user) {
+    var slots = user.timeslots;
+    slots.forEach(function(slot) {
+      if (slot.id === offer.timeslot_id) {
+        var index = slot.offers.indexOf(offer);
+        if (index > -1) {
+            slot.offers.splice(index, 1);
+        }
+      }
+    });
+
+  }
+
+
   this.createOffer = function(timeslot) {
+    var that = this;
     console.log("creating offer");
     $http.post('/offers', timeslot)
     .success(function(response){
+      var newOffer = response;
+      insertOffer(newOffer, that.user);
+      console.log(that.user.timeslots);
       console.log("success!!!");
     }).error(function(response){
       console.log("not in success but getting there!!!");
     });
+  };
+
+
+
+  this.convertType = function(type) {
+    if (type == "artMusic") {
+      return "Art & Music";
+    } else if (type == "sport") {
+      return "Sports";
+    } else if (type == "nuFit") {
+      return "Nutrition & Fitness";
+    } else if (type == "food") {
+      return "Cooking & Baking";
+    } else if (type == "compEle") {
+      return "Computers & Electronics";
+    } else if (type == "homeImp") {
+      return "Home Improvement";
+    }
   };
 
 }]);
