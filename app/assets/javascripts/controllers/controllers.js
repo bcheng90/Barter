@@ -142,6 +142,7 @@ angular.module('barter')
   };
 
 
+
   this.convertType = function(type) {
     if (type == "artMusic") {
       return "Art & Music";
