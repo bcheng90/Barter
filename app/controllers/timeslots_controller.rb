@@ -22,8 +22,9 @@ class TimeslotsController < ApplicationController
   end
 
   def destroy
-    Timeslot.find_by(id: params[:id]).destroy
-    redirect_to root_path
+    @timeslot = Timeslot.find_by(id: params[:id])
+    @timeslot.destroy
+    render json: @timeslot
   end
 
   private
