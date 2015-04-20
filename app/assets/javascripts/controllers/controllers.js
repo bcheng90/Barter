@@ -41,7 +41,8 @@ angular.module('barter')
 }]);
 
 angular.module('barter')
-.controller('UsersController', ['$http', '$routeParams', 'UserService', function($http, $routeParams, UserService, TalentService, OfferService){
+
+.controller('UsersController', ['$routeParams', 'UserService', "TalentService", function($routeParams, UserService, TalentService){
   this.categories = ["Art & Music", "Food", "Sport", "Computer"];
   this.experiences = ["novice", "intermediate", "expert"];
 
@@ -58,14 +59,16 @@ angular.module('barter')
     UserService.update(user);
   };
 
-  this.saveTalent = function(talent){
-    console.log(talent);
-    TalentService.save(talent);
+  this.talent = {};
+  this.saveTalent = function(){
+    TalentService.save(this.talent);
+    console.log(this);
+    this.loadUserGraph();
   };
 
   this.toggleTalentShown = function(talent) {
     talent.isShown = ! talent.isShown;
-  }
+  };
 
   this.loadTalentsForUser = function(user) {
     console.log('Hello');
@@ -73,25 +76,21 @@ angular.module('barter')
      success(function(data, status, headers, config) {
       this.talents = data;
       console.log(this.talents);
-  });
-  }
+    });
+  };
 
   this.acceptOffer = function(offer) {
-    var that = this;
     offer.status = true;
     $http.put('/offers/' + offer.id, offer)
     .success(function(data, status){
-      that.loadUserGraph();
       console.log(data);
       console.log(status);
     });
   };
 
   this.declineOffer = function(offer) {
-    var that = this;
     $http.delete('/offers/' + offer.id, offer)
     .success(function(response){
-      removeOffer(offer, that.user);
       console.log(response);
       console.log("I am deleting the offer");
       console.log(response)
@@ -101,36 +100,10 @@ angular.module('barter')
     });
   };
 
-  function insertOffer(newOffer, user) {
-    var slots = user.timeslots;
-    slots.forEach(function(slot) {
-      if (slot.id === newOffer.timeslot_id) {
-        slot.offers.push(newOffer);
-      }
-    })
-  }
-
-  function removeOffer(offer, user) {
-    var slots = user.timeslots;
-    slots.forEach(function(slot) {
-      if (slot.id === offer.timeslot_id) {
-        var index = slot.offers.indexOf(offer);
-        if (index > -1) {
-            slot.offers.splice(index, 1);
-        }
-      }
-    });
-
-  }
-
   this.createOffer = function(timeslot) {
-    var that = this;
     console.log("creating offer");
     $http.post('/offers', timeslot)
     .success(function(response){
-      var newOffer = response;
-      insertOffer(newOffer, that.user);
-      console.log(that.user.timeslots);
       console.log("success!!!");
     }).error(function(response){
       console.log("not in success but getting there!!!");
