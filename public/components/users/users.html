@@ -52,7 +52,7 @@
       </li>
     </ul>
   </div>
-
+<!-- Creating new talent -->
   <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent">
     Add a talent
   </button>
@@ -64,25 +64,23 @@
             <h4 class="modal-title">New Talent</h4>
           </div>
           <div class="modal-body">
-            <form>
-              Title: <input type="text" name="title">
-              Sample: <input type="text" name="sample">
-              Description: <input type="text" name="description">
-              Type:<br>
-              <select name="type">
-                <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
-              </select><br>
-              Experience: <br>
-              <select name="experience">
+            <form >
+              Title: <input type="text" name="title" ng-model="users.talent.title">
+              Sample: <input type="text" name="sample" ng-model="users.talent.sample">
+              Description: <input type="text" name="description" ng-model="users.talent.description">
+              Type: <input type="text" name="type" ng-model="users.talent.type">
+              <!-- <select name="type" ng-model="users.talent.type">
+                <option  ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
+              </select><br> -->
+              Experience: <input type="text" name="experience" ng-model="users.talent.experience">
+              <!-- <select name="experience" ng-model="users.talent.experience">
                 <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
-              </select><br>
+              </select><br> -->
+              <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Create Talent</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <!-- TODO: Close modal upon submission if valid -->
-
-            <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->

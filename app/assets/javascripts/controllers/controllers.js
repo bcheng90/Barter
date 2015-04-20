@@ -56,9 +56,9 @@ angular.module('barter')
     UserService.update(user);
   };
 
-  this.saveTalent = function(talent){
-    console.log(talent);
-    TalentService.save(talent);
+  this.talent = {};
+  this.saveTalent = function(){
+    TalentService.save(this.talent);
   };
 
   this.toggleTalentShown = function(talent) {
