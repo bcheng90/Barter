@@ -11,7 +11,9 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = offer.create!(offer_params)
+    timeslot = Timeslot.find(params[:id])
+    user = User.find_by(id: session[:user_id])
+    @offer = Offer.create!(timeslot: timeslot, student_id: user.id)
     render json: @offer
   end
 

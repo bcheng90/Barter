@@ -35,7 +35,7 @@ angular.module('barter')
 }]);
 
 angular.module('barter')
-.controller('UsersController', ['$http', '$routeParams', 'UserService', function($http, $routeParams, UserService, TalentService){
+.controller('UsersController', ['$http', '$routeParams', 'UserService', function( $http, $routeParams, UserService, TalentService, OfferService){
     UserService.get({id: $routeParams.id}, function(data){
       this.user = data;
     }.bind(this));
@@ -73,13 +73,26 @@ angular.module('barter')
     .success(function(response){
       console.log(response);
       console.log("I am deleting the offer");
+      console.log(response)
     }).error(function(response){
       console.log(response);
       console.log("we failed");
     });
   };
 
+  this.createOffer = function(timeslot) {
+    console.log("creating offer");
+    $http.post('/offers', timeslot)
+    .success(function(response){
+      console.log("success!!!");
+    }).error(function(response){
+      console.log("not in success but getting there!!!");
+    });
+  };
+
 }]);
+
+
 
 
 angular.module('barter').controller('TimeslotsController', ['UserService', function(UserService){
