@@ -110,6 +110,22 @@ angular.module('barter')
     });
   };
 
+  this.convertType = function(type) {
+    if (type == "artMusic") {
+      return "Art & Music";
+    } else if (type == "sport") {
+      return "Sports";
+    } else if (type == "nuFit") {
+      return "Nutrition & Fitness";
+    } else if (type == "food") {
+      return "Cooking & Baking";
+    } else if (type == "compEle") {
+      return "Computers & Electronics";
+    } else if (type == "homeImp") {
+      return "Home Improvement";
+    }
+  };
+
 }]);
 
 
