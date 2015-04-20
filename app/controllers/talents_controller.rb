@@ -28,7 +28,8 @@ class TalentsController < ApplicationController
   def update
     @talent = Talent.find_by(id: params[:id])
     @talent.update!(talent_params)
-    render :show
+    render json: @talent
+    # render :show
   end
 
   def destroy
@@ -38,7 +39,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.permit(:title, :type, :sample, :experience, :description, :image).merge(user_id: current_user.id)
+    params.permit(:title, :type, :sample, :experience, :description, :image)
   end
 
 end
