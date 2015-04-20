@@ -1,6 +1,18 @@
 <div id="user-container">
   <div id="user-aboutme">
-    <h4 class="center bold underline">{{users.user.username}}</h4>
+    <h4 class="center bold underline">{{users.user.username}} </h4>
+    <p>Rating: {{users.user.score}}</p>
+    <!-- Rate User -->
+    <div id="rating-form">
+      <form>
+        Rating:
+        <select ng-model="users.user.reputation.rating">
+          <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
+        </select>
+        <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
+      </form>
+    </div>
+
     <ul>
       <p><span class="bold">Email:</span> {{users.user.email}}</p>
       <p><span class="bold">Interests:</span> {{users.user.interests}}</p>

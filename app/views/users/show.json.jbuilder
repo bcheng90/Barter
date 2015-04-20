@@ -3,6 +3,12 @@ json.username @user.username
 json.email @user.email
 json.interests @user.interests
 json.score @user.score
+json.reputations @user.reputations do |reputation|
+  json.id reputation.id
+  json.user_id reputation.user_id
+  json.judge_id reputation.judge_id
+  json.rating reputation.rating
+end
 json.talents @user.talents do |talent|
    json.id talent.id
    json.title talent.title
@@ -10,7 +16,7 @@ json.talents @user.talents do |talent|
    json.user_id talent.user_id
    json.sample talent.sample
    json.experience talent.experience
-   json.desciption talent.description
+   json.description talent.description
 end
 json.timeslots @user.timeslots do |ts|
   json.id ts.id

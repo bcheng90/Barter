@@ -11,6 +11,6 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true
 
   def score
-    self.reputations.average(:rating).to_f
+    self.reputations.average(:rating).to_f.round(2)
   end
 end
