@@ -20,6 +20,11 @@ class TalentsController < ApplicationController
     redirect_to talent_path(@talent.id)
   end
 
+  def for_user
+    @talents = Talent.where(user_id: params[:user_id])
+    render json: @talents
+  end
+
   def update
     @talent = Talent.find_by(id: params[:id])
     @talent.update!(talent_params)
