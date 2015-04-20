@@ -40,16 +40,18 @@ angular.module('barter')
 
 }]);
 angular.module('barter')
-.controller('UsersController', ['$http', '$routeParams', 'UserService', function($http, $routeParams, UserService, TalentService, OfferService){
+.controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
+
   this.categories = ["Art & Music", "Food", "Sport", "Computer"];
   this.experiences = ["novice", "intermediate", "expert"];
+  this.ratings = [1, 2, 3, 4, 5];
 
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
        this.user = data;
+       this.user.reputation = {user_id: this.user.id};
      }.bind(this));
    }
-
 
    this.loadUserGraph();
 
@@ -58,10 +60,15 @@ angular.module('barter')
     UserService.update(user);
   };
 
+
+  this.saveRating = function(){
+    $http.post('/reputations', this.user.reputation);
+    this.loadUserGraph();
+  };
+
   this.talent = {};
   this.saveTalent = function(){
     TalentService.save(this.talent);
-    console.log(this);
     this.loadUserGraph();
   };
 
