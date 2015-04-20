@@ -20,4 +20,8 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def current
+    render json: current_user
+  end
+
 end

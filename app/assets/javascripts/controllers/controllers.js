@@ -39,10 +39,8 @@ angular.module('barter')
 
 
 }]);
-
 angular.module('barter')
-
-.controller('UsersController', ['$routeParams', 'UserService', "TalentService", function($routeParams, UserService, TalentService){
+.controller('UsersController', ['$http', '$routeParams', 'UserService', function($http, $routeParams, UserService, TalentService, OfferService){
   this.categories = ["Art & Music", "Food", "Sport", "Computer"];
   this.experiences = ["novice", "intermediate", "expert"];
 
@@ -51,6 +49,7 @@ angular.module('barter')
        this.user = data;
      }.bind(this));
    }
+
 
    this.loadUserGraph();
 
@@ -80,35 +79,69 @@ angular.module('barter')
   };
 
   this.acceptOffer = function(offer) {
+    var that = this;
     offer.status = true;
     $http.put('/offers/' + offer.id, offer)
     .success(function(data, status){
+      that.loadUserGraph();
       console.log(data);
       console.log(status);
     });
   };
 
   this.declineOffer = function(offer) {
+    var that = this;
     $http.delete('/offers/' + offer.id, offer)
     .success(function(response){
-      console.log(response);
-      console.log("I am deleting the offer");
-      console.log(response)
+      that.loadUserGraph();
+      // removeOffer(offer, that.user);
+      // console.log(response);
+      // console.log("I am deleting the offer");
+      // console.log(response)
     }).error(function(response){
       console.log(response);
       console.log("we failed");
     });
   };
 
+  function insertOffer(newOffer, user) {
+    var slots = user.timeslots;
+    slots.forEach(function(slot) {
+      if (slot.id === newOffer.timeslot_id) {
+        slot.offers.push(newOffer);
+      }
+    })
+  }
+
+  function removeOffer(offer, user) {
+    var slots = user.timeslots;
+    slots.forEach(function(slot) {
+      if (slot.id === offer.timeslot_id) {
+        var index = slot.offers.indexOf(offer);
+        if (index > -1) {
+            slot.offers.splice(index, 1);
+        }
+      }
+    });
+
+  }
+
+
   this.createOffer = function(timeslot) {
+    var that = this;
     console.log("creating offer");
     $http.post('/offers', timeslot)
     .success(function(response){
+      var newOffer = response;
+      insertOffer(newOffer, that.user);
+      console.log(that.user.timeslots);
       console.log("success!!!");
     }).error(function(response){
       console.log("not in success but getting there!!!");
     });
   };
+
+
 
   this.convertType = function(type) {
     if (type == "artMusic") {
