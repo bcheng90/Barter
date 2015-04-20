@@ -56,10 +56,10 @@
           <p>Description: {{talent.description}}</p>
           <p>Sample: {{talent.sample}}</p>
           <!-- TODO: Create Edit modal -->
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#talentEdit">
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#{{talent.id}}">
             Edit Talent
           </button>
-          <div id="talentEdit" class="modal fade">
+          <div id="{{talent.id}}" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
