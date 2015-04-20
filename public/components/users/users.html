@@ -39,13 +39,35 @@
       <li ng-repeat="talent in users.user.talents">
         <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
         <div ng-class="talent.isShown ? 'visible' : 'hidden'">
-          <p>Category: {{talent.type}}</p>
+          <p>Category: {{users.convertType(talent.type)}}</p>
           <p>Experience: {{talent.experience}}</p>
           <p>Description: {{talent.description}}</p>
           <p>Sample: {{talent.sample}}</p>
-          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#talentEdit">
+          <!-- TODO: Create Edit modal -->
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#talentEdit">
             Edit Talent
           </button>
+          <div id="userEdit" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">{{users.user.username}}</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    Email: <input type="text" name="email" ng-model="users.user.email">
+                    Interests: <input type="text" name="interests" ng-model="users.user.interests">
+                    About Me: <input type="text" name="about" ng-model="users.user.about">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
         </div>
       </li>
     </ul>
