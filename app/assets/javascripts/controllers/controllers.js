@@ -49,6 +49,7 @@ angular.module('barter')
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
        this.user = data;
+       console.log("in reload user function");
      }.bind(this));
    }
 
@@ -91,9 +92,11 @@ angular.module('barter')
   this.declineOffer = function(offer) {
     $http.delete('/offers/' + offer.id, offer)
     .success(function(response){
-      console.log(response);
-      console.log("I am deleting the offer");
-      console.log(response)
+      that.loadUserGraph();
+      // removeOffer(offer, that.user);
+      // console.log(response);
+      // console.log("I am deleting the offer");
+      // console.log(response)
     }).error(function(response){
       console.log(response);
       console.log("we failed");
@@ -124,8 +127,6 @@ angular.module('barter')
     } else if (type == "homeImp") {
       return "Home Improvement";
     }
-  };
-
 }]);
 
 

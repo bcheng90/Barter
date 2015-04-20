@@ -137,6 +137,7 @@
     </div>
     <div>
       <h2>Tuesday</h2>
+      <h3 ng-show="users.isLoggedIn(user)">hi there</h3>
       <div id="tue" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:2}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
