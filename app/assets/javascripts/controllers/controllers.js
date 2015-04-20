@@ -28,7 +28,13 @@ angular.module('barter')
      //    persons[i].reputation =
      //  }
      // };
-
+     this.myVar = false;
+     this.toggle = function() {
+        this.myVar = true;
+     };
+     this.clear = function() {
+        this.myVar = false;
+     };
 
 
 
