@@ -101,10 +101,6 @@ angular.module('barter')
     $http.delete('/offers/' + offer.id, offer)
     .success(function(response){
       that.loadUserGraph();
-      // removeOffer(offer, that.user);
-      // console.log(response);
-      // console.log("I am deleting the offer");
-      // console.log(response)
     }).error(function(response){
       console.log(response);
       console.log("we failed");
@@ -131,6 +127,26 @@ angular.module('barter')
       }
     });
 
+  }
+
+  // his.declineOffer = function(offer) {
+  //   var that = this;
+  //   $http.delete('/offers/' + offer.id, offer)
+  //   .success(function(response){
+  //     that.loadUserGraph();
+  //   }).error(function(response){
+  //     console.log(response);
+  //     console.log("we failed");
+  //   });
+  // };
+
+  this.deleteTimeslot = function(timeslot) {
+    console.log(timeslot.id);
+    var that = this;
+    $http.delete('/timeslots/' + timeslot.id, timeslot)
+    .success(function(response){
+       that.loadUserGraph();
+    });
   }
 
 
