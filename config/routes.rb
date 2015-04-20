@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :users, :talents, :timeslots, :offers
 
+  get '/talents/for_user/:user_id' => 'talents#for_user', as: :user_talents
   get 'welcome/index'
   get '/signup' => 'users#new'
   get '/login' => 'sessions#new'

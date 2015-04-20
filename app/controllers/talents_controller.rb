@@ -16,8 +16,13 @@ class TalentsController < ApplicationController
   end
 
   def create
-    @talent = talent.create!(talent_params)
+    @talent = Talent.create!(talent_params)
     redirect_to talent_path(@talent.id)
+  end
+
+  def for_user
+    @talents = Talent.where(user_id: params[:user_id])
+    render json: @talents
   end
 
   def update
@@ -33,7 +38,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.require(:talent).permit(:title, :type, :sample, :experience, :description).merge(user_id: current_user.id)
+    params.permit(:title, :type, :sample, :experience, :description, :image).merge(user_id: current_user.id)
   end
 
 end

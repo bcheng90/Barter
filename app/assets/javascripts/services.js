@@ -8,3 +8,7 @@ angular.module("barter").factory("UserService", function($resource){
 angular.module("barter").factory("TalentService", function($resource){
    return $resource("/talents/:id");
 });
+
+angular.module("barter").factory("OfferService", function($resource){
+   return $resource("/offers/:id");
+});

@@ -28,24 +28,91 @@ angular.module('barter')
      //    persons[i].reputation =
      //  }
      // };
+     this.myVar = false;
+     this.toggle = function() {
+        this.myVar = true;
+     };
+     this.clear = function() {
+        this.myVar = false;
+     };
 
 
 
 }]);
 
 angular.module('barter')
-.controller('UsersController', ['$routeParams', 'UserService', function($routeParams, UserService, TalentService){
-    UserService.get({id: $routeParams.id}, function(data){
-      this.user = data;
-    }.bind(this));
 
+.controller('UsersController', ['$routeParams', 'UserService', "TalentService", function($routeParams, UserService, TalentService){
+  this.categories = ["Art & Music", "Food", "Sport", "Computer"];
+  this.experiences = ["novice", "intermediate", "expert"];
+
+  this.loadUserGraph = function() {
+     UserService.get({id: $routeParams.id}, function(data){
+       this.user = data;
+     }.bind(this));
+   }
+
+   this.loadUserGraph();
 
   this.saveUser = function(user) {
     console.log(user);
     UserService.update(user);
   };
 
+  this.talent = {};
+  this.saveTalent = function(){
+    TalentService.save(this.talent);
+    console.log(this);
+    this.loadUserGraph();
+  };
+
+  this.toggleTalentShown = function(talent) {
+    talent.isShown = ! talent.isShown;
+  };
+
+  this.loadTalentsForUser = function(user) {
+    console.log('Hello');
+    $http.get('/talents/for_user/' + user.id).
+     success(function(data, status, headers, config) {
+      this.talents = data;
+      console.log(this.talents);
+    });
+  };
+
+  this.acceptOffer = function(offer) {
+    offer.status = true;
+    $http.put('/offers/' + offer.id, offer)
+    .success(function(data, status){
+      console.log(data);
+      console.log(status);
+    });
+  };
+
+  this.declineOffer = function(offer) {
+    $http.delete('/offers/' + offer.id, offer)
+    .success(function(response){
+      console.log(response);
+      console.log("I am deleting the offer");
+      console.log(response)
+    }).error(function(response){
+      console.log(response);
+      console.log("we failed");
+    });
+  };
+
+  this.createOffer = function(timeslot) {
+    console.log("creating offer");
+    $http.post('/offers', timeslot)
+    .success(function(response){
+      console.log("success!!!");
+    }).error(function(response){
+      console.log("not in success but getting there!!!");
+    });
+  };
+
 }]);
+
+
 
 
 angular.module('barter').controller('TimeslotsController', ['UserService', function(UserService){

@@ -34,7 +34,7 @@ li {
   margin: 40px;
   width: 1000px;
   border: 1px solid black;
-  clear:both;
+  clear: both;
 }
 
 
@@ -45,10 +45,14 @@ form input {
   display: block;
   width: 400px;
 }
-<<<<<<< Updated upstream
 
 #user-container {
 
 }
-=======
->>>>>>> Stashed changes
+
+.talnt {
+  border: 2px solid black;
+  margin: 10px;
+  width: 50%;
+}
+

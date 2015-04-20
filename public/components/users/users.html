@@ -32,12 +32,13 @@
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
   </div>
+
   <div id="user-talents">
     <!-- TODO: Add partial template of user talents for future horizontal scroll -->
-    <ul ng-repeat="talent in users.user.talents">
-      <li>
-        <a ng-click="showTalent = ! showTalent">{{talent.title}}</a>
-        <div class="user-talent-details" ng-class="{ 'hidden': ! showTalent }">
+    <ul>
+      <li ng-repeat="talent in users.user.talents">
+        <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
+        <div ng-class="talent.isShown ? 'visible' : 'hidden'">
           <p>Category: {{talent.type}}</p>
           <p>Experience: {{talent.experience}}</p>
           <p>Description: {{talent.description}}</p>
@@ -45,12 +46,42 @@
           <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#talentEdit">
             Edit Talent
           </button>
-
         </div>
       </li>
     </ul>
-
   </div>
+
+<!-- Creating new talent -->
+  <div id="userNewTalent" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">New Talent</h4>
+        </div>
+        <div class="modal-body">
+            <form >
+              Title: <input type="text" name="title" ng-model="users.talent.title">
+              Sample: <input type="text" name="sample" ng-model="users.talent.sample">
+              Description: <input type="text" name="description" ng-model="users.talent.description">
+              Type: <input type="text" name="type" ng-model="users.talent.type">
+              <!-- <select name="type" ng-model="users.talent.type">
+                <option  ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
+              </select><br> -->
+              Experience: <input type="text" name="experience" ng-model="users.talent.experience">
+              <!-- <select name="experience" ng-model="users.talent.experience">
+                <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
+              </select><br> -->
+              <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Create Talent</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent">
+      Add a talent
+    </button>
+
 <!-- TODO: Add partial template of timeslots here -->
   <div id="user-timeslots" >
     <div>
@@ -61,10 +92,23 @@
         <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 1" ng-click="tab = 1">{{timeslot.offers.length}} offer(s)</button>
         <div id="timeslot-offers" ng-show="tab === 1">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><button class="btn btn-default" ng-click="tab = 11" ng-show="tab !== 11">See offer {{offer.id}} </button>
+              <div class="talnt" ng-show = "tab ===11 ">
+                 <h4>status: {{offer.status}}</h4>
+                 <h3>{{offer.student.username}}</h3>
+                 <h3>{{offer.student.username}}'s talents:</h3>
+                 <div ng-repeat="talent in offer.student_talents">
+                   <p>{{talent.title}}</p>
+                 </div>
+                 <button ng-click="users.acceptOffer(offer);tab=19" class="btn btn-default">accept</button>
+                 <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
+                 <button class="btn btn-default" ng-click="tab=1">close</button>
+               </div>
+             </li>
           </ul>
-          <button class="btn btn-default" ng-click="tab = 0">close</button>
+          <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 19">close</button>
         </div>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 11" >create offer</button>
       </div>
     </div>
     <div>
@@ -75,10 +119,23 @@
         <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 2" ng-click="tab = 2">{{timeslot.offers.length}} offer(s)</button>
         <div id="timeslot-offers" ng-show="tab === 2">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><button <a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><button class="btn btn-default" ng-click="tab = 22" ng-show="tab !== 22">See offer {{offer.id}} </button>
+              <div class="talnt" ng-show = "tab ===22 ">
+                <h4>status: {{offer.status}}</h4>
+                 <h3>{{offer.student.username}}</h3>
+                 <h3>{{offer.student.username}}'s talents:</h3>
+                 <div ng-repeat="talent in offer.student_talents">
+                   <p>{{talent.title}}</p>
+                 </div>
+                 <button ng-click="users.acceptOffer(offer);tab=29" class="btn btn-default">accept</button>
+                 <button ng-click= "users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
+                 <button class="btn btn-default" ng-click="tab=2">close</button>
+               </div>
+            </li>
           </ul>
-          <button class="btn btn-default" ng-click="tab = 0">close</button>
+          <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !==29">close</button>
         </div>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 22" >create offer</button>
       </div>
     </div>
     <div>
@@ -89,10 +146,23 @@
         <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 3" ng-click="tab = 3">{{timeslot.offers.length}} offer(s)</button>
         <div id="timeslot-offers" ng-show="tab === 3">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><button class="btn btn-default" ng-click="tab = 33" ng-show="tab !== 33">See offer {{offer.id}} </button>
+                 <div class="talnt" ng-show = "tab ===33 ">
+                  <h4>status: {{offer.status}}</h4>
+                   <h3>{{offer.student.username}}</h3>
+                   <h3>{{offer.student.username}}'s talents:</h3>
+                   <div ng-repeat="talent in offer.student_talents">
+                     <p>{{talent.title}}</p>
+                   </div>
+                   <button ng-click="users.acceptOffer(offer);tab=39" class="btn btn-default">accept</button>
+                   <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
+                   <button class="btn btn-default" ng-click="tab=3">close</button>
+                 </div>
+            </li>
           </ul>
-          <button class="btn btn-default" ng-click="tab = 0">close</button>
+          <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 39">close</button>
         </div>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 33">create offer</button>
       </div>
     </div>
     <div>
@@ -103,10 +173,23 @@
         <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 4" ng-click="tab = 4">{{timeslot.offers.length}} offer(s)</button>
         <div id="timeslot-offers" ng-show="tab === 4">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><button class="btn btn-default" ng-click="tab = 44" ng-show="tab !== 44">See offer {{offer.id}}</button>
+              <div class="talnt" ng-show = "tab ===44">
+                <h4>status: {{offer.status}}</h4>
+                   <h3>{{offer.student.username}}</h3>
+                   <h3>{{offer.student.username}}'s talents:</h3>
+                   <div ng-repeat="talent in offer.student_talents">
+                     <p>{{talent.title}}</p>
+                   </div>
+                   <button ng-click="users.acceptOffer(offer);tab=49" class="btn btn-default">accept</button>
+                   <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
+                   <button class="btn btn-default" ng-click="tab=4">close</button>
+                 </div>
+            </li>
           </ul>
-            <button class="btn btn-default" ng-click="tab = 0">close</button>
+            <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 49">close</button>
         </div>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 44">create offer</button>
       </div>
     </div>
     <div>
@@ -117,10 +200,23 @@
         <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 5" ng-click="tab = 5">{{timeslot.offers.length}} offer(s)</button>
         <div id="timeslot-offers" ng-show="tab === 5">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><button class="btn btn-default" ng-click="tab = 55" ng-show="tab !== 55">See offer {{offer.id}}</button>
+            <div class="talnt" ng-show = "tab ===55">
+              <h4>status: {{offer.status}}</h4>
+               <h3>{{offer.student.username}}</h3>
+               <h3>{{offer.student.username}}'s talents:</h3>
+               <div ng-repeat="talent in offer.student_talents">
+                 <p>{{talent.title}}</p>
+               </div>
+               <button ng-click="users.acceptOffer(offer);tab=59" class="btn btn-default">accept</button>
+               <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
+               <button class="btn btn-default" ng-click="tab=5">close</button>
+             </div>
+            </li>
           </ul>
-          <button class="btn btn-default" ng-click="tab = 0">close</button>
+          <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 59">close</button>
         </div>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 55">create offer</button>
       </div>
     </div>
     <div>
@@ -131,10 +227,23 @@
         <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 6" ng-click="tab = 6">{{timeslot.offers.length}} offer(s)</button>
         <div id="timeslot-offers" ng-show="tab === 6">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><button class="btn btn-default" ng-click="tab = 66" ng-show="tab !== 66">See offer {{offer.id}}</button>
+              <div class="talnt" ng-show = "tab ===66">
+                <h4>status: {{offer.status}}</h4>
+               <h3>{{offer.student.username}}</h3>
+               <h3>{{offer.student.username}}'s talents:</h3>
+               <div ng-repeat="talent in offer.student_talents">
+                 <p>{{talent.title}}</p>
+               </div>
+               <button  ng-click="users.acceptOffer(offer);tab=69"  class="btn btn-default">accept</button>
+               <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default" >decline</button>
+               <button class="btn btn-default" ng-click="tab=6">close</button>
+             </div>
+            </li>
           </ul>
-          <button class="btn btn-default" ng-click="tab = 0">close</button>
+          <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 69">close</button>
         </div>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 66" >create offer</button>
       </div>
     </div>
     <div>
@@ -142,12 +251,25 @@
       <div id="sun" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:7}">
         {{timeslot.hours }}
         <p>timeslot id: {{timeslot.id}}</p>
-        <h3 ng-show="timeslot.offers.length">{{timeslot.offers.length}} offer(s)</h3>
-        <div id="timeslot-offers">
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 7" ng-click="tab = 7">{{timeslot.offers.length}} offer(s)</button>
+        <div id="timeslot-offers" ng-show="tab === 7">
           <ul ng-repeat="offer in timeslot.offers">
-            <li><a ng-href="users/{{offer.student_id}}">{{offer}}</a></li>
+            <li><<button class="btn btn-default" ng-click="tab = 77" ng-show="tab !== 77">See offer {{offer.id}}</button>
+              <div class="talnt" ng-show = "tab === 77 ">
+                <h4>status: {{offer.status}}</h4>
+               <h3>{{offer.student.username}}</h3>
+               <h3>{{offer.student.username}}'s talents:</h3>
+               <div ng-repeat="talent in offer.student_talents">
+                 <p>{{talent.title}}</p>
+               </div>
+               <button ng-click="users.acceptOffer(offer);tab=79" class="btn btn-default" ng-click="">accept</button>
+               <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-default">decline</button>
+               <button class="btn btn-default" ng-click="tab=7">close</button>
+             </div></li>
           </ul>
+          <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 79">close</button>
         </div>
+        <button class="btn btn-default" >create offer</button>
       </div>
    </div>
 
