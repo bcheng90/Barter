@@ -60,6 +60,16 @@ angular.module('barter')
     UserService.update(user);
   };
 
+  this.updateTalent = function(talent) {
+    console.log(talent);
+    $http.put('/talents/' + talent.id, talent)
+    .success(function(response){
+      console.log(response);
+      this.loadUserGraph();
+    });
+    // TalentService.update(talent);
+  };
+
 
   this.saveRating = function(){
     $http.post('/reputations', this.user.reputation);
