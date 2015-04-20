@@ -26,9 +26,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <!-- TODO: Close modal upon submission if valid -->
-
-            <button type="submit" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
+            <button type="submit" data-dismiss="modal" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -54,6 +52,9 @@
   </div>
 
 <!-- Creating new talent -->
+  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent">
+    Add a talent
+  </button>
   <div id="userNewTalent" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -73,16 +74,15 @@
               <!-- <select name="experience" ng-model="users.talent.experience">
                 <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
               </select><br> -->
-              <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Create Talent</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" data-dismiss="modal" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Create Talent</button>
         </div>
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent">
-      Add a talent
-    </button>
 
 <!-- TODO: Add partial template of timeslots here -->
   <div id="user-timeslots" >
