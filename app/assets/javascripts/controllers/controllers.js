@@ -157,6 +157,8 @@ angular.module('barter')
     } else if (type == "homeImp") {
       return "Home Improvement";
     }
+  };
+
 }]);
 
 
