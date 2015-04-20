@@ -55,12 +55,12 @@
                 Signup <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <%= form_for :user, url: users_path do |f| %>
-                  <li><%= f.label :email %><br><%= f.text_field :email %></li>
-                  <li><%= f.label :username %><br><%= f.text_field :username %></li>
-                  <li><%= f.label :password %><br><%= f.password_field :password %></li>
-                  <li><%= f.label :password %><br><%= f.password_field :password_confirmation %></li>
-                  <li><%= f.submit %></li>
+                <%= form_tag "/users" do |f| %>
+                  <li>Username:<br><%= text_field_tag :username %></li>
+                  <li>Email:<br><%= text_field_tag :email %></li>
+                  <li>Password:<br><%= password_field_tag :password %></li>
+                  <li>Password Confirmation:<br><%= password_field_tag :password_confirmation %></li>
+                  <li><%= submit_tag %></li>
                 <% end %>
               </ul>
             </li>
