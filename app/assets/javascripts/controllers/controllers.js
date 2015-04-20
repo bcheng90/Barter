@@ -141,6 +141,14 @@ angular.module('barter')
     });
   };
 
+  this.isClosed = function(timeslot) {
+     for( var i = 0; i < timeslot.offers.length; i++) {
+        if (timeslot.offers[i].status === true) {
+          return true;
+        }
+     }
+  }
+
 
 
   this.convertType = function(type) {
