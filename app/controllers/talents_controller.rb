@@ -16,8 +16,15 @@ class TalentsController < ApplicationController
   end
 
   def create
-    @talent = Talent.create!(talent_params)
-    redirect_to talent_path(@talent.id)
+    @user = User.find_by(id: session[:user_id])
+    @talent = Talent.new(talent_params)
+    if @talent.save
+      p "SENDING MAIL"
+      UserMailer.notify_email(@user).deliver_now
+      redirect_to talent_path(@talent.id)
+    else
+      redirect_to talent_path(@talent.id)
+    end
   end
 
   def for_user
