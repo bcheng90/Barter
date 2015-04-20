@@ -44,9 +44,14 @@ angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', function($http, $routeParams, UserService, TalentService, OfferService){
   this.categories = ["Art & Music", "Food", "Sport", "Computer"];
   this.experiences = ["novice", "intermediate", "expert"];
-  UserService.get({id: $routeParams.id}, function(data){
-    this.user = data;
-  }.bind(this));
+
+  this.loadUserGraph = function() {
+     UserService.get({id: $routeParams.id}, function(data){
+       this.user = data;
+     }.bind(this));
+   }
+
+   this.loadUserGraph();
 
   this.saveUser = function(user) {
     console.log(user);
@@ -72,9 +77,11 @@ angular.module('barter')
   }
 
   this.acceptOffer = function(offer) {
+    var that = this;
     offer.status = true;
     $http.put('/offers/' + offer.id, offer)
     .success(function(data, status){
+      that.loadUserGraph();
       console.log(data);
       console.log(status);
     });
