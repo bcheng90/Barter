@@ -1,18 +1,20 @@
 <div id="user-container">
   <div id="user-aboutme">
-    <h4 class="center bold underline">{{users.user.username}}</h4>
+    <h4 class="center bold underline">{{users.user.username}} </h4>
+    <p>Rating: {{users.user.score}}</p>
     <!-- Rate User -->
     <div id="rating-form">
       <form>
         Rating:
-        <select ng-model="users.user.reputations.">
-          <option ng-repeat="rating in users.ratings" value="rating">{{rating}}</option>
+        <select ng-model="users.user.reputation.rating">
+          <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
         </select>
         <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
       </form>
     </div>
     {{users.user.reputations}}
-    {{users.user.score}}
+    {{users.user.reputation}}
+
     <ul>
       <p><span class="bold">Email:</span> {{users.user.email}}</p>
       <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
@@ -85,7 +87,7 @@
               <!-- <select name="experience" ng-model="users.talent.experience">
                 <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
               </select><br> -->
-              <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="#userNewTalent">Create Talent</button>
+              <button type="submit" ng-click="users.saveTalent()" class="btn btn-primary" ng-hide="userNewTalent">Create Talent</button>
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </form>
         </div>

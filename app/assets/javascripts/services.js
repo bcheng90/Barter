@@ -12,3 +12,7 @@ angular.module("barter").factory("TalentService", function($resource){
 angular.module("barter").factory("OfferService", function($resource){
    return $resource("/offers/:id");
 });
+
+angular.module("barter").factory("ReputationService", function($resource){
+   return $resource("/offers/:id");
+});
