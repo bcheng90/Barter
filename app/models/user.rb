@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :offers, through: :timeslots
   has_many :timeslots
   has_many :reputations
+  has_many :student_offers, class_name: 'Offer', :foreign_key => :student_id
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: true, format: {with: VALID_EMAIL_REGEX}
