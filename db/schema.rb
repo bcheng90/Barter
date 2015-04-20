@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150419212746) do
     t.string   "type",               null: false
     t.string   "sample"
     t.string   "experience",         null: false
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "image_file_name"
