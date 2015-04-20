@@ -59,23 +59,25 @@
           <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#talentEdit">
             Edit Talent
           </button>
-          <div id="userEdit" class="modal fade">
+          <div id="talentEdit" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title">{{users.user.username}}</h4>
+                  <h4 class="modal-title">Edit {{talent.title}}</h4>
                 </div>
                 <div class="modal-body">
                   <form>
-                    Email: <input type="text" name="email" ng-model="users.user.email">
-                    Interests: <input type="text" name="interests" ng-model="users.user.interests">
-                    About Me: <input type="text" name="about" ng-model="users.user.about">
+                    Title: <input type="text" name="title" ng-model="talent.title">
+                    Description: <input type="text" name="description" ng-model="talent.description">
+                    Type: <input type="text" name="type" ng-model="talent.type">
+                    Experience: <input type="text" name="experience" ng-model="talent.experience">
+                    Sample: <input type="text" name="sample" ng-model="talent.sample">
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" data-dismiss="modal" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.updateTalent(users.talent)" class="btn btn-primary" ng-hide="talentEdit">Save changes</button>
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

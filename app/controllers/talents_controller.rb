@@ -28,7 +28,7 @@ class TalentsController < ApplicationController
   def update
     @talent = Talent.find_by(id: params[:id])
     @talent.update!(talent_params)
-    redirect_to talent_path(@talent.id)
+    render :show
   end
 
   def destroy
