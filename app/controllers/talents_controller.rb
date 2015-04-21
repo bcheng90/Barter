@@ -17,7 +17,7 @@ class TalentsController < ApplicationController
 
   def create
     @talent = Talent.create!(talent_params)
-    redirect_to talent_path(@talent.id)
+    render json: @talent
   end
 
   def for_user
@@ -29,7 +29,6 @@ class TalentsController < ApplicationController
     @talent = Talent.find_by(id: params[:id])
     @talent.update!(talent_params)
     render json: @talent
-    # render :show
   end
 
   def destroy
@@ -39,7 +38,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.permit(:title, :type, :sample, :experience, :description, :image)
+    params.require(:talent).permit(:user_id, :title, :type, :sample, :experience, :description, :image)
   end
 
 end

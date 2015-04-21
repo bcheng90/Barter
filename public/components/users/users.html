@@ -103,14 +103,14 @@
               Title: <input type="text" name="title" ng-model="users.talent.title">
               Sample: <input type="text" name="sample" ng-model="users.talent.sample">
               Description: <input type="text" name="description" ng-model="users.talent.description">
-              Type: <input type="text" name="type" ng-model="users.talent.type">
-              <!-- <select name="type" ng-model="users.talent.type">
-                <option  ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
-              </select><br> -->
-              Experience: <input type="text" name="experience" ng-model="users.talent.experience">
-              <!-- <select name="experience" ng-model="users.talent.experience">
+              Type:
+              <select ng-model="users.talent.type">
+                <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
+              </select>
+              Experience:
+              <select name="experience" ng-model="users.talent.experience">
                 <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
-              </select><br> -->
+              </select>
             </form>
         </div>
         <div class="modal-footer">
