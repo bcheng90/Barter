@@ -21,4 +21,5 @@ function AppController ($router, $http) {
   $http.get('/current_user').success(function(data) {
     this.current_user = data;
   }.bind(this));
+  this.time = new Date();
 }

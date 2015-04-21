@@ -1,3 +1,15 @@
+require 'date'
+module DateTimeMixin
+
+  def next_week
+    self + (7 - self.wday)
+  end
+
+  def next_wday (n)
+    n > self.wday ? self + (n - self.wday) : self.next_week.next_day(n)
+  end
+
+end
 class TimeslotsController < ApplicationController
 
   def show
@@ -11,7 +23,14 @@ class TimeslotsController < ApplicationController
   end
 
   def create
-    @timeslot = Timeslot.create!(timeslot_params)
+    x = DateTime.now.extend(DateTimeMixin)
+    r = x.next_wday(params[:day])
+    string = r.to_s
+    year = string.split("T").first.split("-").first.to_i
+    month = string.split("T").first.split("-")[1].to_i
+    day = string.split("T").first.split("-")[2].to_i
+    time = DateTime.new(year,month, day, params[:hour])
+    @timeslot = Timeslot.create!(user: current_user, time: time)
     render json: @timeslot
   end
 
