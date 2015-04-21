@@ -136,19 +136,7 @@ angular.module('barter')
         }
       }
     });
-
   }
-
-  // his.declineOffer = function(offer) {
-  //   var that = this;
-  //   $http.delete('/offers/' + offer.id, offer)
-  //   .success(function(response){
-  //     that.loadUserGraph();
-  //   }).error(function(response){
-  //     console.log(response);
-  //     console.log("we failed");
-  //   });
-  // };
 
   this.deleteTimeslot = function(timeslot) {
     console.log(timeslot.id);
@@ -156,6 +144,22 @@ angular.module('barter')
     $http.delete('/timeslots/' + timeslot.id, timeslot)
     .success(function(response){
        that.loadUserGraph();
+    });
+  }
+
+  this.createTimeslot = function(day, hour) {
+    var that = this;
+    var dayHour = {
+      day: day,
+      hour: hour
+    };
+    $http.post('/timeslots', dayHour)
+    .success(function(response){
+      console.log("in success");
+      console.log(response);
+       that.loadUserGraph();
+    }).error(function(response){
+      console.log("in error");
     });
   }
 
