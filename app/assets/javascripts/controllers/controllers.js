@@ -139,6 +139,10 @@ angular.module('barter')
 
   this.deleteTimeslot = function(timeslot) {
     var that = this;
+    var offers = timeslot.offers;
+      for (var i = 0; i < timeslot.offers.length; i ++) {
+        this.declineOffer(timeslot.offers[i]);
+      }
     $http.delete('/timeslots/' + timeslot.id, timeslot)
     .success(function(response){
        that.loadUserGraph();
