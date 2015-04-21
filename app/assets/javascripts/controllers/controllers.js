@@ -74,6 +74,14 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
+  this.hasRating = function(targetUser,currentUser) {
+    for (var i = 0; i < targetUser.reputations.length; i++){
+      if (targetUser.reputations[i].judge_id === currentUser.id) {
+         return true;
+      };
+    }
+  };
+
   this.saveTalent = function(){
     $http.post('/talents', this.talent);
     this.loadUserGraph();
@@ -205,7 +213,7 @@ angular.module('barter')
     for (var i = 0; i < timeslot.offers.length; i++){
       if (timeslot.offers[i].student.id == curusid) {
          return true;
-         console.log("not found yet");
+
       };
     }
   };
