@@ -22,9 +22,13 @@ class OffersController < ApplicationController
   end
 
   def update
+    user = User.find_by(id: session[:user_id])
     @offer = Offer.find_by(id: params[:id])
     @offer.status = params[:status]
     @offer.save
+    if @offer.status == true
+      UserMailer.accept_offer(user, @offer.student, @offer.timeslot).deliver_now
+    end
     render json: @offer
   end
 
