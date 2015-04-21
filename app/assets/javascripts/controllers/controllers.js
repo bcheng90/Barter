@@ -176,6 +176,7 @@ angular.module('barter')
     .success(function(response){
       var newOffer = response;
       insertOffer(newOffer, that.user);
+      that.loadUserGraph();
     }).error(function(response){
       console.log("not in success but getting there!!!");
     });
