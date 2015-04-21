@@ -20,9 +20,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = user.id
+      p "SENDING MAIL"
       UserMailer.notify_email(@user).deliver_now
       redirect_to root_path
     else
+      [404, "user was not created"]
       redirect_to root_path
     end
   end
