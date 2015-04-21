@@ -21,11 +21,6 @@ angular.module('barter')
       return false;
      };
 
-     // var rep = function(persons) {
-     //  for(var i = 0; i < persons.length; i++){
-     //    persons[i].reputation =
-     //  }
-     // };
      this.myVar = false;
      this.toggle = function() {
         this.myVar = true;
@@ -34,9 +29,8 @@ angular.module('barter')
         this.myVar = false;
      };
 
-
-
 }]);
+
 angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
