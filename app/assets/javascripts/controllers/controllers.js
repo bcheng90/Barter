@@ -82,8 +82,7 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
-  this.hasRating = function(targetUser,currentUser) {
-    console.log("in hasRating");
+  this.hasRating = function(targetUser, currentUser) {
     for (var i = 0; i < targetUser.reputations.length; i++){
       if (targetUser.reputations[i].judge_id === currentUser.id) {
          return true;
@@ -94,12 +93,10 @@ angular.module('barter')
   this.hasAcceptedOffer = function(targetUser, currentUser) {
     for (var i = 0; i < targetUser.offers.length; i++){
       if (targetUser.offers[i].student_id === currentUser.id) {
-        console.log("in outer if");
         if (targetUser.offers[i].status === true) {
-          console.log("in inner if");
          return true;
         };
-      };
+      }
     }
     return false;
   };
