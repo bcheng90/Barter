@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -48,7 +48,7 @@ config.paperclip_defaults = {
 }
 
 config.action_mailer.delivery_method = :smtp
-# SMTP settings for mailgun
+config.action_mailer.default_url_options = {host: "localhost:3000"}
 ActionMailer::Base.smtp_settings = {
   :port           => 587,
   :address        => "smtp.mailgun.org",
@@ -56,6 +56,7 @@ ActionMailer::Base.smtp_settings = {
   :user_name      => 'postmaster@sandbox5b8568ba6c1c4f47afc871962fc60f08.mailgun.org',
   :password       => 'e18861b0857c5390773296985b88851b',
   :authentication => :plain,
+  :openssl_verify_mode  => 'none'
 }
 end
 Paperclip.options[:command_path] = "/usr/local/bin/"
