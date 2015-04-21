@@ -48,14 +48,21 @@
     </div><!-- /.modal -->
   </div>
 
-  <div id="user-talents">
-    <!-- TODO: Add partial template of user talents for future horizontal scroll -->
-    <input name="file" type="file" file />
+<!-- Upload function -->
+  <div class="upload">
     <div class="progress">
       <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
         <span class="sr-only">60% Complete</span>
       </div>
     </div>
+    <input name="file" type="file" file />
+    <a class="btn btn-primary btn-xs" ng-click="users.upload()">Upload</a>
+  </div>
+
+
+
+  <div id="user-talents">
+    <!-- TODO: Add partial template of user talents for future horizontal scroll -->
     <ul>
       <li ng-repeat="talent in users.user.talents">
         <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
