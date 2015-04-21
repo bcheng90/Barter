@@ -90,8 +90,14 @@
                   <form>
                     Title: <input type="text" name="title" ng-model="talent.title">
                     Description: <input type="text" name="description" ng-model="talent.description">
-                    Type: <input type="text" name="type" ng-model="talent.type">
-                    Experience: <input type="text" name="experience" ng-model="talent.experience">
+                    Type:
+                    <select ng-model="users.talent.type">
+                      <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
+                    </select>
+                    Experience:
+                    <select name="experience" ng-model="users.talent.experience">
+                      <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
+                    </select>
                     Sample: <input type="text" name="sample" ng-model="talent.sample">
                   </form>
                 </div>
