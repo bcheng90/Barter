@@ -77,6 +77,14 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
+  this.deleteTalent = function(talent) {
+    var that = this;
+    $http.delete('/talents/' + talent.id, talent)
+    .success(function(response){
+       that.loadUserGraph();
+    });
+  }
+
   this.toggleTalentShown = function(talent) {
     talent.isShown = ! talent.isShown;
   };

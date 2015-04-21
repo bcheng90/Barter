@@ -56,11 +56,30 @@
           <p>Experience: {{talent.experience}}</p>
           <p>Description: {{talent.description}}</p>
           <p>Sample: {{talent.sample}}</p>
-          <!-- TODO: Create Edit modal -->
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#talent{{talent.id}}">
+          <!-- Delete button for Talent -->
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delTalent{{talent.id}}">
+            Delete Talent
+          </button>
+          <div id="delTalent{{talent.id}}" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Delete {{talent.title}}</h4>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.deleteTalent(talent)" class="btn btn-primary" ng-hide="talentEdit">Confirm Delete</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+          <!-- Edit Button for Talent -->
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editTalent{{talent.id}}">
             Edit Talent
           </button>
-          <div id="talent{{talent.id}}" class="modal fade">
+          <div id="editTalent{{talent.id}}" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
