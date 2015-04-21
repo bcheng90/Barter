@@ -168,7 +168,7 @@
           </ul>
           <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 19">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 11" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot)">create offer</button><br>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 11" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button><br>
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
     </div>
@@ -198,7 +198,7 @@
           </ul>
           <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !==29">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 22" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot)" >create offer</button>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 22" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)" >create offer</button>
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
     </div>
@@ -228,7 +228,7 @@
           </ul>
           <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 39">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 33" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot)">create offer</button>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 33" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button>
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
     </div>
@@ -258,7 +258,7 @@
           </ul>
             <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 49">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 44" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot)">create offer</button>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 44" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button>
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
     </div>
@@ -288,7 +288,7 @@
           </ul>
           <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 59">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 55" ng-show="app.current_user.id !== users.user.id  && !users.isClosed(timeslot)">create offer</button>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 55" ng-show="app.current_user.id !== users.user.id  && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button>
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
     </div>
@@ -318,7 +318,7 @@
           </ul>
           <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 69">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 66" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot)  && !users.isClosed(timeslot)">create offer</button>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 66" ng-show="app.current_user.id !== users.user.id && && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button>
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
     </div>
@@ -347,7 +347,8 @@
           </ul>
           <button class="btn btn-default" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== 79">close</button>
         </div>
-        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 77" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot)">create offer</button>
+        <button class="btn btn-default" ng-click="users.createOffer(timeslot);tab = 77" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button>
+        {{app.current_user.id}}
         <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
       </div>
    </div>
@@ -368,5 +369,14 @@
   </form>
 </div>
 <button class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
+
+
+  <!-- <week-day info="monday"></week-day>
+  <week-day info="tuesday"></week-day>
+  <week-day info="wednesday"></week-day>
+  <week-day info="thursday"></week-day>
+  <week-day info="friday"></week-day>
+  <week-day info="saturday"></week-day>
+  <week-day info="sunday"></week-day> -->
 
 
