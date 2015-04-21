@@ -46,7 +46,7 @@ form input {
   width: 400px;
 }
 
-#userNewTalent form select {
+#user-select {
   display: block;
 }
 

@@ -10,6 +10,24 @@ angular.module('barter').config(function($httpProvider) {
 
 angular.module('barter').controller('AppController', ['$router', '$http', AppController]);
 
+angular.module('directives', []).directive('file', function() {
+  return {
+    restrict: 'AE',
+    scope: {
+      file: '@'
+    },
+    link: function(scope, el, attrs){
+      el.bind('change', function(event){
+        var files = event.target.files;
+        var file = files[0];
+        scope.file = file;
+        scope.$parent.file = file;
+        scope.$apply();
+      });
+    }
+  };
+});
+
 function AppController ($router, $http) {
   $router.config([
     {path: '/', component: 'welcome' },
@@ -22,4 +40,5 @@ function AppController ($router, $http) {
     this.current_user = data;
   }.bind(this));
   this.time = new Date();
+
 }

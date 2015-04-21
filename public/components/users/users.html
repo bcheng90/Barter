@@ -1,4 +1,5 @@
 <div id="user-container">
+
   <div id="user-aboutme">
     <h4 class="center bold underline">{{users.user.username}} </h4>
     <p>Rating: {{users.user.score}}</p>
@@ -40,6 +41,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" data-dismiss="modal" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
+            <!-- modal-backdrop.remove() -->
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -48,11 +50,17 @@
 
   <div id="user-talents">
     <!-- TODO: Add partial template of user talents for future horizontal scroll -->
+    <input name="file" type="file" file />
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+        <span class="sr-only">60% Complete</span>
+      </div>
+    </div>
     <ul>
       <li ng-repeat="talent in users.user.talents">
         <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
         <div ng-class="talent.isShown ? 'visible' : 'hidden'">
-          <p>Category: {{users.convertType(talent.type)}}</p>
+          <p>Category: {{talent.type}}</p>
           <p>Experience: {{talent.experience}}</p>
           <p>Description: {{talent.description}}</p>
           <p>Sample: {{talent.sample}}</p>
@@ -69,7 +77,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" data-dismiss="modal" ng-click="users.deleteTalent(talent)" class="btn btn-primary" ng-hide="talentEdit">Confirm Delete</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.deleteTalent(talent)" class="btn btn-primary" ng-hide="delTalent{{talent.id}}">Confirm Delete</button>
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -90,14 +98,21 @@
                   <form>
                     Title: <input type="text" name="title" ng-model="talent.title">
                     Description: <input type="text" name="description" ng-model="talent.description">
-                    Type: <input type="text" name="type" ng-model="talent.type">
-                    Experience: <input type="text" name="experience" ng-model="talent.experience">
+                    Category:
+                    <select id="user-select" ng-model="users.talent.type">
+                      <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
+                    </select>
+                    Experience:
+                    <select id="user-select" name="experience" ng-model="users.talent.experience">
+                      <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
+                    </select>
                     Sample: <input type="text" name="sample" ng-model="talent.sample">
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" data-dismiss="modal" ng-click="users.updateTalent(talent)" class="btn btn-primary" ng-hide="talentEdit">Save changes</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.updateTalent(talent)" class="btn btn-primary" ng-hide="editTalent{{talent.id}}">Save changes</button>
+                  <!-- modal-backdrop.remove() -->
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -122,12 +137,12 @@
               Title: <input type="text" name="title" ng-model="users.talent.title">
               Sample: <input type="text" name="sample" ng-model="users.talent.sample">
               Description: <input type="text" name="description" ng-model="users.talent.description">
-              Type:
-              <select ng-model="users.talent.type">
+              Category:
+              <select id="user-select" ng-model="users.talent.type">
                 <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
               </select>
               Experience:
-              <select name="experience" ng-model="users.talent.experience">
+              <select id="user-select" name="experience" ng-model="users.talent.experience">
                 <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
               </select>
             </form>
