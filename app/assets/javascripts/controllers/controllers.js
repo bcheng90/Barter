@@ -40,8 +40,8 @@ angular.module('barter')
 angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
-  this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvemen"];
-  this.experiences = ["novice", "intermediate", "expert"];
+  this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvement"];
+  this.experiences = ["Novice", "Intermediate", "Expert"];
   this.ratings = [1, 2, 3, 4, 5];
 
   this.loadUserGraph = function() {
