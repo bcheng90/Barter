@@ -16,8 +16,11 @@ class TalentsController < ApplicationController
   end
 
   def create
-    @talent = Talent.create!(talent_params)
-    redirect_to talent_path(@talent.id)
+    p "*"*80
+    p talent_params
+    p "*"*80
+    @talent = Talent.create!(user: current_user, talent_params)
+    render json: @talent
   end
 
   def for_user
