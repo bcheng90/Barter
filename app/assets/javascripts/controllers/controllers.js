@@ -74,6 +74,24 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
+  this.hasRating = function(targetUser,currentUser) {
+    for (var i = 0; i < targetUser.reputations.length; i++){
+      if (targetUser.reputations[i].judge_id === currentUser.id) {
+         return true;
+      };
+    }
+  };
+
+  this.hasAcceptedOffer = function(targetUser, currentUser) {
+    for (var i = 0; i < targetUser.offers.length; i++){
+      if (targetUser.offers[i].student_id === currentUser.id) {
+        if (targetUser.offers[i].status === true) {
+         return true;
+        };
+      };
+    }
+  };
+
   this.saveTalent = function(){
     $http.post('/talents', this.talent);
     this.loadUserGraph();
@@ -85,7 +103,7 @@ angular.module('barter')
     .success(function(response){
        that.loadUserGraph();
     });
-  }
+  };
 
   this.toggleTalentShown = function(talent) {
     talent.isShown = ! talent.isShown;
@@ -205,7 +223,7 @@ angular.module('barter')
     for (var i = 0; i < timeslot.offers.length; i++){
       if (timeslot.offers[i].student.id == curusid) {
          return true;
-         console.log("not found yet");
+
       };
     }
   };
