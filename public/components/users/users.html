@@ -4,7 +4,7 @@
     <p>Rating: {{users.user.score}}</p>
     <!-- Rate User -->
     <div id="rating-form">
-      <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user)">
+      <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
         Rating:
         <select ng-model="users.user.reputation.rating">
           <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
