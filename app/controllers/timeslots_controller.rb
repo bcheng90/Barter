@@ -23,13 +23,19 @@ class TimeslotsController < ApplicationController
   end
 
   def create
+    days = {"Monday" => "1", "Tuesday"=> "2", "Wednesday" => "3", "Thursday" => "4", "Friday"=> "5", "Saturday"=> "6", "Sunday"=> "0"}
+    puts "--------------"
+    puts params
+    day = days[params["day"]].to_i
+    hour = params[:hour].split(":").first.to_i
+    p "DAY: #{day}, HOUR: #{hour}"
+
     x = DateTime.now.extend(DateTimeMixin)
-    r = x.next_wday(params[:day])
-    string = r.to_s
+    string = x.next_wday(day).to_s
     year = string.split("T").first.split("-").first.to_i
     month = string.split("T").first.split("-")[1].to_i
     day = string.split("T").first.split("-")[2].to_i
-    time = DateTime.new(year,month, day, params[:hour])
+    time = DateTime.new(year,month, day, hour)
     @timeslot = Timeslot.create!(user: current_user, time: time)
     render json: @timeslot
   end

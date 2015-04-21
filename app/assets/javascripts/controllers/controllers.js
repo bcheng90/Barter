@@ -41,6 +41,8 @@ angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
   this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvement"];
+  this.hours = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"]
+  this.days = ["Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday", "Sunday"]
   this.experiences = ["Novice", "Intermediate", "Expert"];
   this.ratings = [1, 2, 3, 4, 5];
 
@@ -76,6 +78,14 @@ angular.module('barter')
     $http.post('/talents', this.talent);
     this.loadUserGraph();
   };
+
+  this.deleteTalent = function(talent) {
+    var that = this;
+    $http.delete('/talents/' + talent.id, talent)
+    .success(function(response){
+       that.loadUserGraph();
+    });
+  }
 
   this.toggleTalentShown = function(talent) {
     talent.isShown = ! talent.isShown;
@@ -141,6 +151,7 @@ angular.module('barter')
       day: day,
       hour: hour
     };
+    console.log(dayHour);
     $http.post('/timeslots', dayHour)
     .success(function(response){
       console.log("in success");
@@ -151,6 +162,21 @@ angular.module('barter')
     });
   }
 
+  this.creeTimeslot = function(day) {
+    var dayHour = {
+      day: this.user.timeslot.day,
+      hour: this.user.timeslot.hour
+    }
+    var that = this;
+    $http.post("/timeslots", dayHour)
+    .success(function(response){
+      console.log("in success!");
+      that.loadUserGraph();
+    }).error(function(response){
+      console.log("in error!");
+    });
+  }
+
 
   this.createOffer = function(timeslot) {
     var that = this;
@@ -158,6 +184,7 @@ angular.module('barter')
     .success(function(response){
       var newOffer = response;
       insertOffer(newOffer, that.user);
+      that.loadUserGraph();
     }).error(function(response){
       console.log("not in success but getting there!!!");
     });
