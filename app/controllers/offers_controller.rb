@@ -33,8 +33,11 @@ class OffersController < ApplicationController
   end
 
   def destroy
+    user = User.find_by(id: session[:user_id])
     @offer = Offer.find(params[:id])
-    Offer.find_by(id: params[:id]).destroy
+    if @offer.destroy
+      UserMailer.decline_offer(user, @offer.student, @offer.timeslot).deliver_now
+    end
     render json: @offer
   end
 

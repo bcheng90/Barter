@@ -1,5 +1,5 @@
     <%= @sender.username %> accepted your offer!
-    At timeslot: <%= @timeslot.time %>
+    At timeslot: <%=@timeslot.time.strftime("%d/%m/%y") %>
 
     Their email is: <%= @reciever.email %>
 

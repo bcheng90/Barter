@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1><%= @sender.username %> wants to trade talents!</h1><br>
-    <h4>At timeslot: <%= @timeslot.time %></h4><br>
+    <h4>At timeslot: <%=@timeslot.time.strftime("%d/%m/%y") %></h4><br>
     <ul>
       <h3>They have these talents to offer:</h3><br>
       <% @sender.talents.each do |talent| %>
