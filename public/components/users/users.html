@@ -128,7 +128,8 @@
       <div id="mo" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:1}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 1" ng-click="tab = 1">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 1 && !users.isClosed(timeslot)" ng-click="tab = 1">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 1  && users.isClosed(timeslot)" ng-click="tab = 1">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 1">
           <ul ng-repeat="offer in timeslot.offers">
             <li><button class="btn btn-default" ng-click="tab = 11" ng-show="tab !== 11">See offer {{offer.id}} </button>
@@ -157,7 +158,8 @@
       <div id="tue" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:2}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 2" ng-click="tab = 2">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 2 && !users.isClosed(timeslot)" ng-click="tab = 2">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 2  && users.isClosed(timeslot)" ng-click="tab = 2">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 2">
           <ul ng-repeat="offer in timeslot.offers">
             <li><button class="btn btn-default" ng-click="tab = 22" ng-show="tab !== 22">See offer {{offer.id}} </button>
@@ -186,7 +188,8 @@
       <div id="wed" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:3}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 3" ng-click="tab = 3">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 3 && !users.isClosed(timeslot)" ng-click="tab = 3">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 2  && users.isClosed(timeslot)" ng-click="tab = 2">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 3">
           <ul ng-repeat="offer in timeslot.offers">
             <li><button class="btn btn-default" ng-click="tab = 33" ng-show="tab !== 33">See offer {{offer.id}} </button>
@@ -214,7 +217,8 @@
       <div id="thurs" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:4}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 4" ng-click="tab = 4">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 4 && !users.isClosed(timeslot)" ng-click="tab = 4">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 4  && users.isClosed(timeslot)" ng-click="tab = 4">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 4">
           <ul ng-repeat="offer in timeslot.offers">
             <li><button class="btn btn-default" ng-click="tab = 44" ng-show="tab !== 44">See offer {{offer.id}}</button>
@@ -242,7 +246,8 @@
       <div id="fri" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:5}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 5" ng-click="tab = 5">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 5 && !users.isClosed(timeslot)" ng-click="tab = 5">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 5  && users.isClosed(timeslot)" ng-click="tab = 5">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 5">
           <ul ng-repeat="offer in timeslot.offers">
             <li><button class="btn btn-default" ng-click="tab = 55" ng-show="tab !== 55">See offer {{offer.id}}</button>
@@ -271,7 +276,8 @@
       <div id="sat" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:6}">
         {{timeslot.hours}}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 6" ng-click="tab = 6">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 6 && !users.isClosed(timeslot)" ng-click="tab = 6">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 6  && users.isClosed(timeslot)" ng-click="tab = 6">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 6">
           <ul ng-repeat="offer in timeslot.offers">
             <li><button class="btn btn-default" ng-click="tab = 66" ng-show="tab !== 66">See offer {{offer.id}}</button>
@@ -299,7 +305,8 @@
       <div id="sun" ng-repeat="timeslot in users.user.timeslots | filter:{weekday:7}">
         {{timeslot.hours }}
         <p>timeslot id: {{timeslot.id}}</p>
-        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 7" ng-click="tab = 7">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== 7 && !users.isClosed(timeslot)" ng-click="tab = 7">{{timeslot.offers.length}} offer(s)</button>
+        <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== 7  && users.isClosed(timeslot)" ng-click="tab = 7">Accepted offer</button>
         <div id="timeslot-offers" ng-show="tab === 7">
           <ul ng-repeat="offer in timeslot.offers">
             <li><<button class="btn btn-default" ng-click="tab = 77" ng-show="tab !== 77">See offer {{offer.id}}</button>
