@@ -16,15 +16,8 @@ class TalentsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(id: session[:user_id])
-    @talent = Talent.new(talent_params)
-    if @talent.save
-      p "SENDING MAIL"
-      UserMailer.notify_email(@user).deliver_now
-      redirect_to talent_path(@talent.id)
-    else
-      redirect_to talent_path(@talent.id)
-    end
+    @talent = Talent.create!(talent_params)
+    render json: @talent
   end
 
   def for_user
@@ -35,7 +28,7 @@ class TalentsController < ApplicationController
   def update
     @talent = Talent.find_by(id: params[:id])
     @talent.update!(talent_params)
-    redirect_to talent_path(@talent.id)
+    render json: @talent
   end
 
   def destroy
@@ -45,7 +38,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.permit(:title, :type, :sample, :experience, :description, :image).merge(user_id: current_user.id)
+    params.require(:talent).permit(:user_id, :title, :type, :sample, :experience, :description, :image)
   end
 
 end

@@ -6,7 +6,10 @@ angular.module("barter").factory("UserService", function($resource){
  });
 
 angular.module("barter").factory("TalentService", function($resource){
-   return $resource("/talents/:id");
+   return $resource("/talents/:id", {id: "@id"},
+   {
+    'update': { method:'PUT' }
+   });
 });
 
 angular.module("barter").factory("OfferService", function($resource){

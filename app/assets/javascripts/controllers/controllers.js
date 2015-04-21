@@ -2,16 +2,14 @@ angular.module('barter')
   .controller('WelcomeController', ['$routeParams', "UserService", "TalentService", function($routeParams, UserService, TalentService ){
     this.tals = [];
     this.persons = [];
-    this.selectedCategory = 'Music';
+    this.selectedCategory = 'Art & Music';
 
      UserService.query(function(data) {
       this.persons = data;
-      console.log("response", data);
      }.bind(this));
 
      TalentService.query(function(data) {
       this.tals = data;
-      console.log("response", data);
      }.bind(this));
 
      this.filterFunction = function(array, key){
@@ -42,13 +40,14 @@ angular.module('barter')
 angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
-  this.categories = ["Art & Music", "Food", "Sport", "Computer"];
-  this.experiences = ["novice", "intermediate", "expert"];
+  this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvement"];
+  this.experiences = ["Novice", "Intermediate", "Expert"];
   this.ratings = [1, 2, 3, 4, 5];
 
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
        this.user = data;
+       this.talent = {user_id: this.user.id}
        this.user.reputation = {user_id: this.user.id};
      }.bind(this));
    }
@@ -56,8 +55,15 @@ angular.module('barter')
    this.loadUserGraph();
 
   this.saveUser = function(user) {
-    console.log(user);
     UserService.update(user);
+  };
+
+  this.updateTalent = function(talent) {
+    var that = this;
+    $http.put('/talents/' + talent.id, talent)
+    .success(function(response){
+      that.loadUserGraph();
+    });
   };
 
 
@@ -66,9 +72,8 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
-  this.talent = {};
   this.saveTalent = function(){
-    TalentService.save(this.talent);
+    $http.post('/talents', this.talent);
     this.loadUserGraph();
   };
 
@@ -77,11 +82,9 @@ angular.module('barter')
   };
 
   this.loadTalentsForUser = function(user) {
-    console.log('Hello');
     $http.get('/talents/for_user/' + user.id).
      success(function(data, status, headers, config) {
       this.talents = data;
-      console.log(this.talents);
     });
   };
 
@@ -91,8 +94,6 @@ angular.module('barter')
     $http.put('/offers/' + offer.id, offer)
     .success(function(data, status){
       that.loadUserGraph();
-      console.log(data);
-      console.log(status);
     });
   };
 
@@ -101,13 +102,7 @@ angular.module('barter')
     $http.delete('/offers/' + offer.id, offer)
     .success(function(response){
       that.loadUserGraph();
-      // removeOffer(offer, that.user);
-      // console.log(response);
-      // console.log("I am deleting the offer");
-      // console.log(response)
     }).error(function(response){
-      console.log(response);
-      console.log("we failed");
     });
   };
 
@@ -130,40 +125,50 @@ angular.module('barter')
         }
       }
     });
+  }
 
+  this.deleteTimeslot = function(timeslot) {
+    var that = this;
+    $http.delete('/timeslots/' + timeslot.id, timeslot)
+    .success(function(response){
+       that.loadUserGraph();
+    });
+  }
+
+  this.createTimeslot = function(day, hour) {
+    var that = this;
+    var dayHour = {
+      day: day,
+      hour: hour
+    };
+    $http.post('/timeslots', dayHour)
+    .success(function(response){
+      console.log("in success");
+      console.log(response);
+       that.loadUserGraph();
+    }).error(function(response){
+      console.log("in error");
+    });
   }
 
 
   this.createOffer = function(timeslot) {
     var that = this;
-    console.log("creating offer");
     $http.post('/offers', timeslot)
     .success(function(response){
       var newOffer = response;
       insertOffer(newOffer, that.user);
-      console.log(that.user.timeslots);
-      console.log("success!!!");
     }).error(function(response){
       console.log("not in success but getting there!!!");
     });
   };
 
-
-
-  this.convertType = function(type) {
-    if (type == "artMusic") {
-      return "Art & Music";
-    } else if (type == "sport") {
-      return "Sports";
-    } else if (type == "nuFit") {
-      return "Nutrition & Fitness";
-    } else if (type == "food") {
-      return "Cooking & Baking";
-    } else if (type == "compEle") {
-      return "Computers & Electronics";
-    } else if (type == "homeImp") {
-      return "Home Improvement";
-    }
+  this.isClosed = function(timeslot) {
+     for( var i = 0; i < timeslot.offers.length; i++) {
+        if (timeslot.offers[i].status === true) {
+          return true;
+        }
+     }
   };
 
 }]);
@@ -172,13 +177,8 @@ angular.module('barter')
 
 
 angular.module('barter').controller('TimeslotsController', ['UserService', function(UserService){
-   // here you'd put code to e.g.
-   // load the timeslots from a service, handle form subsmissions etc
-   console.log('TimeslotsController instantiated');
-   this.slots = [ "a", "b", "c", "d" ]
 
    UserService.get({id:4}, function(jsonResponse) {
      this.user = jsonResponse;
-     console.log('response', jsonResponse);
    }.bind(this));
 }]);
