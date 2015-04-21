@@ -41,6 +41,8 @@ angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
   this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvement"];
+  this.hours = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"]
+  this.days = ["Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday", "Sunday"]
   this.experiences = ["Novice", "Intermediate", "Expert"];
   this.ratings = [1, 2, 3, 4, 5];
 
@@ -149,6 +151,21 @@ angular.module('barter')
        that.loadUserGraph();
     }).error(function(response){
       console.log("in error");
+    });
+  }
+
+  this.creeTimeslot = function(day) {
+    var dayHour = {
+      day: this.user.timeslot.day,
+      hour: this.user.timeslot.hour
+    }
+    var that = this;
+    $http.post("/timeslots", dayHour)
+    .success(function(response){
+      console.log("in success!");
+      that.loadUserGraph();
+    }).error(function(response){
+      console.log("in error!");
     });
   }
 
