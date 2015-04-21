@@ -141,6 +141,7 @@ angular.module('barter')
       day: day,
       hour: hour
     };
+    console.log(dayHour);
     $http.post('/timeslots', dayHour)
     .success(function(response){
       console.log("in success");
