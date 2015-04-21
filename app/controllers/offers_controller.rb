@@ -14,6 +14,10 @@ class OffersController < ApplicationController
     timeslot = Timeslot.find(params[:id])
     user = User.find_by(id: session[:user_id])
     @offer = Offer.create!(timeslot: timeslot, student_id: user.id)
+    if @offer
+      p "SENDING MAIL"
+      UserMailer.mail_offer(user, timeslot.user, timeslot).deliver_now
+    end
     render json: @offer
   end
 

@@ -1,0 +1,9 @@
+
+<%= @sender.usernamer %> wants to trade talents!
+At timeslot: <%= @timeslot.time %>
+They have these talents to offer:
+    <% @sender.talents.each do |talent| %>
+      <%= talent.title %>
+    <%end%>
+
+Accept at <%= @url %>

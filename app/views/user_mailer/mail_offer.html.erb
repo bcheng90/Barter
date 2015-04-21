@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @sender.usernamer %> wants to trade talents!</h1><br>
+    <h4>At timeslot: <%= @timeslot.time %></h4><br>
+    <p>They have these talents to offer:</p><br>
+    <% @sender.talents.each do |talent| %>
+      <%= talent.title %>
+    <%end%><br>
+    <p>Accept at <%= @url %></p>
+
+  </body>
+</html>

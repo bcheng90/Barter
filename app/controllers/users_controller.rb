@@ -17,9 +17,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = user.id
+    @user = User.create!(user_params)
+    if @user
+      session[:user_id] = @user.id
       p "SENDING MAIL"
       UserMailer.notify_email(@user).deliver_now
       redirect_to root_path
