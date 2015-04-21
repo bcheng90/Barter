@@ -46,7 +46,7 @@ angular.module('barter')
   this.experiences = ["Novice", "Intermediate", "Expert"];
   this.ratings = [1, 2, 3, 4, 5];
 
-  this.creds = {
+this.creds = {
     bucket: 'dbc-barter',
     access_key: 'AKIAJP6TZ7GN2L25IVZA',
     secret_key: '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'
@@ -58,7 +58,8 @@ angular.module('barter')
     var bucket = new AWS.S3({ params: { Bucket: this.creds.bucket } });
 
     if(this.file) {
-      this.s3_path = this.creds.bucket + '/' + this.file.name;
+      // where does this go to send data?
+      // this.s3_path = this.creds.bucket + '/' + this.file.name;
       var params = { Key: this.file.name, ContentType: this.file.type, Body: this.file, ServerSideEncryption: 'AES256' };
 
       bucket.putObject(params, function(err, data) {
@@ -69,16 +70,14 @@ angular.module('barter')
         else {
           alert('Upload Done');
         }
-      })
-      .on('httpUploadProgress',function(progress) {
-            // TODO: fix progression
-        $scope.uploadProgress = Math.round(progress.loaded / progress.total * 100);
-        $scope.$digest();
-    }
-    else {
-      alert('No File Selected');
-    }
+      });
+      // .on('httpUploadProgress',function(progress) {
+      //       // TODO: fix progression
+      //   $scope.uploadProgress = Math.round(progress.loaded / progress.total * 100);
+      //   $scope.$digest();
+      // }
   }
+};
 
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
