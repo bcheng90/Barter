@@ -19,7 +19,7 @@
       <p><span class="bold">Location:</span> {{users.user.location}}</p>
       <p><span class="bold">About Me:</span> {{users.user.about}}</p>
     </ul>
-    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userEdit">
+    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id">
       Edit Account Information
     </button>
     <div id="userEdit" class="modal fade">
@@ -57,7 +57,7 @@
           <p>Description: {{talent.description}}</p>
           <p>Sample: {{talent.sample}}</p>
           <!-- Delete button for Talent -->
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delTalent{{talent.id}}">
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id">
             Delete Talent
           </button>
           <div id="delTalent{{talent.id}}" class="modal fade">
@@ -76,7 +76,7 @@
           </div><!-- /.modal -->
 
           <!-- Edit Button for Talent -->
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editTalent{{talent.id}}">
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id">
             Edit Talent
           </button>
           <div id="editTalent{{talent.id}}" class="modal fade">
@@ -90,14 +90,14 @@
                   <form>
                     Title: <input type="text" name="title" ng-model="talent.title">
                     Description: <input type="text" name="description" ng-model="talent.description">
-                    Type:
+                    Type:<br>
                     <select ng-model="users.talent.type">
                       <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
-                    </select>
-                    Experience:
+                    </select><br>
+                    Experience:<br>
                     <select name="experience" ng-model="users.talent.experience">
                       <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
-                    </select>
+                    </select><br>
                     Sample: <input type="text" name="sample" ng-model="talent.sample">
                   </form>
                 </div>
@@ -114,7 +114,7 @@
   </div>
 
 <!-- Creating new talent -->
-  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent">
+  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id">
     Add a talent
   </button>
   <div id="userNewTalent" class="modal fade">
