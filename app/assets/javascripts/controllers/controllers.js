@@ -139,6 +139,10 @@ angular.module('barter')
 
   this.deleteTimeslot = function(timeslot) {
     var that = this;
+    var offers = timeslot.offers;
+      for (var i = 0; i < timeslot.offers.length; i ++) {
+        this.declineOffer(timeslot.offers[i]);
+      }
     $http.delete('/timeslots/' + timeslot.id, timeslot)
     .success(function(response){
        that.loadUserGraph();
@@ -183,7 +187,6 @@ angular.module('barter')
     $http.post('/offers', timeslot)
     .success(function(response){
       var newOffer = response;
-      insertOffer(newOffer, that.user);
       that.loadUserGraph();
     }).error(function(response){
       console.log("not in success but getting there!!!");
@@ -198,7 +201,25 @@ angular.module('barter')
      }
   };
 
-}]);
+  this.hasOffer = function(timeslot,curusid) {
+    for (var i = 0; i < timeslot.offers.length; i++){
+      if (timeslot.offers[i].student.id == curusid) {
+         return true;
+         console.log("not found yet");
+      };
+    }
+  };
+
+}])
+// .directive('weekDay', function(){
+//   return {
+//     restrict: 'E',
+//     scope: {
+//       winfo : '=info'
+//     },
+//     templateUrl : 'wday-iso.html'
+//   }
+// });
 
 
 
