@@ -44,6 +44,7 @@ malcolm = User.all[13]
 
 end
 
+# User 1 Talents
 Talent.create([{title: "Hip-hop dance", type: "Art & Music", experience: "novice", user_id: 1}, {title: "Swing dance", type: "Art & Music", experience: "novice", description: "Been dancing for 50 years but 25 of them were before I was born.", user_id: 1}, {title: "Baking Bread", type: "Cooking & Baking", experience: "novice", description: "Baking bread beautifully all day, every day.", user_id: 1}, {title: "Ruby - Coding", type: "Computers & Electronics", experience: "novice", description: "My fingers become the code itself.", user_id: 1}])
 # User 2 Talents
 Talent.create([{title: "Ruby on Rails - Coding", type: "Computers & Electronics", experience: "expert", description: "I can type rails faster than a train can travel", user_id: 2}, {title: "Minesweeper", type: "Computers & Electronics", experience: "expert", description: "I had once decided to become a professional minesweeper. The danger turned me away.", user_id: 2}, {title: "Learn Chinese", type: "Education & Careers", experience: "expert", description: "I can speak Mandarin but it just sounds very Americanized.", user_id: 2}])

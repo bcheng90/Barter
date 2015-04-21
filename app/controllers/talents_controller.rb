@@ -16,10 +16,7 @@ class TalentsController < ApplicationController
   end
 
   def create
-    p "*"*80
-    p talent_params
-    p "*"*80
-    @talent = Talent.create!(user: current_user, talent_params)
+    @talent = Talent.create!(talent_params)
     render json: @talent
   end
 
@@ -32,7 +29,6 @@ class TalentsController < ApplicationController
     @talent = Talent.find_by(id: params[:id])
     @talent.update!(talent_params)
     render json: @talent
-    # render :show
   end
 
   def destroy
@@ -42,7 +38,7 @@ class TalentsController < ApplicationController
 
   private
   def talent_params
-    params.permit(:title, :type, :sample, :experience, :description, :image)
+    params.require(:talent).permit(:user_id, :title, :type, :sample, :experience, :description, :image)
   end
 
 end
