@@ -32,8 +32,9 @@ class TalentsController < ApplicationController
   end
 
   def destroy
-    Talent.find_by(id: params[:id]).destroy
-    redirect_to root_path
+    @talent = Talent.find_by(id: params[:id])
+    @talent.destroy
+    render json: @talent
   end
 
   private
