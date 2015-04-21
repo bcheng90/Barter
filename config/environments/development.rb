@@ -46,5 +46,16 @@ config.paperclip_defaults = {
     :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
   }
 }
+
+config.action_mailer.delivery_method = :smtp
+# SMTP settings for mailgun
+ActionMailer::Base.smtp_settings = {
+  :port           => 587,
+  :address        => "smtp.mailgun.org",
+  :domain         => 'mailgun.org',
+  :user_name      => 'postmaster@sandbox5b8568ba6c1c4f47afc871962fc60f08.mailgun.org',
+  :password       => 'e18861b0857c5390773296985b88851b',
+  :authentication => :plain,
+}
 end
 Paperclip.options[:command_path] = "/usr/local/bin/"
