@@ -367,7 +367,7 @@
     <button class="btn btn-default" type="submit" ng-click="tab=0;users.creeTimeslot()" class="btn btn-primary">Submit</button>
   </form>
 </div>
-<button class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
+<button ng-show="app.current_user.id === users.user.id" class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
 
 
   <!-- <week-day info="monday"></week-day>
