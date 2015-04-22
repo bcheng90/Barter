@@ -39,6 +39,14 @@ angular.module('barter')
   this.days = ["Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday", "Sunday"]
   this.experiences = ["Novice", "Intermediate", "Expert"];
   this.ratings = [1, 2, 3, 4, 5];
+  this.day_array = [{id: 1, name: "Monday"},
+                    {id: 2, name: "Tuesday"},
+                    {id: 3, name: "Wednesday"},
+                    {id: 4, name: "Thursday"},
+                    {id: 5, name: "Friday"},
+                    {id: 6, name: "Saturday"},
+                    {id: 7, name: "Sunday"}
+                    ]
 
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
@@ -83,6 +91,30 @@ angular.module('barter')
     .success(function(railsResponse){
       this.loadUserGraph();
     }.bind(this));
+
+  this.hasRating = function(targetUser, currentUser) {
+    if (!targetUser){
+      return;
+    };
+    for (var i = 0; i < targetUser.reputations.length; i++){
+      if (targetUser.reputations[i].judge_id === currentUser.id) {
+         return true;
+      };
+    }
+  };
+
+  this.hasAcceptedOffer = function(targetUser, currentUser) {
+    if (!targetUser){
+      return;
+    };
+    for (var i = 0; i < targetUser.offers.length; i++){
+      if (targetUser.offers[i].student_id === currentUser.id) {
+        if (targetUser.offers[i].status === true) {
+         return true;
+        };
+      }
+    }
+    return false;
   };
 
   this.saveTalent = function(){
@@ -117,7 +149,7 @@ angular.module('barter')
     .success(function(response){
        that.loadUserGraph();
     });
-  }
+  };
 
   this.toggleTalentShown = function(talent) {
     talent.isShown = ! talent.isShown;
@@ -237,7 +269,7 @@ angular.module('barter')
     for (var i = 0; i < timeslot.offers.length; i++){
       if (timeslot.offers[i].student.id == curusid) {
          return true;
-         console.log("not found yet");
+
       };
     }
   };
