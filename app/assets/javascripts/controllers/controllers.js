@@ -187,7 +187,7 @@ angular.module('barter')
     var that = this;
     $http.delete('/talents/' + talent.id, talent)
     .success(function(response){
-       thAT.loadUserGraph();
+       that.loadUserGraph();
     });
   };
 
