@@ -16,17 +16,13 @@ li {
 
 #user-aboutme {
   height: 300px;
-  /*width: 500px;*/
-  border: 1px solid black;
-  /*float: left;*/
+  border: 1px solid #D1D3D1;
 }
 
 
 #user-timeslots {
   margin: 40px;
-  /*width: 1000px;*/
-  border: 1px solid black;
-  /*clear: both;*/
+  border: 1px solid #D1D3D1;
 }
 
 
@@ -48,7 +44,7 @@ form input {
 }
 
 .talnt {
-  border: 2px solid black;
+  border: 2px solid #D1D3D1;
   margin: 10px;
 }
 
@@ -84,5 +80,5 @@ form input {
 
 }
 .timeslot {
-  border: 2px solid grey;
+  border: 2px solid #D1D3D1;
 }
