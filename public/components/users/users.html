@@ -23,9 +23,7 @@
             <p><span class="bold">Location:</span> {{users.user.location}}</p>
             <p><span class="bold">About Me:</span> {{users.user.about}}</p>
           </ul>
-          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id">
-            Edit Account Information
-          </button>
+          <i id="edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id"></i>
           <div id="userEdit" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -57,7 +55,7 @@
           <!-- <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
         <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3> -->
 
-
+<!-- User Timeslots -->
           <div id="user-timeslots"  class="col-lg-6">
             <div class="day-block" ng-repeat="day in users.day_array">
               <div class="day-div">
@@ -168,9 +166,9 @@
                 <p>Description: {{talent.description}}</p>
                 <p>Sample: {{talent.sample}}</p>
                 <!-- Delete button for Talent -->
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id">
+                <i id="delete" class="icon-remove-sign" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id">
                   Delete Talent
-                </button>
+                </i>
                 <div id="delTalent{{talent.id}}" class="modal">
                   <div class="modal-dialog">
                     <div class="modal-content">
