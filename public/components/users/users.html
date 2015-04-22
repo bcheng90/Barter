@@ -1,4 +1,5 @@
 <div id="user-container">
+
   <div id="user-aboutme">
     <h4 class="center bold underline">{{users.user.username}} </h4>
     <p>Rating: {{users.user.score}}</p>
@@ -40,6 +41,7 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             <button type="submit" data-dismiss="modal" ng-click="users.saveUser(users.user)" class="btn btn-primary" ng-hide="userEdit">Save changes</button>
+            <!-- modal-backdrop.remove() -->
           </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
@@ -52,9 +54,9 @@
       <li ng-repeat="talent in users.user.talents">
         <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
         <div ng-class="talent.isShown ? 'visible' : 'hidden'">
-          <p>Category: {{users.convertType(talent.type)}}</p>
-          <p>Experience: {{talent.experience}}</p>
           <p>Description: {{talent.description}}</p>
+          <p>Category: {{talent.type}}</p>
+          <p>Experience: {{talent.experience}}</p>
           <p>Sample: {{talent.sample}}</p>
           <!-- Delete button for Talent -->
           <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id">
@@ -69,7 +71,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" data-dismiss="modal" ng-click="users.deleteTalent(talent)" class="btn btn-primary" ng-hide="talentEdit">Confirm Delete</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.deleteTalent(talent)" class="btn btn-primary" ng-hide="delTalent{{talent.id}}">Confirm Delete</button>
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -90,20 +92,21 @@
                   <form>
                     Title: <input type="text" name="title" ng-model="talent.title">
                     Description: <input type="text" name="description" ng-model="talent.description">
-                    Type:<br>
-                    <select ng-model="users.talent.type">
+                    Category:
+                    <select id="user-select" ng-model="users.talent.type">
                       <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
-                    </select><br>
-                    Experience:<br>
-                    <select name="experience" ng-model="users.talent.experience">
+                    </select>
+                    Experience:
+                    <select id="user-select" name="experience" ng-model="users.talent.experience">
                       <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
-                    </select><br>
-                    Sample: <input type="text" name="sample" ng-model="talent.sample">
+                    </select>
+                    Sample: <input type="file" name="sample" file-input="users.upload_file_entered">
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" data-dismiss="modal" ng-click="users.updateTalent(talent)" class="btn btn-primary" ng-hide="talentEdit">Save changes</button>
+                  <button type="submit" data-dismiss="modal" ng-click="users.updateTalent(talent)" class="btn btn-primary" ng-hide="editTalent{{talent.id}}">Save changes</button>
+                  <!-- modal-backdrop.remove() -->
                 </div>
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -114,7 +117,7 @@
   </div>
 
 <!-- Creating new talent -->
-  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id">
+  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id" ng-click="users.getS3UploadParams()">
     Add a talent
   </button>
   <div id="userNewTalent" class="modal fade">
@@ -126,16 +129,16 @@
         <div class="modal-body">
             <form >
               Title: <input type="text" name="title" ng-model="users.talent.title">
-              Sample: <input type="text" name="sample" ng-model="users.talent.sample">
               Description: <input type="text" name="description" ng-model="users.talent.description">
-              Type:
-              <select ng-model="users.talent.type">
+              Category:
+              <select id="user-select" ng-model="users.talent.type">
                 <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
               </select>
               Experience:
-              <select name="experience" ng-model="users.talent.experience">
+              <select id="user-select" name="experience" ng-model="users.talent.experience">
                 <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
               </select>
+              Sample: <input type="file" name="sample" file-input="users.upload_file_entered">
             </form>
         </div>
         <div class="modal-footer">

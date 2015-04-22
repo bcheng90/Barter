@@ -1,6 +1,18 @@
 // change the routes
 angular.module('barter', ['ngNewRouter', 'ngResource']);
 
+angular.module('barter').directive('fileInput', ['$parse', function($parse){
+  return {
+    restrict:'A',
+    link: function(scope, elm, attrs) {
+      elm.bind('change', function(){
+        $parse(attrs.fileInput).assign(scope, elm[0].files);
+        scope.$apply();
+      });
+    }
+  };
+}]);
+
 //Tell angular to use the CSRF token rails provides on the page
 // TODO: Ask Steven what this actually does
 angular.module('barter').config(function($httpProvider) {
@@ -22,4 +34,5 @@ function AppController ($router, $http) {
     this.current_user = data;
   }.bind(this));
   this.time = new Date();
+
 }
