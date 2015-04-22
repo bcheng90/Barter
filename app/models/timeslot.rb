@@ -3,7 +3,11 @@ class Timeslot < ActiveRecord::Base
   has_many :offers
 
   def weekday
-    time.wday
+    if time.wday == 0
+      7
+    else
+      time.wday
+    end
   end
 
   def mcrsec

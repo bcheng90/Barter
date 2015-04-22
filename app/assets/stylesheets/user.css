@@ -38,33 +38,59 @@ li {
 }
 
 
-#user-edit {
+#user-timeslots {
+  height: 800px;
+  overflow: scroll;
 }
 
 form input {
   display: block;
-  /*width: 400px;*/
 }
 
 #user-select {
   display: block;
 }
 
-#user-container {
-
+#user-timeslots {
+  background-color: black;
 }
 
 .talnt {
   border: 2px solid black;
   margin: 10px;
-  /*width: 50%;*/
 }
 
 #new-ts {
   margin: 50px;
+  width: 50%;
 }
 
 .mrgn {
   margin :20px;
 }
+.day-block {
+  text-align: center;
+}
 
+.day-title {
+  background-color: grey;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tims-count{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tims-count:hover {
+  color: white;
+  font-size: 150%;
+}
+.day-div {
+  background-color: #C299C2;
+}
+.times {
+
+}
+.timeslot {
+  border: 2px solid grey;
+}
