@@ -38,6 +38,14 @@ angular.module('barter')
       return false;
      };
 
+    this.getGrav = function(userId){
+      for(var i = 0; i < this.persons.length; i++){
+        if(this.persons[i].id === userId){
+          return md5(this.persons[i].email.trim().toLowerCase());
+        }
+      };
+    };
+
      this.getScore = function(userId){
       for(var i = 0; i < this.persons.length; i++){
         if(this.persons[i].id === userId){
