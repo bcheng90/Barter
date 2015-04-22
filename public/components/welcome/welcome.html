@@ -48,28 +48,32 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <div class="talent-box">
-        <ul class="nav nav-pills nav-justified">
-          <li class="active"><a ng-click="welcome.selectedCategory = 'Art & Music'" data-toggle="pill" >Art & Music</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Sports'" data-toggle="pill" >Sports</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Fitness & Nutrition'" data-toggle="pill" >Fitness & Nutrition</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Cooking & Baking'" data-toggle="pill" >Cooking & Baking</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Computers & Electronics'" data-toggle="pill" >Computers & Electronics</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Education & Careers'" data-toggle="pill" >Education & Careers</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Home Improvement'" data-toggle="pill" >Home Improvement</a></li>
-        </ul>
+      <div class="row talent-box">
+        <div class="col-lg-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a ng-click="welcome.selectedCategory = 'Art & Music'" data-toggle="pill" >Art & Music</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Sports'" data-toggle="pill" >Sports</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Fitness & Nutrition'" data-toggle="pill" >Fitness & Nutrition</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Cooking & Baking'" data-toggle="pill" >Cooking & Baking</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Computers & Electronics'" data-toggle="pill" >Computers & Electronics</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Education & Careers'" data-toggle="pill" >Education & Careers</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Home Improvement'" data-toggle="pill" >Home Improvement</a></li>
+          </ul>
+        </div> <!-- col-4 -->
 
-        <div class="tab-content">
-          <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
-            <h3>{{welcome.selectedCategory}} Talents</h3>
-            <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
-              <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
-              By {{talent.user.username}}
+        <div class="col-lg-9">
+          <div class="tab-content">
+            <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
+              <h3>{{welcome.selectedCategory}} Talents</h3>
+              <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
+                <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
+                By {{talent.user.username}}
+              </div>
             </div>
           </div>
-        </div>
+        </div> <!-- col-9 -->
 
-      </div> <!-- talent-box -->
+      </div> <!-- row talent-box -->
     </div> <!-- category col-8 -->
 
     <div class="col-lg-4">
