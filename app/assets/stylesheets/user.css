@@ -15,7 +15,8 @@ li {
 }
 
 #user-aboutme {
-
+  background-color: white;
+  border-radius: 2%;
   border: 1px solid #D1D3D1;
   margin-top: 30px;
 }
@@ -57,6 +58,14 @@ form input {
 #new-ts {
   margin: 50px;
   width: 50%;
+}
+
+#user-page {
+  background-color: #CFD1CF;
+}
+
+#user-talents {
+  margin-top: 30px;
 }
 
 .mrgn {

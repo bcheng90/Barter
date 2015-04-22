@@ -1,4 +1,4 @@
-<div class="container">
+<div id="user-page" class="container">
   <div class="row">
 
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -11,23 +11,6 @@
 
           <img class="user-image" src="http://www.gravatar.com/avatar/{{users.user.gravatar}}?s=150&&d=http://i.imgur.com/JCimKzH.jpg" />
 
-          <ul>
-            <p>Rating: {{users.user.score}}</p>
-            <!-- Rate User -->
-            <div id="rating-form">
-              <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
-                <span class="bold">Rating:</bold>
-                <select ng-model="users.user.reputation.rating">
-                  <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
-                </select>
-                <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
-              </form>
-            </div>
-            <p><span class="bold">Email:</span> {{users.user.email}}</p>
-            <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
-            <p><span class="bold">Location:</span> {{users.user.location}}</p>
-            <p><span class="bold">About Me:</span> {{users.user.about}}</p>
-          </ul>
           <div id="userEdit" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -151,7 +134,7 @@
                 <form >
                   Title: <input type="text" name="title" ng-model="users.talent.title">
                   Description: <input type="text" name="description" ng-model="users.talent.description">
-                  Type:
+                  Category:
                   <select ng-model="users.talent.type">
                     <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
                   </select>
@@ -182,7 +165,7 @@
               <div class="panel-body">
                 <i id="delete" class="fa fa-times fa-2x" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id" title="Remove"></i>
                 <p>Description: {{talent.description}}</p>
-                <p>Category: {{talent.category}}</p>
+                <p>Category: {{talent.type}}</p>
                 <p>Experience: {{talent.experience}}</p>
                 <p>Sample: {{talent.sample}}</p>
                 <!-- Delete button for Talent -->
@@ -215,7 +198,7 @@
                         <form>
                           Title: <input type="text" name="title" ng-model="talent.title">
                           Description: <input type="text" name="description" ng-model="talent.description">
-                          Type:<br>
+                          Category:<br>
                           <select ng-model="users.talent.type">
                             <option ng-repeat="category in users.categories" value="{{category}}">{{category}}</option>
                           </select><br>
