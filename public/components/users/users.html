@@ -7,6 +7,27 @@
         <div id="user-aboutme">
           <h4 class="center bold underline">{{users.user.username}}</h4>
           <i id="user-edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id" title="Edit"></i>
+
+
+          <img class="user-image" src="http://www.gravatar.com/avatar/{{users.user.gravatar}}?s=150&&d=http://i.imgur.com/JCimKzH.jpg" />
+
+          <ul>
+            <p>Rating: {{users.user.score}}</p>
+            <!-- Rate User -->
+            <div id="rating-form">
+              <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
+                <span class="bold">Rating:</bold>
+                <select ng-model="users.user.reputation.rating">
+                  <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
+                </select>
+                <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
+              </form>
+            </div>
+            <p><span class="bold">Email:</span> {{users.user.email}}</p>
+            <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
+            <p><span class="bold">Location:</span> {{users.user.location}}</p>
+            <p><span class="bold">About Me:</span> {{users.user.about}}</p>
+          </ul>
           <div id="userEdit" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
