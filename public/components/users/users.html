@@ -55,12 +55,22 @@
       </div> <!-- user-container -->
 
       <div class="row">
+
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-          <!-- <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
-        <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3> -->
-
           <div id="user-timeslots"  class="col-lg-11">
+
+ <!-- <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id" ng-click="users.getS3UploadParams()">
+        Add a talent
+      </button>
+      <div id="userNewTalent" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">New Talent</h4>
+            </div>
+            <div class="modal-body">
+                <form > -->
+
             <div id="new-ts"ng-show="tab===8">
               <h3>Create new timeslot here</h3>
               <form>
@@ -77,13 +87,9 @@
                 <button class="btn btn-default" ng-click="tab=0">close</button>
               </form>
             </div>
-            <button ng-show="app.current_user.id === users.user.id" class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
+            <button ng-show="app.current_user.id === users.user.id" class="btn mrgn" ng-click ="tab=8">Create new timeslot</button>
             <div class="day-block" ng-repeat="day in users.day_array">
               <div class="day-div">
-
-               <!--  <a ng-click="isReplyFormOpen = !isReplyFormOpen">Reply</a>
- <div ng-show="isReplyFormOpen" id="replyForm">
-   </div> -->
 
                 <h2 class= "day-title">{{day.name}}</h2>
                 <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
