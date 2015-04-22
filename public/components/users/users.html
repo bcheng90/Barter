@@ -57,7 +57,7 @@
       <div class="row">
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <div id="user-timeslots"  class="col-lg-11">
+          <div id="user-timeslots"  class="col-lg-12">
 
             <div id="new-ts" class="modal fade" ng-show="tab===8">
               <div class="modal-dialog">
@@ -110,11 +110,11 @@
                           <button ng-click="users.acceptOffer(offer);tab=(day.id * 10 + 9)" class="btn" ng-show="app.current_user.id === users.user.id && !users.isClosed(timeslot)">accept</button>
                           <button ng-click="users.declineOffer(offer);tab = 0" class="btn" ng-show="app.current_user.id === users.user.id && !users.isClosed(timeslot)">decline</button>
                           <button ng-click="users.declineOffer(offer);tab = 0" class="btn" ng-show="app.current_user.id === users.user.id && users.isClosed(timeslot)">cancel</button>
-                          <button class="btn" ng-click="tab= day.id">close</button>
+                          <button class="btn offer-close" ng-click="tab= day.id">back to offers</button>
                         </div>
                       </li>
                     </ul>
-                    <button class="btn" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== (day.id * 10 + 9)">close</button>
+                    <button class="btn" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== (day.id * 10 + 9) ">close</button>
                   </div>
                   <button class="btn" ng-click="users.createOffer(timeslot);tab = (day.id * 11)" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button><br>
                   <button class="btn delet" ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>

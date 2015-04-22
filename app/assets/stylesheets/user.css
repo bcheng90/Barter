@@ -28,8 +28,15 @@ li {
 }
 
 #user-timeslots {
+<<<<<<< HEAD
   margin: 40px;
   border: 1px solid #D1D3D1;
+  background-color: #B6C9CD;
+  border-radius: 2%;
+  margin-top: 40px;
+  border: 2px solid #D1D3D1;
+  height: 800px;
+  overflow: scroll;
   background-color: #B6C9CD;
 }
 
@@ -41,11 +48,6 @@ li {
   width: 90%;
   margin: 0px;
   padding-left: 4px;
-}
-
-#user-timeslots {
-  height: 800px;
-  overflow: scroll;
 }
 
 form input {
@@ -96,15 +98,15 @@ form input {
   padding-bottom: 10px;
   color: #4D4D4D;
 }
-.tims-count{
+.tims-count h3{
   color: black;
-  font-weight: bolder;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.tims-count:hover {
-  color: #4D4D4D;
-  font-size: 150%;
+.tims-count h3:hover {
+  background-color: grey;
+  color: white;
+  font-weight: bold;
 }
 .day-div {
   background-color: white;
@@ -116,7 +118,6 @@ form input {
   text-align: left;
   text-indent: 50px;
   border-top: 2px solid grey;
-  /*background-color: #EDDCE4;*/
   font-size: 20px;
 }
 .talnt {
@@ -127,10 +128,6 @@ form input {
   border: 2px solid #D1D3D1;
 }
 .timeslot:hover {
-  /*background: -webkit-linear-gradient(left, #E8E8E8 , #854565);
-  background: -o-linear-gradient(right, #E8E8E8 , #854565);
-  background: -moz-linear-gradient(right, #E8E8E8 , #854565);
-  background: linear-gradient(to right, #E8E8E8 , #854565);*/
   background-color: #E6E3EB;
 }
 
@@ -143,6 +140,9 @@ form input {
   border-radius: 6px !important;
   margin-top: 5px;
 }
+/*.offer-close {
+  background-color: red !important;
+}*/
 .btn:hover {
   background-color: #DFDFE1 !important;
 }
