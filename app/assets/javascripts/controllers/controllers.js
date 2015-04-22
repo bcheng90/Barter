@@ -274,19 +274,13 @@ angular.module('barter')
     }
   };
 
+this.getS3UploadParams = function() {
+    $http.get('/talent_forms/new').success(function(data){
+      this.s3Parameters = data;
+    }.bind(this));
+  }
+
 }])
-// .directive('weekDay', function(){
-//   return {
-//     restrict: 'E',
-//     scope: {
-//       winfo : '=info'
-//     },
-//     templateUrl : 'wday-iso.html'
-//   }
-// });
-
-
-
 
 angular.module('barter').controller('TimeslotsController', ['UserService', function(UserService){
 
