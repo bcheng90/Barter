@@ -82,7 +82,10 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
-  this.hasRating = function(targetUser,currentUser) {
+  this.hasRating = function(targetUser, currentUser) {
+    if (!targetUser){
+      return;
+    };
     for (var i = 0; i < targetUser.reputations.length; i++){
       if (targetUser.reputations[i].judge_id === currentUser.id) {
          return true;
@@ -91,13 +94,17 @@ angular.module('barter')
   };
 
   this.hasAcceptedOffer = function(targetUser, currentUser) {
+    if (!targetUser){
+      return;
+    };
     for (var i = 0; i < targetUser.offers.length; i++){
       if (targetUser.offers[i].student_id === currentUser.id) {
         if (targetUser.offers[i].status === true) {
          return true;
         };
-      };
+      }
     }
+    return false;
   };
 
   this.saveTalent = function(){
