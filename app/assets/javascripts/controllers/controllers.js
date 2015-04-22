@@ -91,6 +91,7 @@ angular.module('barter')
     .success(function(railsResponse){
       this.loadUserGraph();
     }.bind(this));
+  }
 
   this.hasRating = function(targetUser, currentUser) {
     if (!targetUser){
@@ -147,7 +148,7 @@ angular.module('barter')
     var that = this;
     $http.delete('/talents/' + talent.id, talent)
     .success(function(response){
-       that.loadUserGraph();
+       thAT.loadUserGraph();
     });
   };
 
