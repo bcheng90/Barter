@@ -20,7 +20,7 @@
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.0.0-rc1.min.js"></script>
 </head>
 <body ng-app="barter" ng-controller="AppController as app">
-  <nav class="navbar navbar-inverse">
+  <nav id="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="session">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li><a ng-href="#/users/<%=current_user.id%>"><%= current_user.username.capitalize %></a></li>
+            <li><a class="fa fa-user" ng-href="#/users/<%=current_user.id%>"> <%= current_user.username.capitalize %></a></li>
             <li><a href="/logout" method="destroy"></i>Logout <i class="fa fa-sign-out"></i></a></li>
           <% else %>
             <li class="dropdown">

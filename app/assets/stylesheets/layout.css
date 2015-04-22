@@ -9,7 +9,11 @@ Font: #3A3335
 */
 
 * {
-  border-radius: 0 !important;
+  font-family: Helvetica, sans-serif;
+}
+
+#navbar {
+  border-radius: 0;
 }
 
 .ng-scope {
@@ -22,8 +26,8 @@ Font: #3A3335
 }
 
 #brand-font {
-font-family: 'Federo', sans-serif;
-font-size: 36px;
+  font-family: 'Federo', sans-serif !important;
+  font-size: 36px;
 }
 a.ng-binding {
   color: #666A86;
@@ -36,9 +40,20 @@ a.ng-binding:hover {
 #user-edit {
   color: #564639;
   float: right;
+  margin-right: 15px;
 }
 
 #user-edit:hover {
+  color: #666A86;
+}
+
+#user-add-talent{
+  color: #564639;
+  float:right;
+  margin-top: -15px;
+}
+
+#user-add-talent:hover {
   color: #666A86;
 }
 
