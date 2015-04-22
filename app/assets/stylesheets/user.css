@@ -39,13 +39,12 @@ li {
 
 
 #user-timeslots {
-  height: 600px;
+  height: 800px;
   overflow: scroll;
 }
 
 form input {
   display: block;
-  /*width: 400px;*/
 }
 
 #user-select {
@@ -59,7 +58,6 @@ form input {
 .talnt {
   border: 2px solid black;
   margin: 10px;
-  /*width: 50%;*/
 }
 
 #new-ts {
@@ -78,6 +76,14 @@ form input {
   background-color: grey;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+.tims-count{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.tims-count:hover {
+  color: white;
+  font-size: 150%;
 }
 .day-div {
   background-color: #C299C2;

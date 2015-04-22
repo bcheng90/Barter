@@ -61,19 +61,24 @@
           <div id="user-timeslots"  class="col-lg-6">
             <div class="day-block" ng-repeat="day in users.day_array">
               <div class="day-div">
+
+               <!--  <a ng-click="isReplyFormOpen = !isReplyFormOpen">Reply</a>
+ <div ng-show="isReplyFormOpen" id="replyForm">
+   </div> -->
+
                 <h2 class= "day-title">{{day.name}}</h2>
                 <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
-                <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3>
-                <div class="day timeslot" id="day.name" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">
+                <div class="tims-count" ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0"  ng-click ="itsOpen = !itsOpen"><h3 >{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3></div>
+                <div class="day timeslot" id="day.name" ng-show="itsOpen" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">
                   <h3 class="times">{{timeslot.hours}}</h3>
                   <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== day.id && !users.isClosed(timeslot)" ng-click="tab = day.id">{{timeslot.offers.length}} offer(s)</button>
                   <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== day.id  && users.isClosed(timeslot)" ng-click="tab = day.id">Accepted offer</button>
                   <div id="timeslot-offers" ng-show="tab === day.id">
                     <ul ng-repeat="offer in timeslot.offers">
-                      <li><button class="btn btn-default" ng-click="tab = (day.id * 11)" ng-show="tab !== (day.id * 11)">See offer {{offer.id}} </button>
+                      <li><button class="btn btn-default" ng-click="tab = (day.id * 11)" ng-show="tab !== (day.id * 11)">See  {{offer.student.username}}' offer </button>
                         <div class="talnt" ng-show = "tab === (day.id * 11) ">
-                          <h4>status: {{offer.status}}</h4>
-                          <h3>{{offer.student.username}}</h3>
+                          <h2>{{offer.status}}</h2>
+                          <h3>Offer made by {{offer.student.username}}</h3>
                           <h3>{{offer.student.username}}'s talents:</h3>
                           <div ng-repeat="talent in offer.student_talents">
                             <p>{{talent.title}}</p>
