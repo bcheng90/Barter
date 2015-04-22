@@ -80,10 +80,10 @@ form input {
 }
 
 .day-title {
-  background: -webkit-linear-gradient(left, white , #90829F);
-  background: -o-linear-gradient(right, white , #90829F);
-  background: -moz-linear-gradient(right, white , #90829F);
-  background: linear-gradient(to right, white , #90829F);
+  background: -webkit-linear-gradient(left, white , #B6B6C7);
+  background: -o-linear-gradient(right, white , #B6B6C7);
+  background: -moz-linear-gradient(right, white , #B6B6C7);
+  background: linear-gradient(to right, white , #B6B6C7);
   padding-top: 10px;
   padding-bottom: 10px;
   color: #4D4D4D;
@@ -122,7 +122,7 @@ form input {
   background: -o-linear-gradient(right, #E8E8E8 , #854565);
   background: -moz-linear-gradient(right, #E8E8E8 , #854565);
   background: linear-gradient(to right, #E8E8E8 , #854565);*/
-  background-color: #E0D6CC;
+  background-color: #E6E3EB;
 }
 
 .delet {
