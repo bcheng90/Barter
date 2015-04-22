@@ -128,7 +128,7 @@ angular.module('barter')
   }
 
   this.hasRating = function(targetUser, currentUser) {
-    if (!targetUser){
+    if (!(targetUser && currentUser) ){
       return;
     };
     for (var i = 0; i < targetUser.reputations.length; i++){
