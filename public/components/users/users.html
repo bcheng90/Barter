@@ -5,7 +5,9 @@
       <div id="user-container">
         <div id="user-aboutme">
           <h4 class="center bold underline">{{users.user.username}}</h4>
-
+          <div class="user-image" style="border-radius: 50%;">
+            <img src="http://www.gravatar.com/avatar/{{users.user.gravatar}}?s=150&&d=http://i.imgur.com/JCimKzH.jpg" />
+          </div>
           <ul>
             <p>Rating: {{users.user.score}}</p>
             <!-- Rate User -->

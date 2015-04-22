@@ -20,6 +20,9 @@ li {
   margin-top: 30px;
 }
 
+.user-image{
+  border-radius: 50%;
+}
 
 #user-timeslots {
   margin: 40px;
