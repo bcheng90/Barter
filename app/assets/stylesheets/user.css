@@ -47,7 +47,7 @@ form input {
 }
 
 #user-timeslots {
-  background-color: black;
+  background-color: #B6C9CD;
 }
 
 .talnt {
@@ -57,7 +57,10 @@ form input {
 
 #new-ts {
   margin: 50px;
-  width: 50%;
+  width: 30%;
+}
+#ts-form {
+  width: 40%;
 }
 
 #user-page {
@@ -73,27 +76,69 @@ form input {
 }
 .day-block {
   text-align: center;
+  margin: 10px;
 }
 
 .day-title {
-  background-color: grey;
+  background: -webkit-linear-gradient(left, white , #B6B6C7);
+  background: -o-linear-gradient(right, white , #B6B6C7);
+  background: -moz-linear-gradient(right, white , #B6B6C7);
+  background: linear-gradient(to right, white , #B6B6C7);
   padding-top: 10px;
   padding-bottom: 10px;
+  color: #4D4D4D;
 }
 .tims-count{
+  color: black;
+  font-weight: bolder;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 .tims-count:hover {
-  color: white;
+  color: #4D4D4D;
   font-size: 150%;
 }
 .day-div {
-  background-color: #C299C2;
+  background-color: white;
 }
 .times {
+  color: #4D4D4D;
+}
+.tim-of {
+  text-align: left;
+  text-indent: 50px;
+  border-top: 2px solid grey;
+  /*background-color: #EDDCE4;*/
+  font-size: 20px;
+}
+.talnt {
+  background-color: ;
 
 }
 .timeslot {
   border: 2px solid #D1D3D1;
+}
+.timeslot:hover {
+  /*background: -webkit-linear-gradient(left, #E8E8E8 , #854565);
+  background: -o-linear-gradient(right, #E8E8E8 , #854565);
+  background: -moz-linear-gradient(right, #E8E8E8 , #854565);
+  background: linear-gradient(to right, #E8E8E8 , #854565);*/
+  background-color: #E6E3EB;
+}
+
+.delet {
+  background-color: #E0CCE0 !important;
+}
+.btn {
+  background-color: #BFBFC3 !important;
+  border: 2px solid #AEAEB4 !important;
+  border-radius: 6px !important;
+  margin-top: 5px;
+}
+.btn:hover {
+  background-color: #DFDFE1 !important;
+}
+.offers {
+  background-color: #E6E3EB;
+  margin-left: -2.8em;
 }
