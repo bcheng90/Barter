@@ -154,11 +154,16 @@
       </div><!-- userNewTalent -->
 
       <div id="user-talents">
-        <ul>
-          <li ng-repeat="talent in users.user.talents">
-            <a ng-click="users.toggleTalentShown(talent)">{{talent.title}}</a>
-            <div ng-class="talent.isShown ? 'visible' : 'hidden'">
-                <p>Category: {{users.convertType(talent.type)}}</p>
+        <div class="panel-group" id="accordion">
+          <div ng-repeat="talent in users.user.talents" class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{talent.id}}">{{talent.title}}</a>
+              </h4>
+            </div>
+            <div id="collapse{{talent.id}}" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <p>Category: {{talent.category}}</p>
                 <p>Experience: {{talent.experience}}</p>
                 <p>Description: {{talent.description}}</p>
                 <p>Sample: {{talent.sample}}</p>
@@ -214,10 +219,10 @@
                     </div><!-- /.modal-content -->
                   </div><!-- /.modal-dialog -->
                 </div><!-- /.modal -->
-
-            </div><!-- main talent show div -->
-          </li><!-- main talent li -->
-        </ul><!-- main talent ul -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div><!-- user-talents -->
     </div> <!-- user talents col-6 -->
   </div> <!-- main row -->

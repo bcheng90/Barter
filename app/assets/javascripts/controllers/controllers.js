@@ -31,6 +31,7 @@ angular.module('barter')
 
 }]);
 
+
 angular.module('barter')
 .controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
 
