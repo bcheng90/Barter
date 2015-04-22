@@ -71,9 +71,14 @@
             <div class="modal-body">
                 <form > -->
 
-            <div id="new-ts"ng-show="tab===8">
-              <h3>Create new timeslot here</h3>
-              <form>
+            <div id="new-ts" class="modal fade" ng-show="tab===8">
+              <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                 <h3>Create new timeslot here</h3>
+                </div>
+                <div class="modal-body">
+              <form id="ts-form">
                 <label>day of the week:</label>
                 <select class="form-control" ng-model="users.user.timeslot.day">
                   <option ng-repeat="day in users.days" name="day" value="{{day}}">{{day}}</option>
@@ -83,18 +88,21 @@
                   <option ng-repeat="hour in users.hours" name="hour" value="{{hour}}">{{hour}}</option>
                 </select>
                 <br>
-                <button class="btn btn-default" type="submit" ng-click="tab=0;users.creeTimeslot()" class="btn btn-primary">Submit</button>
-                <button class="btn btn-default" ng-click="tab=0">close</button>
+                <button class="btn btn-default" type="submit"  data-dismiss="modal" ng-click="tab=0;users.creeTimeslot()" class="btn btn-primary">Submit</button>
+                <button class="btn btn-default" ng-click="tab=0" data-dismiss="modal">close</button>
               </form>
             </div>
-            <button ng-show="app.current_user.id === users.user.id" class="btn mrgn" ng-click ="tab=8">Create new timeslot</button>
+          </div>
+        </div>
+            </div>
+            <button ng-show="app.current_user.id === users.user.id" class="btn mrgn" data-toggle="modal" data-target="#new-ts" ng-click="tab=8">Create new timeslot</button>
+
             <div class="day-block" ng-repeat="day in users.day_array">
               <div class="day-div">
-
                 <h2 class= "day-title">{{day.name}}</h2>
+                <div class="tims-count" >
                 <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
-                <div class="tims-count" ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0"  ng-click ="itsOpen = !itsOpen">
-                  <h3 >{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3>
+                  <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0"  ng-click ="itsOpen = !itsOpen">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3>
                 </div>
                 <!-- <table table-hover> -->
                 <div class="day timeslot" id="day.name" ng-show="itsOpen" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">

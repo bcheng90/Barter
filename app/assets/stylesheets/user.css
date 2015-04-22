@@ -47,7 +47,7 @@ form input {
 }
 
 #user-timeslots {
-  background-color: #645443;
+  background-color: #DDDDE8;
 }
 
 .talnt {
@@ -57,7 +57,10 @@ form input {
 
 #new-ts {
   margin: 50px;
-  width: 70%;
+  width: 30%;
+}
+#ts-form {
+  width: 40%;
 }
 
 #user-page {
@@ -77,11 +80,16 @@ form input {
 }
 
 .day-title {
-  background-color: grey;
+  background: -webkit-linear-gradient(left, white , #90829F);
+  background: -o-linear-gradient(right, white , #90829F);
+  background: -moz-linear-gradient(right, white , #90829F);
+  background: linear-gradient(to right, white , #90829F);
   padding-top: 10px;
   padding-bottom: 10px;
+  color: #4D4D4D;
 }
 .tims-count{
+  color: #4D4D4D;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -90,16 +98,16 @@ form input {
   font-size: 150%;
 }
 .day-div {
-  background-color: #C4A7C4;
+  background-color: #9797AF;
 }
 .times {
-
+  color: #4D4D4D;
 }
 .tim-of {
   text-align: left;
   text-indent: 50px;
   border-top: 2px solid grey;
-  background-color: #EDDCE4;
+  /*background-color: #EDDCE4;*/
   font-size: 20px;
 }
 .talnt {
@@ -110,6 +118,10 @@ form input {
   border: 2px solid #D1D3D1;
 }
 .timeslot:hover {
+  /*background: -webkit-linear-gradient(left, #E8E8E8 , #854565);
+  background: -o-linear-gradient(right, #E8E8E8 , #854565);
+  background: -moz-linear-gradient(right, #E8E8E8 , #854565);
+  background: linear-gradient(to right, #E8E8E8 , #854565);*/
   background-color: #E0D6CC;
 }
 
@@ -117,13 +129,13 @@ form input {
   background-color: #E0CCE0 !important;
 }
 .btn {
-  background-color: #F0D1E0 !important;
-  border: 1px solid grey !important;
-  border-radius: 4px !important;
-  margin: 5px;
+  background-color: #BFBFC3 !important;
+  border: 2px solid #AEAEB4 !important;
+  border-radius: 6px !important;
+  margin-top: 5px;
 }
 .btn:hover {
-  background-color: #F3DAE6 !important;
+  background-color: #DFDFE1 !important;
 }
 .offers {
   background-color: #E0D6CC;
