@@ -95,7 +95,15 @@ form input {
 .times {
 
 }
+.tim-of {
+  text-align: left;
+  text-indent: 50px;
+  border-top: 2px solid grey;
+  background-color: #EDDCE4;
+  font-size: 20px;
+}
 .talnt {
+  background-color: ;
 
 }
 .timeslot {
@@ -110,7 +118,14 @@ form input {
 }
 .btn {
   background-color: #BF86A2 !important;
+  border: 1px solid grey !important;
+  border-radius: 4px !important;
+  margin: 5px;
 }
 .btn:hover {
   background-color: #DABACA !important;
+}
+.offers {
+  background-color: #E0D6CC;
+  margin-left: -2.8em;
 }
