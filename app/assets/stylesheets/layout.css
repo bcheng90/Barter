@@ -9,8 +9,11 @@ Font: #3A3335
 */
 
 * {
-  border-radius: 0 !important;
   font-family: Helvetica, sans-serif;
+}
+
+#navbar {
+  border-radius: 0;
 }
 
 .ng-scope {
@@ -41,6 +44,16 @@ a.ng-binding:hover {
 }
 
 #user-edit:hover {
+  color: #666A86;
+}
+
+#user-add-talent{
+  color: #564639;
+  float:right;
+  margin-top: -15px;
+}
+
+#user-add-talent:hover {
   color: #666A86;
 }
 
