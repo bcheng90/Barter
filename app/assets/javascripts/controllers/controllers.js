@@ -68,10 +68,48 @@ angular.module('barter')
     this.loadUserGraph();
   };
 
-  this.saveTalent = function(){
-    $http.post('/talents', this.talent);
-    this.loadUserGraph();
+
+  function readLocationFromXml(data) {
+    regex = /<Location>(.+)<\/Location>/
+    var match = regex.exec(data);
+    if (match && match.length > 1) {
+      return match[1];
+    }
+  }
+
+  this.saveTalentDetailsToRails = function(xmlFromAmazon) {
+    this.talent.sample = readLocationFromXml(xmlFromAmazon);
+    $http.post('/talents', this.talent)
+    .success(function(railsResponse){
+      this.loadUserGraph();
+    }.bind(this));
   };
+
+  this.saveTalent = function(){
+    var fd = new FormData();
+    for (var k in this.s3Parameters) {
+      var v = this.s3Parameters[k];
+      fd.append(k, v);
+    }
+    fd.append('file', this.upload_file_entered[0]);
+    var options = {
+      transformRequest: angular.identity,
+      headers: {'Content-Type': undefined}
+    };
+    var dfd = $http.post('https://barter-upload.s3.amazonaws.com/', fd, options);
+    dfd.success(function(data){
+         this.saveTalentDetailsToRails(data);
+    }.bind(this));
+    dfd.error(function(data, status) {
+       console.error('Upload error', status, data);
+    });
+  };
+
+  this.getS3UploadParams = function() {
+    $http.get('/talent_forms/new').success(function(data){
+      this.s3Parameters = data;
+    }.bind(this));
+  }
 
   this.deleteTalent = function(talent) {
     var that = this;
