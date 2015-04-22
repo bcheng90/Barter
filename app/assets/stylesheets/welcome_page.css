@@ -67,19 +67,19 @@
 }
 
 #main-caro {
-  background-image: url("nyc.jpg");
+  background-image: url("nyc");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
 #about-barter {
-  background-image: url("piano.jpg");
+  background-image: url("computer");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
 #offer-guide {
-  background-image: url("");
+  background-image: url("piano");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
