@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Federo' rel='stylesheet' type='text/css'>
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -20,7 +21,7 @@
   <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/md5.js"></script>
 </head>
 <body ng-app="barter" ng-controller="AppController as app">
-  <nav class="navbar navbar-inverse">
+  <nav id="navbar" class="navbar navbar-inverse">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -30,18 +31,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand glyphicon glyphicon-transfer" href="/"> Barter</a>
+        <a id="brand-font" class="navbar-brand" href="/"> Barter</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="session">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
-            <li><a ng-href="#/users/<%=current_user.id%>"><%= current_user.username.capitalize %></a></li>
-            <li><a href="/logout" method="destroy"></i>Logout</a></li>
+            <li><a class="fa fa-user" ng-href="#/users/<%=current_user.id%>"> <%= current_user.username.capitalize %></a></li>
+            <li><a href="/logout" method="destroy"></i>Logout <i class="fa fa-sign-out"></i></a></li>
           <% else %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Login<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle fa fa-sign-in" data-toggle="dropdown" role="button" aria-expanded="false"> Login<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <%= form_for :session, url: login_path do |f| %>
                   <li><%= f.label :username %><br><%= f.text_field :username %></li>

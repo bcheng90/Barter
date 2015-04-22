@@ -9,7 +9,11 @@ Font: #3A3335
 */
 
 * {
-  border-radius: 0 !important;
+  font-family: Helvetica, sans-serif;
+}
+
+#navbar {
+  border-radius: 0;
 }
 
 .ng-scope {
@@ -21,6 +25,10 @@ Font: #3A3335
   border: 2px solid #D1D3D1;
 }
 
+#brand-font {
+  font-family: 'Federo', sans-serif !important;
+  font-size: 36px;
+}
 a.ng-binding {
   color: #666A86;
 }
@@ -29,11 +37,32 @@ a.ng-binding:hover {
   color: #564639;
 }
 
-#edit {
+#user-edit {
   color: #564639;
+  float: right;
+  margin-right: 15px;
 }
 
-#edit:hover {
+#user-edit:hover {
+  color: #666A86;
+}
+
+#user-add-talent{
+  color: #564639;
+  float:right;
+  margin-top: -15px;
+}
+
+#user-add-talent:hover {
+  color: #666A86;
+}
+
+#talent-edit {
+  color: #564639;
+  padding-left: 45px;
+}
+
+#talent-edit:hover {
   color: #666A86;
 }
 
