@@ -89,9 +89,26 @@
           <div class="tab-content">
             <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
               <h3>{{welcome.selectedCategory}} Talents</h3>
-              <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
-                <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
-                By {{talent.user.username}}
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default" ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{talent.id}}">{{talent.title}}</a>
+                    </h4>
+                  </div>
+
+                  <div id="collapse{{talent.id}}" class="panel-colapse collapse out">
+                    <div class="panel-body">
+                      <ul>
+                        <li>By {{talent.user.username}}</li>
+                        <li>Rating: {{welcome.getScore(talent.user.id)}}</li>
+                        <li>Location: {{talent.user.location}}</li>
+                        <li>Experience: {{welcome.getExperience(talent.user.id, talent.id)}}</li>
+                        <li><a ng-href="#/users/{{talent.user_id}}" class="btn btn-info btn-sm" role="button">Check Availability</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

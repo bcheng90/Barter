@@ -7,7 +7,7 @@ class TalentsController < ApplicationController
 
   def show
     @talent = Talent.find_by(id: params[:id])
-    render json: @talent
+    render json: @talent, include: :user
   end
 
   def edit
@@ -22,7 +22,7 @@ class TalentsController < ApplicationController
 
   def for_user
     @talents = Talent.where(user_id: params[:user_id])
-    render json: @talents
+    render json: @talents, include: :user
   end
 
   def update
