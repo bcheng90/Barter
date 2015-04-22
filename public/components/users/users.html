@@ -12,11 +12,11 @@
           <img class="user-image" src="http://www.gravatar.com/avatar/{{users.user.gravatar}}?s=150&&d=http://i.imgur.com/JCimKzH.jpg" />
 
           <ul>
-            <p>Rating: {{users.user.score}}</p>
+            <p><span class="bold">Rating:</span> {{users.user.score}}</p>
             <!-- Rate User -->
             <div id="rating-form">
               <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
-                <span class="bold">Rating:</bold>
+                Rating:
                 <select ng-model="users.user.reputation.rating">
                   <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
                 </select>
