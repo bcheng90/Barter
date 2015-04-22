@@ -4,26 +4,26 @@
   <div class="col-lg-6">
       <div id="user-container">
         <div id="user-aboutme">
-          <h4 class="center bold underline">{{users.user.username}} </h4>
-          <p>Rating: {{users.user.score}}</p>
-          <!-- Rate User -->
-          <div id="rating-form">
-            <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
-              Rating:
-              <select ng-model="users.user.reputation.rating">
-                <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
-              </select>
-              <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
-            </form>
-          </div>
+          <h4 class="center bold underline">{{users.user.username}}</h4>
 
           <ul>
+            <p>Rating: {{users.user.score}}</p>
+            <!-- Rate User -->
+            <div id="rating-form">
+              <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
+                <span class="bold">Rating:</bold>
+                <select ng-model="users.user.reputation.rating">
+                  <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
+                </select>
+                <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
+              </form>
+            </div>
             <p><span class="bold">Email:</span> {{users.user.email}}</p>
             <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
             <p><span class="bold">Location:</span> {{users.user.location}}</p>
             <p><span class="bold">About Me:</span> {{users.user.about}}</p>
           </ul>
-          <i id="edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id"></i>
+          <i id="edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id" title="Edit"></i>
           <div id="userEdit" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -131,7 +131,6 @@
             <div class="modal-body">
                 <form >
                   Title: <input type="text" name="title" ng-model="users.talent.title">
-                  Sample: <input type="file" name="sample" file-input="users.upload_file_entered">
                   Description: <input type="text" name="description" ng-model="users.talent.description">
                   Type:
                   <select ng-model="users.talent.type">
@@ -141,6 +140,7 @@
                   <select name="experience" ng-model="users.talent.experience">
                     <option ng-repeat="experience in users.experiences" value="{{experience}}">{{experience}}</option>
                   </select>
+                  Sample: <input type="file" name="sample" file-input="users.upload_file_entered">
                 </form>
             </div>
             <div class="modal-footer">
@@ -161,14 +161,13 @@
             </div>
             <div id="collapse{{talent.id}}" class="panel-collapse collapse in">
               <div class="panel-body">
+                <p>Description: {{talent.description}}</p>
                 <p>Category: {{talent.category}}</p>
                 <p>Experience: {{talent.experience}}</p>
-                <p>Description: {{talent.description}}</p>
                 <p>Sample: {{talent.sample}}</p>
                 <!-- Delete button for Talent -->
-                <i id="delete" class="icon-remove-sign" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id">
-                  Delete Talent
-                </i>
+
+                <i id="delete" class="fa fa-times fa-2x" data-toggle="modal" data-target="#delTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id" title="Remove"></i>
                 <div id="delTalent{{talent.id}}" class="modal">
                   <div class="modal-dialog">
                     <div class="modal-content">
@@ -185,9 +184,7 @@
                 </div><!-- /.modal -->
 
                 <!-- Edit Button for Talent -->
-                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#editTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id" ng-click="users.getS3UploadParams()">
-                  Edit Talent
-                </button>
+                <i id="edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#editTalent{{talent.id}}" ng-show="app.current_user.id === users.user.id" title="Edit" ng-click="users.getS3UploadParams()"></i>
                 <div id="editTalent{{talent.id}}" class="modal">
                   <div class="modal-dialog">
                     <div class="modal-content">

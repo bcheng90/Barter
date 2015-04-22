@@ -40,3 +40,7 @@ a.ng-binding:hover {
 #delete{
   color: #564639;
 }
+
+#delete:hover {
+  color: #666A86;
+}
