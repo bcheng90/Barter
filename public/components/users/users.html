@@ -92,6 +92,22 @@
                   <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
                 </div>
               </div>
+            <div id="new-ts"ng-show="tab===8">
+              <h3>Create new timeslot here</h3>
+              <form>
+                <label>day of the week:</label>
+                <select class="form-control" ng-model="users.user.timeslot.day">
+                  <option ng-repeat="day in users.days" name="day" value="{{day}}">{{day}}</option>
+                </select><br>
+                <label>choose hour:</label>
+                <select class="form-control" ng-model="users.user.timeslot.hour">
+                  <option ng-repeat="hour in users.hours" name="hour" value="{{hour}}">{{hour}}</option>
+                </select>
+                <br>
+                <button class="btn btn-default" type="submit" ng-click="tab=0;users.creeTimeslot()" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <button ng-show="app.current_user.id === users.user.id" class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
             </div>
           </div>
 
