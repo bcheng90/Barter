@@ -16,25 +16,25 @@ li {
 
 #user-aboutme {
   height: 300px;
-  width: 500px;
+  /*width: 500px;*/
   border: 1px solid black;
-  float: left;
+  /*float: left;*/
 }
 
 #user-talents {
  height: 300px;
- width: 500px;
+ /*width: 500px;*/
  border: 1px solid black;
- float: right;
+/* float: right;*/
  overflow: scroll;
 
 }
 
 #user-timeslots {
   margin: 40px;
-  width: 1000px;
+  /*width: 1000px;*/
   border: 1px solid black;
-  clear: both;
+  /*clear: both;*/
 }
 
 
@@ -43,7 +43,7 @@ li {
 
 form input {
   display: block;
-  width: 400px;
+  /*width: 400px;*/
 }
 
 #user-select {
@@ -57,7 +57,7 @@ form input {
 .talnt {
   border: 2px solid black;
   margin: 10px;
-  width: 50%;
+  /*width: 50%;*/
 }
 
 #new-ts {
