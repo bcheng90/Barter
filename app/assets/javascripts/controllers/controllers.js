@@ -144,7 +144,7 @@ angular.module('barter')
   };
 
   this.hasAcceptedOffer = function(targetUser, currentUser) {
-    if (!targetUser){
+    if (!targetUser && currentUser){
       return;
     };
     for (var i = 0; i < targetUser.offers.length; i++){

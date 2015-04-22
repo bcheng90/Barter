@@ -32,7 +32,9 @@ class TalentsController < ApplicationController
   end
 
   def destroy
-    @talent = Talent.find_by(id: params[:id]).destroy
+    @talent = Talent.find_by(id: params[:id])
+    @talent.destroy
+    render json: @talent
   end
 
   private
