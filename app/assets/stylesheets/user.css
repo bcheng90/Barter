@@ -47,7 +47,7 @@ form input {
 }
 
 #user-timeslots {
-  background-color: #DDDDE8;
+  background-color: #B6C9CD;
 }
 
 .talnt {
@@ -99,7 +99,7 @@ form input {
   font-size: 150%;
 }
 .day-div {
-  background-color: #B6C9CD;
+  background-color: white;
 }
 .times {
   color: #4D4D4D;
@@ -137,7 +137,6 @@ form input {
 }
 .btn:hover {
   background-color: #DFDFE1 !important;
-  padding: 12px;
 }
 .offers {
   background-color: #E6E3EB;
