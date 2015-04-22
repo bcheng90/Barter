@@ -132,12 +132,16 @@ angular.module('barter')
     }
   }
 
-  this.saveTalentDetailsToRails = function(xmlFromAmazon) {
-    this.talent.sample = readLocationFromXml(xmlFromAmazon);
+  this.postToRails = function() {
     $http.post('/talents', this.talent)
     .success(function(railsResponse){
       this.loadUserGraph();
     }.bind(this));
+  }
+
+  this.saveTalentDetailsToRails = function(xmlFromAmazon) {
+    this.talent.sample = readLocationFromXml(xmlFromAmazon);
+    this.postToRails();
   }
 
   this.hasRating = function(targetUser, currentUser) {
@@ -152,7 +156,7 @@ angular.module('barter')
   };
 
   this.hasAcceptedOffer = function(targetUser, currentUser) {
-    if (!targetUser && currentUser){
+    if (!(targetUser && currentUser)) {
       return;
     };
     for (var i = 0; i < targetUser.offers.length; i++){
@@ -166,6 +170,10 @@ angular.module('barter')
   };
 
   this.saveTalent = function(){
+    if (!this.upload_file_entered) {
+      this.postToRails();
+      return;
+    }
     var fd = new FormData();
     for (var k in this.s3Parameters) {
       var v = this.s3Parameters[k];
@@ -178,7 +186,7 @@ angular.module('barter')
     };
     var dfd = $http.post('https://barter-upload.s3.amazonaws.com/', fd, options);
     dfd.success(function(data){
-         this.saveTalentDetailsToRails(data);
+        this.saveTalentDetailsToRails(data);
     }.bind(this));
     dfd.error(function(data, status) {
        console.error('Upload error', status, data);
