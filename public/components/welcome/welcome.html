@@ -48,34 +48,38 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-8">
-      <div class="talent-box">
-        <ul class="nav nav-pills nav-justified">
-          <li class="active"><a ng-click="welcome.selectedCategory = 'Art & Music'" data-toggle="pill" >Art & Music</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Sports'" data-toggle="pill" >Sports</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Fitness & Nutrition'" data-toggle="pill" >Fitness & Nutrition</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Cooking & Baking'" data-toggle="pill" >Cooking & Baking</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Computers & Electronics'" data-toggle="pill" >Computers & Electronics</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Education & Careers'" data-toggle="pill" >Education & Careers</a></li>
-          <li><a ng-click="welcome.selectedCategory = 'Home Improvement'" data-toggle="pill" >Home Improvement</a></li>
-        </ul>
+      <div class="row talent-box">
+        <div class="col-lg-3">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a ng-click="welcome.selectedCategory = 'Art & Music'" data-toggle="pill" >Art & Music</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Sports'" data-toggle="pill" >Sports</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Fitness & Nutrition'" data-toggle="pill" >Fitness & Nutrition</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Cooking & Baking'" data-toggle="pill" >Cooking & Baking</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Computers & Electronics'" data-toggle="pill" >Computers & Electronics</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Education & Careers'" data-toggle="pill" >Education & Careers</a></li>
+            <li><a ng-click="welcome.selectedCategory = 'Home Improvement'" data-toggle="pill" >Home Improvement</a></li>
+          </ul>
+        </div> <!-- col-4 -->
 
-        <div class="tab-content">
-          <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
-            <h3>{{welcome.selectedCategory}} Talents</h3>
-            <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
-              <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
-              By {{talent.user.username}}
+        <div class="col-lg-9">
+          <div class="tab-content">
+            <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
+              <h3>{{welcome.selectedCategory}} Talents</h3>
+              <div ng-repeat="talent in welcome.tals | filter: {type: welcome.selectedCategory} ">
+                <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
+                By {{talent.user.username}}
+              </div>
             </div>
           </div>
-        </div>
+        </div> <!-- col-9 -->
 
-      </div> <!-- talent-box -->
+      </div> <!-- row talent-box -->
     </div> <!-- category col-8 -->
 
     <div class="col-lg-4">
       <!-- Search Bar -->
       <div class="input-group input-group-lg">
-        <input ng-model="searchText" type="text" class="form-control" name="search" >
+        <input ng-model="searchText" type="text" class="form-control" name="search" placeholder="Search for Talents" >
         <span class="input-group-btn">
           <button ng-click="welcome.toggle()" class="btn btn-default" type="button">Go!</button>
         </span>
@@ -88,21 +92,31 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="search-list" ng-show="welcome.myVar">
-            <div class="search-result" ng-repeat="talent in welcome.tals | filter:{title: searchText}">
-              <a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a>
-              By {{talent.user.username}}
+            <div class="search-result">
+              <table class="table table-hover">
+                <tr ng-repeat="talent in welcome.tals | filter:{title: searchText} | orderBy: '-created_at'">
+                  <td><a ng-href="#/users/{{talent.user_id}}">{{talent.title}}</a></td>
+                  <td>By {{talent.user.username}}</td>
+                </tr>
+              </table>
             </div>
           </div>
         </div> <!-- col-12 -->
       </div> <!-- serach-list row -->
 
+      <!-- Top Users -->
       <div class="row">
         <div class="col-lg-12">
           <div ng-class="hot-users">
             <div class="hot-users">
-              <h3>Top 10 Teachers:</h3>
-              <div ng-repeat="person in welcome.persons | limitTo:10  | orderBy: '-score'">
-                <a ng-href="#/users/{{person.id}}">{{person.username}}</a> Rating: {{person.score}}
+              <h3>Top 10 Users:</h3>
+              <div >
+                <table class="table table-hover">
+                  <tr ng-repeat="person in welcome.persons | limitTo:10  | orderBy: '-score'">
+                    <td><a ng-href="#/users/{{person.id}}">{{person.username}}</a></td>
+                    <td>Rating: {{person.score}}</td>
+                  </tr>
+                </table>
               </div>
             </div>
           </div>
