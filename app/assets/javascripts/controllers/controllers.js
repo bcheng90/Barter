@@ -21,6 +21,22 @@ angular.module('barter')
       return false;
      };
 
+     this.getScore = function(userId){
+      for(var i = 0; i < this.persons.length; i++){
+        if(this.persons[i].id === userId){
+          return this.persons[i].score;
+        }
+      };
+     };
+
+     this.getExperience = function(userId, talentId){
+      for(var i = 0; i < this.tals.length; i++){
+        if((this.tals[i].user_id === userId) && (this.tals[i].id === talentId)){
+          return this.tals[i].experience;
+        }
+      };
+     };
+
      this.myVar = false;
      this.toggle = function() {
         this.myVar = true;
