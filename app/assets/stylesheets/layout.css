@@ -59,7 +59,8 @@ a.ng-binding:hover {
 
 #talent-edit {
   color: #564639;
-  padding-left: 45px;
+  float: right;
+  margin-right: 15px;
 }
 
 #talent-edit:hover {
@@ -68,6 +69,8 @@ a.ng-binding:hover {
 
 #delete{
   color: #564639;
+  float: right;
+  margin-right: 15px;
 }
 
 #delete:hover {

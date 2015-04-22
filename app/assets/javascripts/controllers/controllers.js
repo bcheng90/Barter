@@ -139,7 +139,7 @@ angular.module('barter')
   };
 
   this.hasAcceptedOffer = function(targetUser, currentUser) {
-    if (!targetUser){
+    if (!targetUser && currentUser){
       return;
     };
     for (var i = 0; i < targetUser.offers.length; i++){
@@ -182,7 +182,7 @@ angular.module('barter')
     var that = this;
     $http.delete('/talents/' + talent.id, talent)
     .success(function(response){
-       thAT.loadUserGraph();
+       that.loadUserGraph();
     });
   };
 
