@@ -38,7 +38,9 @@ li {
 }
 
 
-#user-edit {
+#user-timeslots {
+  height: 600px;
+  overflow: scroll;
 }
 
 form input {
@@ -50,8 +52,8 @@ form input {
   display: block;
 }
 
-#user-container {
-
+#user-timeslots {
+  background-color: black;
 }
 
 .talnt {
@@ -62,9 +64,27 @@ form input {
 
 #new-ts {
   margin: 50px;
+  width: 50%;
 }
 
 .mrgn {
   margin :20px;
 }
+.day-block {
+  text-align: center;
+}
 
+.day-title {
+  background-color: grey;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.day-div {
+  background-color: #C299C2;
+}
+.times {
+
+}
+.timeslot {
+  border: 2px solid grey;
+}

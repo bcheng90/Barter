@@ -60,13 +60,12 @@
 
           <div id="user-timeslots"  class="col-lg-6">
             <div class="day-block" ng-repeat="day in users.day_array">
-              <div>
-                <h2>{{day.name}}</h2>
+              <div class="day-div">
+                <h2 class= "day-title">{{day.name}}</h2>
                 <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
                 <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3>
-                <div class="day" id="day.name" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">
-                  {{timeslot.hours}}
-                  <p>timeslot id: {{timeslot.id}}</p>
+                <div class="day timeslot" id="day.name" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">
+                  <h3 class="times">{{timeslot.hours}}</h3>
                   <button class="btn btn-default" ng-show="timeslot.offers.length && tab !== day.id && !users.isClosed(timeslot)" ng-click="tab = day.id">{{timeslot.offers.length}} offer(s)</button>
                   <button class="btn btn-success" ng-show="timeslot.offers.length && tab !== day.id  && users.isClosed(timeslot)" ng-click="tab = day.id">Accepted offer</button>
                   <div id="timeslot-offers" ng-show="tab === day.id">
@@ -92,6 +91,7 @@
                   <button ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
                 </div>
               </div>
+            </div>
             <div id="new-ts"ng-show="tab===8">
               <h3>Create new timeslot here</h3>
               <form>
@@ -108,24 +108,7 @@
               </form>
             </div>
             <button ng-show="app.current_user.id === users.user.id" class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
-            </div>
           </div>
-
-          <div id="new-ts"ng-show="tab===8">
-            <form>
-              day of the week:
-              <select ng-model="users.user.timeslot.day">
-                <option ng-repeat="day in users.days" name="day" value="{{day}}">{{day}}</option>
-              </select><br>
-              choose hour:
-              <select ng-model="users.user.timeslot.hour">
-                <option ng-repeat="hour in users.hours" name="hour" value="{{hour}}">{{hour}}</option>
-              </select>
-              <br>
-              <button class="btn btn-default" type="submit" ng-click="tab=0;users.creeTimeslot()" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-          <button ng-show="app.current_user.id === users.user.id" class="btn btn-default mrgn" ng-click ="tab=8">Create new timeslot</button>
 
         </div><!-- timeslot col-12-->
       </div><!-- timeslot row -->
