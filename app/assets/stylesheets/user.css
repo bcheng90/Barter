@@ -89,16 +89,17 @@ form input {
   color: #4D4D4D;
 }
 .tims-count{
-  color: #4D4D4D;
+  color: black;
+  font-weight: bolder;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 .tims-count:hover {
-  color: white;
+  color: #4D4D4D;
   font-size: 150%;
 }
 .day-div {
-  background-color: #9797AF;
+  background-color: #B6C9CD;
 }
 .times {
   color: #4D4D4D;
@@ -136,8 +137,9 @@ form input {
 }
 .btn:hover {
   background-color: #DFDFE1 !important;
+  padding: 12px;
 }
 .offers {
-  background-color: #E0D6CC;
+  background-color: #E6E3EB;
   margin-left: -2.8em;
 }
