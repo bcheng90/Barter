@@ -53,10 +53,17 @@
 
       <div class="row">
         <div class="col-lg-12">
+
+          <!-- <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
+        <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3> -->
+
+
           <div id="user-timeslots"  class="col-lg-6">
             <div class="day-block" ng-repeat="day in users.day_array">
               <div>
                 <h2>{{day.name}}</h2>
+                <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
+                <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3>
                 <div class="day" id="day.name" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">
                   {{timeslot.hours}}
                   <p>timeslot id: {{timeslot.id}}</p>
