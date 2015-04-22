@@ -21,14 +21,6 @@ li {
   /*float: left;*/
 }
 
-#user-talents {
- height: 300px;
- /*width: 500px;*/
- border: 1px solid black;
-/* float: right;*/
- overflow: scroll;
-
-}
 
 #user-timeslots {
   margin: 40px;

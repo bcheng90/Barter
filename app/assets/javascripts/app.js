@@ -1,5 +1,5 @@
 // change the routes
-angular.module('barter', ['ngNewRouter', 'ngResource', 'ui.bootstrap']);
+angular.module('barter', ['ngNewRouter', 'ngResource']);
 
 angular.module('barter').directive('fileInput', ['$parse', function($parse){
   return {
