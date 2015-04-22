@@ -134,15 +134,13 @@ form input {
 .delet {
   background-color: #E0CCE0 !important;
 }
-.btn {
+.btn-margin {
   background-color: #BFBFC3 !important;
   border: 2px solid #AEAEB4 !important;
   border-radius: 6px !important;
   margin-top: 5px;
 }
-/*.offer-close {
-  background-color: red !important;
-}*/
+
 .btn:hover {
   background-color: #DFDFE1 !important;
 }

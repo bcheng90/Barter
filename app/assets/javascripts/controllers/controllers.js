@@ -210,6 +210,16 @@ angular.module('barter')
     });
   };
 
+  this.toStars = function(score) {
+    var str = ['☆','☆','☆','☆','☆'];
+    var i  =Math.floor(score);
+    while (--i >= 0) {
+      str[i] = '★';
+    }
+
+    return str.join("");
+  }
+
   this.acceptOffer = function(offer) {
     var that = this;
     offer.status = true;

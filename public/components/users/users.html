@@ -35,7 +35,7 @@
           </div><!-- userEdit -->
 
           <ul>
-            <p><span class="bold">Rating:</span> {{users.user.score}}</p>
+            <p><span class="bold">Rating:</span> {{users.toStars(users.user.score)}}</p>
             <!-- Rate User -->
             <div id="rating-form">
               <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
@@ -83,7 +83,7 @@
           </div>
         </div>
             </div>
-            <button ng-show="app.current_user.id === users.user.id" class="btn mrgn" data-toggle="modal" data-target="#new-ts" ng-click="tab=8">Create new timeslot</button>
+            <button ng-show="app.current_user.id === users.user.id" class="btn btn-margin" data-toggle="modal" data-target="#new-ts" ng-click="tab=8">Create new timeslot</button>
 
             <div class="day-block" ng-repeat="day in users.day_array">
               <div class="day-div">
@@ -94,30 +94,31 @@
                 </div>
                 <!-- <table table-hover> -->
                 <div class="day timeslot" id="day.name" ng-show="itsOpen" ng-repeat="timeslot in users.user.timeslots | filter:{weekday: day.id} | orderBy :'time'">
-                  <h3 class="times">{{timeslot.hours}}</h3>
-                  <button class="btn" ng-show="timeslot.offers.length && tab !== day.id && !users.isClosed(timeslot)" ng-click="tab = day.id">{{timeslot.offers.length}} offer(s)</button>
-                  <button class="btn" ng-show="timeslot.offers.length && tab !== day.id  && users.isClosed(timeslot)" ng-click="tab = day.id">Accepted offer</button>
+                  <h3 class="times">At {{timeslot.hours}}</h3>
+                  <button class="btn btn-margin" ng-show="timeslot.offers.length && tab !== day.id && !users.isClosed(timeslot)" ng-click="tab = day.id">{{timeslot.offers.length}} offer(s)</button>
+                  <button class="btn btn-margin" ng-show="timeslot.offers.length && tab !== day.id  && users.isClosed(timeslot)" ng-click="tab = day.id">Accepted offer</button>
                   <div id="timeslot-offers" ng-show="tab === day.id">
                     <ul ng-repeat="offer in timeslot.offers">
-                      <li class="offers"><button class="btn" ng-click="tab = (day.id * 11)" ng-show="tab !== (day.id * 11)">See  {{offer.student.username}}' offer </button>
+                      <li class="offers"><button class="btn btn-margin" ng-click="tab = (day.id * 11)" ng-show="tab !== (day.id * 11)">See  {{offer.student.username}}' offer </button>
                         <div class="talnt" ng-show = "tab === (day.id * 11) ">
                           <!-- <h2>{{offer.status}}</h2> -->
                           <h3><a href="users/{{offer.student.id}}">Offer made by {{offer.student.username}}</a></h3>
+                          <h3>{{offer.student.username}}'s rating: {{users.toStars(offer.student_score)}} </h3>
                           <h3>{{offer.student.username}}'s talents:</h3>
                           <div class="tim-of" ng-repeat="talent in offer.student_talents">
                             <p>{{talent.title}}</p>
                           </div>
-                          <button ng-click="users.acceptOffer(offer);tab=(day.id * 10 + 9)" class="btn" ng-show="app.current_user.id === users.user.id && !users.isClosed(timeslot)">accept</button>
-                          <button ng-click="users.declineOffer(offer);tab = 0" class="btn" ng-show="app.current_user.id === users.user.id && !users.isClosed(timeslot)">decline</button>
-                          <button ng-click="users.declineOffer(offer);tab = 0" class="btn" ng-show="app.current_user.id === users.user.id && users.isClosed(timeslot)">cancel</button>
-                          <button class="btn offer-close" ng-click="tab= day.id">back to offers</button>
+                          <button ng-click="users.acceptOffer(offer);tab=(day.id * 10 + 9)" class="btn btn-margin" ng-show="app.current_user.id === users.user.id && !users.isClosed(timeslot)">accept</button>
+                          <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-margin" ng-show="app.current_user.id === users.user.id && !users.isClosed(timeslot)">decline</button>
+                          <button ng-click="users.declineOffer(offer);tab = 0" class="btn btn-margin" ng-show="app.current_user.id === users.user.id && users.isClosed(timeslot)">cancel</button>
+                          <button class="btn btn-margin offer-close" ng-click="tab= day.id">back to offers</button>
                         </div>
                       </li>
                     </ul>
-                    <button class="btn" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== (day.id * 10 + 9) ">close</button>
+                    <button class="btn btn-margin" ng-click="tab = 0" ng-show="timeslot.offers.length && tab !== (day.id * 10 + 9) ">close</button>
                   </div>
-                  <button class="btn" ng-click="users.createOffer(timeslot);tab = (day.id * 11)" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button><br>
-                  <button class="btn delet" ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
+                  <button class="btn btn-margin" ng-click="users.createOffer(timeslot);tab = (day.id * 11)" ng-show="app.current_user.id !== users.user.id && !users.isClosed(timeslot) && !users.hasOffer(timeslot, app.current_user.id)">create offer</button><br>
+                  <button class="btn btn-margin" ng-show="app.current_user.id === users.user.id" ng-click="users.deleteTimeslot(timeslot)">delete timeslot</button>
                 </tr>
               </div>
               <!-- </table> -->

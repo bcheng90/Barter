@@ -39,6 +39,7 @@ json.timeslots @user.timeslots do |ts|
     json.status of.status
     json.timeslot_id of.timeslot_id
     json.student of.student
+    json.student_score of.student.score
     json.student_talents of.student.talents do |talent|
       json.title talent.title
       json.type talent.type
