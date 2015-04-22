@@ -6,7 +6,7 @@
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     z-index: 10;
-    top: 150px;
+    top: 100px;
     text-shadow: -1px 0 black, 0 4px black, 4px 0 black, 0 -1px black;
 }
 
@@ -15,11 +15,14 @@
 }
 .carousel-caption h1 {
   text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 0px black;
-  font-size: 48px;
+  font-size: 96px;
   font-weight: bolder;
+  font-family: 'Federo', sans-serif;
 }
-.carousel-caption h4 {
+.carousel-caption h3 {
   text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 0px black;
+  padding-top: 20px;
+  font-family: 'Federo', sans-serif;
 }
 
 /* Declare heights because of positioning of img element */
@@ -37,7 +40,7 @@
 }
 
 .about-welcome {
-  border: solid D1D3D1 1px;
+  border: solid #D1D3D1 1px;
   width: 100%;
 }
 
@@ -52,21 +55,15 @@
 }
 
 .talent-box {
-  border: solid D1D3D1 1px;
+  border: solid #D1D3D1 1px;
 }
 
 .hot-users {
-  border: solid D1D3D1 1px;
-}
-
-.talents-list{
-/*  float: left;*/
-/*  width: 70%;*/
-  /*border: solid black 1px;*/
+  border: solid #D1D3D1 1px;
 }
 
 .search-list {
-  border: solid D1D3D1 1px;
+  border: solid #D1D3D1 1px;
 }
 
 #main-caro {

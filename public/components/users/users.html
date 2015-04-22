@@ -5,25 +5,10 @@
       <div id="user-container">
         <div id="user-aboutme">
           <h4 class="center bold underline">{{users.user.username}}</h4>
-
-          <ul>
-            <p>Rating: {{users.user.score}}</p>
-            <!-- Rate User -->
-            <div id="rating-form">
-              <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
-                <span class="bold">Rating:</bold>
-                <select ng-model="users.user.reputation.rating">
-                  <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
-                </select>
-                <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
-              </form>
-            </div>
-            <p><span class="bold">Email:</span> {{users.user.email}}</p>
-            <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
-            <p><span class="bold">Location:</span> {{users.user.location}}</p>
-            <p><span class="bold">About Me:</span> {{users.user.about}}</p>
-          </ul>
-          <i id="edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id" title="Edit"></i>
+          <i id="user-edit" class="fa fa-pencil-square-o fa-2x" data-toggle="modal" data-target="#userEdit" ng-show="app.current_user.id === users.user.id" title="Edit"></i>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id" ng-click="users.getS3UploadParams()">
+            Add a talent
+          </button>
           <div id="userEdit" class="modal fade">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -46,6 +31,24 @@
               </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
           </div><!-- userEdit -->
+
+          <ul>
+            <p><span class="bold">Rating:</span> {{users.user.score}}</p>
+            <!-- Rate User -->
+            <div id="rating-form">
+              <form ng-show="app.current_user.id !== users.user.id && !users.hasRating(users.user, app.current_user) && users.hasAcceptedOffer(users.user, app.current_user)">
+                Rating:
+                <select ng-model="users.user.reputation.rating">
+                  <option ng-repeat="rating in users.ratings" value="{{rating}}">{{rating}}</option>
+                </select>
+                <button type="submit" ng-click="users.saveRating()" class="btn btn-primary">Rate</button>
+              </form>
+            </div>
+            <p><span class="bold">Email:</span> {{users.user.email}}</p>
+            <p><span class="bold">Interests:</span> {{users.user.interests}}</p>
+            <p><span class="bold">Location:</span> {{users.user.location}}</p>
+            <p><span class="bold">About Me:</span> {{users.user.about}}</p>
+          </ul>
         </div><!-- user-aboutme -->
       </div> <!-- user-container -->
 
@@ -118,10 +121,7 @@
     </div> <!-- user info col-6 -->
 
     <div class="col-lg-6">
-          <!-- Creating new talent -->
-      <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id" ng-click="users.getS3UploadParams()">
-        Add a talent
-      </button>
+      <!-- Creating new talent -->
       <div id="userNewTalent" class="modal fade">
         <div class="modal-dialog">
           <div class="modal-content">
