@@ -57,7 +57,7 @@ form input {
 
 #new-ts {
   margin: 50px;
-  width: 50%;
+  width: 30%;
 }
 
 #user-page {
@@ -96,4 +96,8 @@ form input {
 }
 .timeslot {
   border: 2px solid #D1D3D1;
+}
+
+.delet {
+  background-color: #E0CCE0 !important;
 }
