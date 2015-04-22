@@ -53,8 +53,8 @@
 
     <div ng-class="hot-users">
       <div class="hot-users">
-        <h3>Top Teachers:</h3>
-        <div ng-repeat="person in welcome.persons | orderBy: '-score'">
+        <h3>Top 10 Teachers:</h3>
+        <div ng-repeat="person in welcome.persons | limitTo:10  | orderBy: '-score'">
           <a ng-href="#/users/{{person.id}}">{{person.username}}</a> Rating: {{person.score}}
         </div>
       </div>
