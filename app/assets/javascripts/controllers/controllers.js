@@ -87,10 +87,15 @@ angular.module('barter')
        this.user = data;
        this.talent = {user_id: this.user.id}
        this.user.reputation = {user_id: this.user.id};
+       this.user.gravatar = this.getGrav(this.user.email);
      }.bind(this));
-   }
+   };
 
    this.loadUserGraph();
+
+  this.getGrav = function(email){
+    return md5(email.trim().toLowerCase());
+  };
 
   this.saveUser = function(user) {
     UserService.update(user);
