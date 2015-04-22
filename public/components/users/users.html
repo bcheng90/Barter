@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
 
-  <div class="col-lg-6">
+  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <div id="user-container">
         <i id="user-add-talent" class="fa fa-pencil fa-lg" data-toggle="modal" data-target="#userNewTalent" ng-show="app.current_user.id === users.user.id" ng-click="users.getS3UploadParams()">Add New Talent</i>
         <div id="user-aboutme">
@@ -51,7 +51,7 @@
       </div> <!-- user-container -->
 
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
           <!-- <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
         <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3> -->
@@ -118,7 +118,7 @@
       </div><!-- timeslot row -->
     </div> <!-- user info col-6 -->
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
       <!-- Creating new talent -->
       <div id="userNewTalent" class="modal fade">
         <div class="modal-dialog">

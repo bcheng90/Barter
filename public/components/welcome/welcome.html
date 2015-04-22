@@ -70,9 +70,9 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
       <div class="row talent-box">
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
           <ul class="nav nav-pills nav-stacked">
             <li class="active"><a ng-click="welcome.selectedCategory = 'Art & Music'" data-toggle="pill" >Art & Music</a></li>
             <li><a ng-click="welcome.selectedCategory = 'Sports'" data-toggle="pill" >Sports</a></li>
@@ -84,7 +84,7 @@
           </ul>
         </div> <!-- col-4 -->
 
-        <div class="col-lg-9">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
           <div class="tab-content">
             <div ng-class="welcome.category == 'music' ? 'active' : 'inactive'" id="music" class="tab-pane fade in active talents-list">
               <h3>{{welcome.selectedCategory}} Talents</h3>
@@ -116,7 +116,7 @@
       </div> <!-- row talent-box -->
     </div> <!-- category col-8 -->
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
       <!-- Search Bar -->
       <div class="input-group input-group-lg">
         <input ng-model="searchText" type="text" class="form-control" name="search" placeholder="Search for Talents" >
@@ -130,7 +130,7 @@
 
       <!-- Search List -->
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="search-list" ng-show="welcome.myVar">
             <div class="search-result">
               <table class="table table-hover">
@@ -146,7 +146,7 @@
 
       <!-- Top Users -->
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div ng-class="hot-users">
             <div class="hot-users">
               <h3>Top 10 Users:</h3>
@@ -161,7 +161,7 @@
             </div>
           </div>
         </div> <!-- col -->
-      </div> <!-- row -->
+      </div> <!-- row -->g
 
     </div> <!-- search col-4 -->
 
