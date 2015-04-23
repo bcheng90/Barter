@@ -146,10 +146,11 @@ end
 Offer.create([{timeslot_id: rand(105..112), student_id: [1,2,3,4,5,6,7,8,9,10,11,12,13].sample, status: true}])
 
 # KOBE TIME
-kobe = User.create(username: "KobeTheBest", email: "IAmBall@dunks4eva.com", location: "City of Angels, LA", interests: "Ball is life.", password: "123", about: "Do you not know who I am?" )
+kobe = User.create(username: "KobeTheBest", email: "iamtheball24@gmail.com", location: "City of Angels, LA", interests: "Ball is life.", password: "123", about: "Do you not know who I am?" )
 7.times do
   kobe.timeslots << Timeslot.create(time: DateTime.new(2014,4,rand(13..19),rand(8..20)), user_id: 15)
 end
 kobe.reputations << Reputation.create(judge_id: [1,2,4,5,6,7,8,9,10,11,12,13,14].sample, rating: 3)
-Talent.create(title: "Basketball", type: "Sports", experience: "Expert", user_id: 15, description: "What is ball to you? Doesn't matter. It's everything to me.", sample: "https://sc-barter.s3.amazonaws.com/uploads/a28754e0-e4d8-49db-b79d-8f144b99585f/kobe.mp4")
+Talent.create(title: "Basketball", type: "Sports", experience: "Expert", user_id: 15, description: "What is ball to you? Doesn't matter. It's everything to me.", sample: "https://sc-barter.s3.amazonaws.com/uploads/a34fc96b-86a2-43d2-9ca1-84a9a874afe5/Genyoutube.com_Kobe_Bryant_Windmill_Dunk_vs_Clippers.mp4")
 Offer.create([{timeslot_id: rand(113..120), student_id: 3, status: true}])
+
