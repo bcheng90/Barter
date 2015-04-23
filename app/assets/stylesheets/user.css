@@ -37,9 +37,10 @@ li {
   border-radius: 2%;
   margin-top: 40px;
   border: 2px solid #D1D3D1;
-  height: 800px;
+  height: 600px;
   overflow: scroll;
-  background-color: #B6C9CD;
+  background-color: #F1F2F2;
+  margin-bottom: 40px;
 }
 
 .talent-line {
@@ -112,7 +113,12 @@ form input {
   font-weight: bold;
 }
 .day-div {
-  background-color: white;
+  background: -webkit-linear-gradient(left, #CFD6D6, #79A1A0);
+  background: -o-linear-gradient(right, #CFD6D6, #79A1A0);
+  background: -moz-linear-gradient(right,#CFD6D6 , #79A1A0);
+  background: linear-gradient(to right,#CFD6D6 , #79A1A0);
+  /*background-color: #B6C9CD;*/
+
 }
 .times {
   color: #4D4D4D;
