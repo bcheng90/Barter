@@ -178,7 +178,7 @@
                 <table class="table table-hover">
                   <tr ng-repeat="person in welcome.persons | limitTo:10  | orderBy: '-score'">
                     <td><a ng-href="#/users/{{person.id}}">{{person.username}}</a></td>
-                    <td>Rating: {{person.score}}</td>
+                    <td>Rating: {{welcome.toStars(person.score)}}</td>
                   </tr>
                 </table>
               </div>
