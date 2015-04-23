@@ -28,8 +28,6 @@ li {
 }
 
 #user-timeslots {
-<<<<<<< HEAD
-  margin: 40px;
   border: 1px solid #D1D3D1;
   background-color: #B6C9CD;
   border-radius: 2%;
@@ -102,6 +100,7 @@ form input {
   color: black;
   padding-top: 10px;
   padding-bottom: 10px;
+  cursor: pointer;
 }
 .tims-count h3:hover {
   background-color: grey;

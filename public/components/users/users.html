@@ -69,6 +69,7 @@
               <form id="ts-form">
                 <label>day of the week:</label>
                 <select class="form-control" ng-model="users.user.timeslot.day">
+
                   <option ng-repeat="day in users.days" name="day" value="{{day}}">{{day}}</option>
                 </select><br>
                 <label>choose hour:</label>
@@ -87,7 +88,7 @@
 
             <div class="day-block" ng-repeat="day in users.day_array">
               <div class="day-div">
-                <h2 class= "day-title">{{day.name}}</h2>
+                <h2 class= "day-title">{{day.name}} , {{users.actualDate(day) | date:'MMM d' }}</h2>
                 <div class="tims-count" >
                 <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length===0">no timeslots here</h3>
                   <h3 ng-show="(users.user.timeslots | filter:{weekday: day.id}).length!==0"  ng-click ="itsOpen = !itsOpen">{{(users.user.timeslots | filter:{weekday: day.id}).length }} timeslot(s)</h3>
