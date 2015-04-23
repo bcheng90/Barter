@@ -51,7 +51,7 @@
                   It started with an question. A thought that if we share our talents and our time, how much can we learn? Barter was started for the sole purpose of taking the expenses of having a tutor and replacing it with giving your time to teach one another your talents. A community built by offering what you know to the world. A community built to connect people globally through your knowledge.
                 </p>
                 <p id="header-text">
-                  Teach, grow, learn.
+                  Teach, Learn, Grow
                 </p>
             </div>
         </div>
@@ -176,7 +176,7 @@
               <h3>Top 10 Users:</h3>
               <div>
                 <table class="table table-hover">
-                  <tr ng-repeat="person in welcome.persons | limitTo:10  | orderBy: '-score'">
+                  <tr ng-repeat="person in welcome.persons | orderBy: '-score' | limitTo:10 ">
                     <td><a ng-href="#/users/{{person.id}}">{{person.username}}</a></td>
                     <td>Rating: {{welcome.toStars(person.score)}}</td>
                   </tr>
