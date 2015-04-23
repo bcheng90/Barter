@@ -74,7 +74,7 @@ angular.module('barter')
 
 
 angular.module('barter')
-.controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
+.controller('UsersController', ['$http', '$routeParams', '$sce', 'UserService', "TalentService", "OfferService", function($http, $routeParams, $sce, UserService, TalentService, OfferService){
 
   this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvement"];
   this.hours = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"]
@@ -131,6 +131,10 @@ angular.module('barter')
     });
   };
 
+  this.trustSource = function(url) {
+    return $sce.trustAsResourceUrl(url);
+  }
+
 
   this.saveRating = function(){
     $http.post('/reputations', this.user.reputation);
@@ -142,16 +146,20 @@ angular.module('barter')
     regex = /<Location>(.+)<\/Location>/
     var match = regex.exec(data);
     if (match && match.length > 1) {
-      return match[1];
+      return decodeURIComponent(match[1]);
     }
   }
 
-  this.saveTalentDetailsToRails = function(xmlFromAmazon) {
-    this.talent.sample = readLocationFromXml(xmlFromAmazon);
+  this.postToRails = function() {
     $http.post('/talents', this.talent)
     .success(function(railsResponse){
       this.loadUserGraph();
     }.bind(this));
+  }
+
+  this.saveTalentDetailsToRails = function(xmlFromAmazon) {
+    this.talent.sample = readLocationFromXml(xmlFromAmazon);
+    this.postToRails();
   }
 
   this.hasRating = function(targetUser, currentUser) {
@@ -166,7 +174,7 @@ angular.module('barter')
   };
 
   this.hasAcceptedOffer = function(targetUser, currentUser) {
-    if (!targetUser && currentUser){
+    if (!(targetUser && currentUser)) {
       return;
     };
     for (var i = 0; i < targetUser.offers.length; i++){
@@ -180,6 +188,10 @@ angular.module('barter')
   };
 
   this.saveTalent = function(){
+    if (!this.upload_file_entered) {
+      this.postToRails();
+      return;
+    }
     var fd = new FormData();
     for (var k in this.s3Parameters) {
       var v = this.s3Parameters[k];
@@ -190,9 +202,9 @@ angular.module('barter')
       transformRequest: angular.identity,
       headers: {'Content-Type': undefined}
     };
-    var dfd = $http.post('https://barter-upload.s3.amazonaws.com/', fd, options);
+    var dfd = $http.post('https://sc-barter.s3.amazonaws.com/', fd, options);
     dfd.success(function(data){
-         this.saveTalentDetailsToRails(data);
+        this.saveTalentDetailsToRails(data);
     }.bind(this));
     dfd.error(function(data, status) {
        console.error('Upload error', status, data);
@@ -345,12 +357,6 @@ angular.module('barter')
       };
     }
   };
-
-this.getS3UploadParams = function() {
-    $http.get('/talent_forms/new').success(function(data){
-      this.s3Parameters = data;
-    }.bind(this));
-  }
 
 }])
 
