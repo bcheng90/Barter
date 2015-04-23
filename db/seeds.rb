@@ -7,7 +7,7 @@ about = ["I like short walks on the beach, long bikes on the road, and drinking 
 14.times do |i|
   user = User.create(username: usernames[i], email: emails[i], location: locations[i], interests: interests[i], password: "123", about: about[i])
   8.times do |i|
-    user.timeslots << Timeslot.create(time: DateTime.new(2014,4,rand(13..19),rand(1..11)), user_id: user.id)
+    user.timeslots << Timeslot.create(time: DateTime.new(2014,4,rand(13..19),rand(8..20)), user_id: user.id)
   end
 end
 
@@ -16,6 +16,7 @@ ryan = User.all[1]
 ben = User.all[2]
 lauren = User.all[3]
 steph = User.all[4]
+
 angel = User.all[5]
 eveanandi = User.all[6]
 tracy = User.all[7]
@@ -41,11 +42,11 @@ malcolm = User.all[13]
   ryanB.reputations << Reputation.create!(judge_id: [1,2,3,4,5,6,7,8,9,10,11,12,14].sample, rating: [1,2,3,4,5].sample)
   malcolm.reputations << Reputation.create!(judge_id: [1,2,3,4,5,6,7,8,9,10,11,12,13].sample, rating: [1,2,3,4,5].sample)
 end
-hoa.reputations << Reputation.create!(judge_id: [1,2,4,5,6,7,8,9,11,12,13,14].sample, rating: 3)
+
 
 
 # User 1 Talents
-Talent.create([{title: "Hip-hop dance", type: "Art & Music", experience: "Novice", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Swing dance", type: "Art & Music", experience: "Novice", description: "Been dancing for 50 years but 25 of them were before I was born.", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Baking Bread", type: "Cooking & Baking", experience: "Novice", description: "Baking bread beautifully all day, every day.", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Guitar", type: "Art & Music", experience: "Expert", description: "I wow all the men and ladies when I play Wonderwall.", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}])
+Talent.create([{title: "Hip-hop dance", type: "Art & Music", experience: "Novice", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Swing dance", type: "Art & Music", experience: "Novice", description: "Been dancing for 50 years but 25 of them were before I was born.", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Baking Bread", type: "Cooking & Baking", experience: "Novice", description: "Baking bread beautifully all day, every day.", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Guitar", type: "Art & Music", experience: "Expert", description: "I wow all the men and ladies when I play Wonderwall.", user_id: 1, sample: "https://sc-barter.s3.amazonaws.com/uploads/7b27b110-f62b-4f48-beca-4381b449829a/guitar.mp4"}])
 # User 2 Talents
 Talent.create([{title: "Ruby on Rails - Coding", type: "Computers & Electronics", experience: "Expert", description: "I can type rails faster than a train can travel", user_id: 2, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Minesweeper", type: "Computers & Electronics", experience: "Expert", description: "I had once decided to become a professional minesweeper. The danger turned me away.", user_id: 2, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}, {title: "Learn Chinese", type: "Education & Careers", experience: "Expert", description: "I can speak Mandarin but it just sounds very Americanized.", user_id: 2, sample: "https://sc-barter.s3.amazonaws.com/uploads/f54bd71a-98f7-4b11-b79d-c39a59922f74/nuggets.mp4"}])
 # User 3 Talents
@@ -143,3 +144,12 @@ Offer.create([{timeslot_id: rand(97..104), student_id: [1,2,3,4,5,6,7,8,9,10,11,
   Offer.create([{timeslot_id: rand(105..112), student_id: [1,2,3,4,5,6,7,8,9,10,11,12,13].sample, status: false}])
 end
 Offer.create([{timeslot_id: rand(105..112), student_id: [1,2,3,4,5,6,7,8,9,10,11,12,13].sample, status: true}])
+
+# KOBE TIME
+kobe = User.create(username: "KobeTheBest", email: "IAmBall@dunks4eva.com", location: "City of Angels, LA", interests: "Ball is life.", password: "123", about: "Do you not know who I am?" )
+7.times do
+  kobe.timeslots << Timeslot.create(time: DateTime.new(2014,4,rand(13..19),rand(8..20)), user_id: 15)
+end
+kobe.reputations << Reputation.create(judge_id: [1,2,4,5,6,7,8,9,10,11,12,13,14].sample, rating: 3)
+Talent.create(title: "Basketball", type: "Sports", experience: "Expert", user_id: 15, description: "What is ball to you? Doesn't matter. It's everything to me.", sample: "https://sc-barter.s3.amazonaws.com/uploads/a28754e0-e4d8-49db-b79d-8f144b99585f/kobe.mp4")
+Offer.create([{timeslot_id: rand(113..120), student_id: 3, status: true}])
