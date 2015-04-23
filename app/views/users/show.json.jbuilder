@@ -30,6 +30,7 @@ json.timeslots @user.timeslots do |ts|
   json.hours ts.hours
   json.test ts.time.to_f * 1000
   json.weekday ts.weekday
+  json.date ts.date
   json.user_id ts.user_id
   json.offer_id ts.offer_id
   json.mcrsec ts.mcrsec
@@ -39,6 +40,7 @@ json.timeslots @user.timeslots do |ts|
     json.status of.status
     json.timeslot_id of.timeslot_id
     json.student of.student
+    json.student_score of.student.score
     json.student_talents of.student.talents do |talent|
       json.title talent.title
       json.type talent.type
