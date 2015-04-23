@@ -54,6 +54,16 @@ angular.module('barter')
       };
      };
 
+    this.toStars = function(score) {
+      var str = ['☆','☆','☆','☆','☆'];
+      var i  =Math.floor(score);
+      while (--i >= 0) {
+        str[i] = '★';
+      }
+
+      return str.join("");
+  }
+
      this.getExperience = function(userId, talentId){
       for(var i = 0; i < this.tals.length; i++){
         if((this.tals[i].user_id === userId) && (this.tals[i].id === talentId)){
