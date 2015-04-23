@@ -74,7 +74,7 @@ angular.module('barter')
 
 
 angular.module('barter')
-.controller('UsersController', ['$http', '$routeParams', 'UserService', "TalentService", "OfferService", function($http, $routeParams, UserService, TalentService, OfferService){
+.controller('UsersController', ['$http', '$routeParams', '$sce', 'UserService', "TalentService", "OfferService", function($http, $routeParams, $sce, UserService, TalentService, OfferService){
 
   this.categories = ["Art & Music", "Sports", "Fitness & Nutrition", "Cooking & Baking", "Computers & Electronics", "Education & Careers", "Home Improvement"];
   this.hours = ["08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"]
@@ -131,6 +131,10 @@ angular.module('barter')
     });
   };
 
+  this.trustSource = function(url) {
+    return $sce.trustAsResourceUrl(url);
+  }
+
 
   this.saveRating = function(){
     $http.post('/reputations', this.user.reputation);
@@ -142,7 +146,7 @@ angular.module('barter')
     regex = /<Location>(.+)<\/Location>/
     var match = regex.exec(data);
     if (match && match.length > 1) {
-      return match[1];
+      return decodeURIComponent(match[1]);
     }
   }
 

@@ -176,12 +176,11 @@
                 <p class="talent-line">Description: {{talent.description}}</p>
                 <p class="talent-line">Category: {{talent.type}}</p>
                 <p class="talent-line">Experience: {{talent.experience}}</p>
-                <p class="talent-line">Sample:
-                  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="500" height="305" accesskey="v" title="Video">
-                  <param name="movie" value="{{talent.sample}}" />
-                  <param name="quality" value="high" />
-                  <embed src="{{talent.sample}}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="360" height="240"></embed>
-                  </object>
+                <!-- Can't get this switch to work -->
+                <p class="talent-line">Sample: {{talent.sample}}
+                  <video width="320" height="240" controls>
+                    <source ng-src="{{users.trustSource(talent.sample)}}" type="video/mp4">
+                  </video>
                 </p>
                 <!-- Delete button for Talent -->
 

@@ -17,7 +17,8 @@ li {
 #user-aboutme {
   background-color: white;
   border-radius: 2%;
-  border: 1px solid #D1D3D1;
+  border-bottom: 3px solid #D1D3D1;
+  border-right: 3px solid #D1D3D1;
   margin-top: 30px;
 }
 
