@@ -75,7 +75,7 @@ form input {
 }
 
 #user-page {
-  /*background-color: #CFD1CF;*/
+  background-color: #CFD1CF;
 }
 
 #user-talents {
@@ -134,17 +134,17 @@ form input {
 }
 
 .delet {
-  background-color: #E0CCE0 !important;
+  background-color: #E0CCE0;
 }
 .btn-margin {
-  background-color: #BFBFC3 !important;
-  border: 2px solid #AEAEB4 !important;
-  border-radius: 6px !important;
+  background-color: #BFBFC3;
+  border: 2px solid #AEAEB4;
+  border-radius: 6px;
   margin-top: 5px;
 }
 
 .btn:hover {
-  background-color: #DFDFE1 !important;
+  background-color: #DFDFE1;
 }
 .offers {
   background-color: #E6E3EB;

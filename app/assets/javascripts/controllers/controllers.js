@@ -198,7 +198,7 @@ angular.module('barter')
       transformRequest: angular.identity,
       headers: {'Content-Type': undefined}
     };
-    var dfd = $http.post('https://barter-upload.s3.amazonaws.com/', fd, options);
+    var dfd = $http.post('https://sc-barter.s3.amazonaws.com/', fd, options);
     dfd.success(function(data){
         this.saveTalentDetailsToRails(data);
     }.bind(this));
@@ -353,12 +353,6 @@ angular.module('barter')
       };
     }
   };
-
-this.getS3UploadParams = function() {
-    $http.get('/talent_forms/new').success(function(data){
-      this.s3Parameters = data;
-    }.bind(this));
-  }
 
 }])
 
