@@ -90,6 +90,20 @@ angular.module('barter')
                     {id: 7, name: "Sunday"}
                     ]
 
+  this.actualDate = function(day) {
+    var id = day.id - 1;
+    var today = new Date();
+    var dayToday = today.getDay();
+    var offset = id - dayToday + 1;
+    if (offset < 0) {
+      offset += 7;
+    }
+    var result = new Date();
+    result.setDate(today.getDate() + offset);
+
+    return result;
+
+  }
   this.loadUserGraph = function() {
      UserService.get({id: $routeParams.id}, function(data){
        this.user = data;
@@ -209,6 +223,16 @@ angular.module('barter')
       this.talents = data;
     });
   };
+
+  this.toStars = function(score) {
+    var str = ['☆','☆','☆','☆','☆'];
+    var i  =Math.floor(score);
+    while (--i >= 0) {
+      str[i] = '★';
+    }
+
+    return str.join("");
+  }
 
   this.acceptOffer = function(offer) {
     var that = this;

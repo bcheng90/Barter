@@ -17,4 +17,8 @@ class Timeslot < ActiveRecord::Base
   def hours
     time.to_s.split(" ")[1].split(":").first + ":00"
   end
+
+  def date
+     time.strftime("%B %d, %Y")
+  end
 end
