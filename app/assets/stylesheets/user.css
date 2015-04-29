@@ -17,8 +17,7 @@ li {
 #user-aboutme {
   background-color: white;
   border-radius: 2%;
-  border-bottom: 3px solid #D1D3D1;
-  border-right: 3px solid #D1D3D1;
+  box-shadow: 10px 10px 5px #888888;
   margin-top: 30px;
 }
 
@@ -29,14 +28,14 @@ li {
 }
 
 #user-timeslots {
-  border: 1px solid #D1D3D1;
+  box-shadow: 10px 10px 5px #888888;
   background-color: #B6C9CD;
 }
 
 #user-timeslots {
   border-radius: 2%;
   margin-top: 40px;
-  border: 2px solid #D1D3D1;
+  box-shadow: 10px 10px 5px #888888;
   height: 600px;
   overflow: scroll;
   background-color: #F1F2F2;
@@ -82,6 +81,10 @@ form input {
 
 #user-talents {
   margin-top: 30px;
+}
+
+#user-talent-table {
+  box-shadow: 10px 10px 5px #888888;
 }
 
 .mrgn {

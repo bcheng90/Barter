@@ -22,7 +22,7 @@ Font: #3A3335
 .container {
   color: #3A3335;
   background-color: white;
-  border: 2px solid #D1D3D1;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 #brand-font {
