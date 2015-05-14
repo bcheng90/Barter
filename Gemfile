@@ -34,8 +34,11 @@ gem 'mailgun-ruby', '~>1.0.2'
 gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :production, :staging do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
-gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
