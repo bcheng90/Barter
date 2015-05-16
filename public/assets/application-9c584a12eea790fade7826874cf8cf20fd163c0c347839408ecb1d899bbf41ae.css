@@ -1,0 +1,370 @@
+/*
+Color Scheme:
+
+Site background: #E6E8E6
+All div borders: #D1D3D1
+Whatever you want ;): #666A86
+Chocolate Brown: #564639
+Font: #3A3335
+*/
+
+
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+#navbar {
+  border-radius: 0;
+}
+
+.ng-scope {
+  background-color: #E6E8E6;
+}
+.container {
+  color: #3A3335;
+  background-color: white;
+  border: 2px solid #D1D3D1;
+}
+
+#brand-font {
+  font-family: 'Federo', sans-serif !important;
+  font-size: 36px;
+}
+a.ng-binding {
+  color: #666A86;
+}
+
+a.ng-binding:hover {
+  color: #564639;
+}
+
+#user-edit {
+  color: #564639;
+  float: right;
+  margin-right: 15px;
+}
+
+#user-edit:hover {
+  color: #666A86;
+}
+
+#user-add-talent{
+  color: #564639;
+  float:right;
+  margin-top: -15px;
+}
+
+#user-add-talent:hover {
+  color: #666A86;
+}
+
+#talent-edit {
+  color: #564639;
+  float: right;
+  margin-right: 15px;
+}
+
+#talent-edit:hover {
+  color: #666A86;
+}
+
+#delete{
+  color: #564639;
+  float: right;
+  margin-right: 15px;
+}
+
+#delete:hover {
+  color: #666A86;
+}
+.center {
+  text-align: center;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+li {
+  list-style-type: none;
+}
+
+#user-aboutme {
+  background-color: white;
+  border-radius: 2%;
+  border-bottom: 3px solid #D1D3D1;
+  border-right: 3px solid #D1D3D1;
+  margin-top: 30px;
+}
+
+.user-image{
+  border-radius: 25%;
+  display: block;
+  margin: 0 auto;
+}
+
+#user-timeslots {
+  border: 1px solid #D1D3D1;
+  background-color: #B6C9CD;
+}
+
+#user-timeslots {
+  border-radius: 2%;
+  margin-top: 40px;
+  border: 2px solid #D1D3D1;
+  height: 600px;
+  overflow: scroll;
+  background-color: #F1F2F2;
+  margin-bottom: 40px;
+}
+
+.talent-line {
+  background-color: #E6E8E6;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-radius: 2%;
+  width: 90%;
+  margin: 0px;
+  padding-left: 4px;
+}
+
+form input {
+  display: block;
+  width: 300px;
+}
+
+#user-select {
+  display: block;
+}
+
+.talnt {
+  border: 2px solid #D1D3D1;
+  margin: 10px;
+}
+
+.
+#new-ts {
+  margin: 50px;
+  width: 30%;
+}
+#ts-form {
+  width: 40%;
+}
+
+#user-page {
+  background-color: #CFD1CF;
+}
+
+#user-talents {
+  margin-top: 30px;
+}
+
+.mrgn {
+  margin :20px;
+}
+.day-block {
+  text-align: center;
+  margin: 10px;
+}
+
+.day-title {
+  background: -webkit-linear-gradient(left, white , #B6B6C7);
+  background: -o-linear-gradient(right, white , #B6B6C7);
+  background: -moz-linear-gradient(right, white , #B6B6C7);
+  background: linear-gradient(to right, white , #B6B6C7);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #4D4D4D;
+}
+.tims-count h3{
+  color: black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+.tims-count h3:hover {
+  background-color: grey;
+  color: white;
+  font-weight: bold;
+}
+.day-div {
+  background: -webkit-linear-gradient(left, #CFD6D6, #79A1A0);
+  background: -o-linear-gradient(right, #CFD6D6, #79A1A0);
+  background: -moz-linear-gradient(right,#CFD6D6 , #79A1A0);
+  background: linear-gradient(to right,#CFD6D6 , #79A1A0);
+
+}
+.times {
+  color: #4D4D4D;
+}
+.tim-of {
+  text-align: left;
+  text-indent: 50px;
+  border-top: 2px solid grey;
+  font-size: 20px;
+}
+.talnt {
+  background-color: ;
+
+}
+.timeslot {
+  border: 2px solid #D1D3D1;
+}
+.timeslot:hover {
+  background-color: #E6E3EB;
+}
+
+.delet {
+  background-color: #E0CCE0;
+}
+.btn-margin {
+  background-color: #BFBFC3;
+  border: 2px solid #AEAEB4;
+  border-radius: 6px;
+  margin-top: 5px;
+}
+
+.btn:hover {
+  background-color: #DFDFE1;
+}
+.offers {
+  background-color: #E6E3EB;
+  margin-left: -2.8em;
+}
+
+.carousel {
+    height: 500px;
+    margin-bottom: 60px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    z-index: 10;
+    top: 100px;
+    text-shadow: -1px 0 black, 0 4px black, 4px 0 black, 0 -1px black;
+}
+
+.carousel-inner {
+  margin-top: -20px;
+}
+.carousel-caption h1 {
+  text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 0px black;
+  font-size: 144px;
+  font-weight: bolder;
+  font-family: 'Federo', sans-serif !important;
+}
+
+.carousel-caption h2 {
+  text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 0px black;
+  font-size: 72px;
+  font-weight: bolder;
+  font-family: 'Federo', sans-serif !important;
+}
+
+#header-title {
+  text-shadow: 0px 0 black, 0 2px black, 2px 0 black, 0 0px black;
+  font-size: 36px;
+  margin-top: -70px;
+  font-family: 'Federo', sans-serif !important;
+}
+
+.carousel-caption h3 {
+  text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 0px black;
+  padding-top: 20px;
+  font-family: 'Federo', sans-serif !important;
+  font-size: 48px;
+}
+
+.carousel-caption ul {
+  margin-top: 100px;
+}
+
+#header-list {
+  padding: 10px;
+  font-family: 'Federo', sans-serif !important;
+}
+
+#header-text {
+  text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 0px black;
+  padding-top: 20px;
+  font-family: 'Federo', sans-serif !important;
+}
+/* Declare heights because of positioning of img element */
+.carousel .item {
+    width: 100%;
+    height: 500px;
+    background-color: #777;
+}
+.carousel-inner > .item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 500px;
+}
+
+.about-welcome {
+  border: solid #D1D3D1 1px;
+  width: 100%;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: c;
+    -o-background-size: cover;
+}
+
+.talent-box {
+  border: solid #D1D3D1 1px;
+}
+
+.hot-users {
+  border: solid #D1D3D1 1px;
+}
+
+.search-list {
+  border: solid #D1D3D1 1px;
+}
+
+#main-caro {
+  background-image: url("nyc");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#about-barter {
+  background-image: url("computer");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+#offer-guide {
+  background-image: url("piano");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+
